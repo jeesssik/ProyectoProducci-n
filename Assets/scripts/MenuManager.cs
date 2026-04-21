@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject mainMenuCanvas;
     public GameObject optionsCanvas;
     public GameObject creditsCanvas;
+    public GameObject soundOptionsCanvas;
 
     [Header("Scene")]
     public string gameSceneName = "GameScene";
@@ -65,5 +66,20 @@ public class MenuManager : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
         creditsCanvas.SetActive(false);
+    }
+
+    //------------------------
+    //BOTONES DE OPCIONES
+    //------------------------
+
+    public void onSoundButton()
+    {
+        
+        //abrir el menú de opciones de sonido
+        mainMenuCanvas.SetActive(false);
+        optionsCanvas.SetActive(false);
+        soundOptionsCanvas.SetActive(true);
+
+
     }
 }
