@@ -1,0 +1,1183 @@
+fileFormatVersion: 2
+guid: 370c7f923c69cba45af39f844413fb5b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: SHADOW Series - Hallokin (free)_Frame_0
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 219
+      width: 13
+      height: 23
+    spriteID: 6782183ba5fb39342b6cf663972a2775
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 219}
+  - name: SHADOW Series - Hallokin (free)_Frame_1
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 99
+      y: 95
+      width: 13
+      height: 23
+    spriteID: e7ef3691020d81c47aa7a6e52456e4fa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 99, y: 95}
+  - name: SHADOW Series - Hallokin (free)_Frame_2
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 99
+      y: 126
+      width: 13
+      height: 23
+    spriteID: 780af5d1a28523a4b8ef29277461bf18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 99, y: 126}
+  - name: SHADOW Series - Hallokin (free)_Frame_3
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.1818182}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 120
+      y: 95
+      width: 13
+      height: 22
+    spriteID: be261a8246bcb9741b88b2ab822d1f7b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 120, y: 95}
+  - name: SHADOW Series - Hallokin (free)_Frame_4
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.1818182}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 120
+      y: 125
+      width: 13
+      height: 22
+    spriteID: 962892250c574be42a4dfb9219e09239
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 120, y: 125}
+  - name: SHADOW Series - Hallokin (free)_Frame_5
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.1818182}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 120
+      y: 155
+      width: 13
+      height: 22
+    spriteID: cb17e35f4e81b4f4a93623b2281f51ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 120, y: 155}
+  - name: SHADOW Series - Hallokin (free)_Frame_6
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 99
+      y: 157
+      width: 13
+      height: 23
+    spriteID: 10b71b404de1c4546ab5dea0ffc13b6a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 99, y: 157}
+  - name: SHADOW Series - Hallokin (free)_Frame_7
+    originalName: 
+    pivot: {x: 3.2857144, y: -2.2272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 189
+      width: 14
+      height: 22
+    spriteID: 40fd623072caca246bb5b3b047910514
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 189}
+  - name: SHADOW Series - Hallokin (free)_Frame_8
+    originalName: 
+    pivot: {x: 3.1333332, y: -2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 150
+      width: 15
+      height: 24
+    spriteID: 8b6ec36c50f5b5d4bae7a7157781b340
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 150}
+  - name: SHADOW Series - Hallokin (free)_Frame_9
+    originalName: 
+    pivot: {x: 3.2857144, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 95
+      width: 14
+      height: 23
+    spriteID: f5e9b5f581e0ec64aa8ca151ac660a45
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 95}
+  - name: SHADOW Series - Hallokin (free)_Frame_10
+    originalName: 
+    pivot: {x: 3.2857144, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 126
+      width: 14
+      height: 23
+    spriteID: 73b1584c6776e95499beab06059c9f90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 126}
+  - name: SHADOW Series - Hallokin (free)_Frame_11
+    originalName: 
+    pivot: {x: 3.4615386, y: -2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 194
+      width: 13
+      height: 24
+    spriteID: bb14119757225f248a8774524a339037
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 194}
+  - name: SHADOW Series - Hallokin (free)_Frame_12
+    originalName: 
+    pivot: {x: 3.4615386, y: -1.92}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 214
+      width: 13
+      height: 25
+    spriteID: 30afea358995f614aa63b698815258aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 214}
+  - name: SHADOW Series - Hallokin (free)_Frame_13
+    originalName: 
+    pivot: {x: 3.4615386, y: -1.92}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 95
+      width: 13
+      height: 25
+    spriteID: 2e21ed14448f0d84aa917164938b795e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 95}
+  - name: SHADOW Series - Hallokin (free)_Frame_14
+    originalName: 
+    pivot: {x: 3.4615386, y: -2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 226
+      width: 13
+      height: 24
+    spriteID: 5144f8524ba4a3046b2a5adea3af41ee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 226}
+  - name: SHADOW Series - Hallokin (free)_Frame_15
+    originalName: 
+    pivot: {x: 3.4615386, y: -1.92}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 128
+      width: 13
+      height: 25
+    spriteID: 2e2ad8210d87f2a4294b5f96ef259778
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 128}
+  - name: SHADOW Series - Hallokin (free)_Frame_16
+    originalName: 
+    pivot: {x: 3.4615386, y: -2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 77
+      y: 157
+      width: 13
+      height: 24
+    spriteID: f2c49ff351354ad40a8566ded8e7eec6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 77, y: 157}
+  - name: SHADOW Series - Hallokin (free)_Frame_17
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 99
+      y: 188
+      width: 13
+      height: 23
+    spriteID: 0f22910eec05a3548841e53ae4b038ec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 99, y: 188}
+  - name: SHADOW Series - Hallokin (free)_Frame_18
+    originalName: 
+    pivot: {x: 3.4615386, y: -1.92}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 56
+      y: 161
+      width: 13
+      height: 25
+    spriteID: 0af984566775776409a5cb6d4f615785
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 56, y: 161}
+  - name: SHADOW Series - Hallokin (free)_Frame_19
+    originalName: 
+    pivot: {x: 2.647059, y: -1.0212766}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 95
+      width: 17
+      height: 47
+    spriteID: 177bb643fb70e454c96b7ca1f72da52e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 95}
+  - name: SHADOW Series - Hallokin (free)_Frame_20
+    originalName: 
+    pivot: {x: 2.5, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 124
+      width: 18
+      height: 48
+    spriteID: 441abe8bb041b794391b84b52f54e81e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 124}
+  - name: SHADOW Series - Hallokin (free)_Frame_21
+    originalName: 
+    pivot: {x: 2.368421, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 68
+      width: 19
+      height: 48
+    spriteID: c97d82e7beb802a4981827d2689b9910
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 68}
+  - name: SHADOW Series - Hallokin (free)_Frame_22
+    originalName: 
+    pivot: {x: 2.5, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 180
+      width: 18
+      height: 48
+    spriteID: 5ffd7c09e1a908d4b9e7f4f52a41bd33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 180}
+  - name: SHADOW Series - Hallokin (free)_Frame_23
+    originalName: 
+    pivot: {x: 2.8125, y: -1.92}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 235
+      y: 4
+      width: 16
+      height: 25
+    spriteID: 109bfb3e9a7812c4ebbfcfc20060f4c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 235, y: 4}
+  - name: SHADOW Series - Hallokin (free)_Frame_24
+    originalName: 
+    pivot: {x: 1.1489362, y: -2.173913}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 37
+      width: 47
+      height: 23
+    spriteID: 1cfd2e15b52ccd9409b4519934df62e0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 37}
+  - name: SHADOW Series - Hallokin (free)_Frame_25
+    originalName: 
+    pivot: {x: 1.0816327, y: -1.9599999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 62
+      y: 4
+      width: 49
+      height: 25
+    spriteID: 88ae880db8124a04cb5b4b714d022635
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 62, y: 4}
+  - name: SHADOW Series - Hallokin (free)_Frame_26
+    originalName: 
+    pivot: {x: 1.0600001, y: -2.0416667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 119
+      y: 4
+      width: 50
+      height: 24
+    spriteID: dc30dfebbcaea984db2fbed256a295ba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 119, y: 4}
+  - name: SHADOW Series - Hallokin (free)_Frame_27
+    originalName: 
+    pivot: {x: 1.0600001, y: -1.9599999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 50
+      height: 25
+    spriteID: a6ccfb7da7838bd4eaa2e52b13655293
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: SHADOW Series - Hallokin (free)_Frame_28
+    originalName: 
+    pivot: {x: 3.4615386, y: -2.0869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 99
+      y: 219
+      width: 13
+      height: 23
+    spriteID: 08cd841d9ca711d4aa5609ff34b596f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 99, y: 219}
+  - name: SHADOW Series - Hallokin (free)_Frame_29
+    originalName: 
+    pivot: {x: 2.647059, y: -2.1818182}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 232
+      y: 37
+      width: 17
+      height: 22
+    spriteID: 967db61c8960b4841838f0371d59a857
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 232, y: 37}
+  - name: SHADOW Series - Hallokin (free)_Frame_30
+    originalName: 
+    pivot: {x: 1.1489362, y: -2.5263157}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 68
+      width: 47
+      height: 19
+    spriteID: 54a296ae64a90214588862c3d7a51ac4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 68}
+  - name: SHADOW Series - Hallokin (free)_Frame_31
+    originalName: 
+    pivot: {x: 1.1020408, y: -2.4}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 37
+      width: 49
+      height: 20
+    spriteID: 94e341c079dd3b547a7de5366a2eebed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 175, y: 37}
+  - name: SHADOW Series - Hallokin (free)_Frame_32
+    originalName: 
+    pivot: {x: 1.0799999, y: -2.2857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 59
+      y: 37
+      width: 50
+      height: 21
+    spriteID: bcf6df959741d114c88bc067ab286d36
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 59, y: 37}
+  - name: SHADOW Series - Hallokin (free)_Frame_33
+    originalName: 
+    pivot: {x: 1.0799999, y: -2.2857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 117
+      y: 37
+      width: 50
+      height: 21
+    spriteID: c150a00807f012b4c9ba8b7dfacced06
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 117, y: 37}
+  - name: SHADOW Series - Hallokin (free)_Frame_34
+    originalName: 
+    pivot: {x: 1.0799999, y: -2.1818182}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 177
+      y: 4
+      width: 50
+      height: 22
+    spriteID: 4d1cf3b9495d6e341a30cc60a7607ee3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 177, y: 4}
+  - name: SHADOW Series - Hallokin (free)_Frame_35
+    originalName: 
+    pivot: {x: 3.2142859, y: -2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
+      y: 182
+      width: 14
+      height: 24
+    spriteID: f8c13d70e71bd794dbe90d2091b7234d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 31, y: 182}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 2068097287
+    name: SHADOW Series - Hallokin (free)
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: SHADOW Series - Hallokin (free)_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: 6782183ba5fb39342b6cf663972a2775
+    - name: SHADOW Series - Hallokin (free)_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: e7ef3691020d81c47aa7a6e52456e4fa
+    - name: SHADOW Series - Hallokin (free)_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: 780af5d1a28523a4b8ef29277461bf18
+    - name: SHADOW Series - Hallokin (free)_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 22
+      spriteId: be261a8246bcb9741b88b2ab822d1f7b
+    - name: SHADOW Series - Hallokin (free)_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 22
+      spriteId: 962892250c574be42a4dfb9219e09239
+    - name: SHADOW Series - Hallokin (free)_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 22
+      spriteId: cb17e35f4e81b4f4a93623b2281f51ce
+    - name: SHADOW Series - Hallokin (free)_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: 10b71b404de1c4546ab5dea0ffc13b6a
+    - name: SHADOW Series - Hallokin (free)_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 49
+        width: 14
+        height: 22
+      spriteId: 40fd623072caca246bb5b3b047910514
+    - name: SHADOW Series - Hallokin (free)_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 49
+        y: 48
+        width: 15
+        height: 24
+      spriteId: 8b6ec36c50f5b5d4bae7a7157781b340
+    - name: SHADOW Series - Hallokin (free)_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 48
+        width: 14
+        height: 23
+      spriteId: f5e9b5f581e0ec64aa8ca151ac660a45
+    - name: SHADOW Series - Hallokin (free)_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 50
+        y: 48
+        width: 14
+        height: 23
+      spriteId: 73b1584c6776e95499beab06059c9f90
+    - name: SHADOW Series - Hallokin (free)_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 24
+      spriteId: bb14119757225f248a8774524a339037
+    - name: SHADOW Series - Hallokin (free)_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 25
+      spriteId: 30afea358995f614aa63b698815258aa
+    - name: SHADOW Series - Hallokin (free)_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 25
+      spriteId: 2e21ed14448f0d84aa917164938b795e
+    - name: SHADOW Series - Hallokin (free)_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 24
+      spriteId: 5144f8524ba4a3046b2a5adea3af41ee
+    - name: SHADOW Series - Hallokin (free)_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 25
+      spriteId: 2e2ad8210d87f2a4294b5f96ef259778
+    - name: SHADOW Series - Hallokin (free)_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 24
+      spriteId: f2c49ff351354ad40a8566ded8e7eec6
+    - name: SHADOW Series - Hallokin (free)_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: 0f22910eec05a3548841e53ae4b038ec
+    - name: SHADOW Series - Hallokin (free)_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 25
+      spriteId: 0af984566775776409a5cb6d4f615785
+    - name: SHADOW Series - Hallokin (free)_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 17
+        height: 47
+      spriteId: 177bb643fb70e454c96b7ca1f72da52e
+    - name: SHADOW Series - Hallokin (free)_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 18
+        height: 48
+      spriteId: 441abe8bb041b794391b84b52f54e81e
+    - name: SHADOW Series - Hallokin (free)_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 19
+        height: 48
+      spriteId: c97d82e7beb802a4981827d2689b9910
+    - name: SHADOW Series - Hallokin (free)_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 18
+        height: 48
+      spriteId: 5ffd7c09e1a908d4b9e7f4f52a41bd33
+    - name: SHADOW Series - Hallokin (free)_Frame_23
+      frameIndex: 23
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 16
+        height: 25
+      spriteId: 109bfb3e9a7812c4ebbfcfc20060f4c1
+    - name: SHADOW Series - Hallokin (free)_Frame_24
+      frameIndex: 24
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 50
+        width: 47
+        height: 23
+      spriteId: 1cfd2e15b52ccd9409b4519934df62e0
+    - name: SHADOW Series - Hallokin (free)_Frame_25
+      frameIndex: 25
+      additiveSortOrder: 0
+      cellRect:
+        x: 43
+        y: 49
+        width: 49
+        height: 25
+      spriteId: 88ae880db8124a04cb5b4b714d022635
+    - name: SHADOW Series - Hallokin (free)_Frame_26
+      frameIndex: 26
+      additiveSortOrder: 0
+      cellRect:
+        x: 43
+        y: 49
+        width: 50
+        height: 24
+      spriteId: dc30dfebbcaea984db2fbed256a295ba
+    - name: SHADOW Series - Hallokin (free)_Frame_27
+      frameIndex: 27
+      additiveSortOrder: 0
+      cellRect:
+        x: 43
+        y: 49
+        width: 50
+        height: 25
+      spriteId: a6ccfb7da7838bd4eaa2e52b13655293
+    - name: SHADOW Series - Hallokin (free)_Frame_28
+      frameIndex: 28
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 13
+        height: 23
+      spriteId: 08cd841d9ca711d4aa5609ff34b596f0
+    - name: SHADOW Series - Hallokin (free)_Frame_29
+      frameIndex: 29
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 17
+        height: 22
+      spriteId: 967db61c8960b4841838f0371d59a857
+    - name: SHADOW Series - Hallokin (free)_Frame_30
+      frameIndex: 30
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 48
+        width: 47
+        height: 19
+      spriteId: 54a296ae64a90214588862c3d7a51ac4
+    - name: SHADOW Series - Hallokin (free)_Frame_31
+      frameIndex: 31
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 48
+        width: 49
+        height: 20
+      spriteId: 94e341c079dd3b547a7de5366a2eebed
+    - name: SHADOW Series - Hallokin (free)_Frame_32
+      frameIndex: 32
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 48
+        width: 50
+        height: 21
+      spriteId: bcf6df959741d114c88bc067ab286d36
+    - name: SHADOW Series - Hallokin (free)_Frame_33
+      frameIndex: 33
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 48
+        width: 50
+        height: 21
+      spriteId: c150a00807f012b4c9ba8b7dfacced06
+    - name: SHADOW Series - Hallokin (free)_Frame_34
+      frameIndex: 34
+      additiveSortOrder: 0
+      cellRect:
+        x: 42
+        y: 48
+        width: 50
+        height: 22
+      spriteId: 4d1cf3b9495d6e341a30cc60a7607ee3
+    - name: SHADOW Series - Hallokin (free)_Frame_35
+      frameIndex: 35
+      additiveSortOrder: 0
+      cellRect:
+        x: 51
+        y: 48
+        width: 14
+        height: 24
+      spriteId: f8c13d70e71bd794dbe90d2091b7234d
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 192, y: 128}
