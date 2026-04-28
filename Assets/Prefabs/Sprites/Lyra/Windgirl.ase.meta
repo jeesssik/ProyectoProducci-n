@@ -1,0 +1,2488 @@
+fileFormatVersion: 2
+guid: 44ffe17e62970e14095c540398146aab
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: Windgirl_Frame_1
+    originalName: 
+    pivot: {x: 0.91489357, y: -0.46551725}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 377
+      width: 47
+      height: 58
+    spriteID: f7078e4b821fdbd47a11df7e04df5e01
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 377}
+  - name: Windgirl_Frame_2
+    originalName: 
+    pivot: {x: 0.9512195, y: -0.37096775}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 511
+      width: 41
+      height: 62
+    spriteID: f4d5d44eeebdfd742ba765708614f26c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 511}
+  - name: Windgirl_Frame_5
+    originalName: 
+    pivot: {x: 1, y: -0.37704915}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 959
+      width: 35
+      height: 61
+    spriteID: 675f02b886f1d14449dd4e544e9f27b8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 959}
+  - name: Windgirl_Frame_6
+    originalName: 
+    pivot: {x: 1.0487804, y: -0.42372882}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 370
+      width: 41
+      height: 59
+    spriteID: 298420ea294c5c1438f4abcc35105cbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 370}
+  - name: Windgirl_Frame_22
+    originalName: 
+    pivot: {x: 0.9259259, y: -0.31944445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 571
+      width: 54
+      height: 72
+    spriteID: d854865ba9999614db800aea0f1957b8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 571}
+  - name: Windgirl_Frame_23
+    originalName: 
+    pivot: {x: 0.9259259, y: -0.31944445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 651
+      width: 54
+      height: 72
+    spriteID: dae4a1d10e0d85a47acacc429810e4a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 651}
+  - name: Windgirl_Frame_24
+    originalName: 
+    pivot: {x: 0.95555556, y: -0.30666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 377
+      width: 45
+      height: 75
+    spriteID: 08483c1596126bb499206e4421199f25
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 377}
+  - name: Windgirl_Frame_25
+    originalName: 
+    pivot: {x: 0.95555556, y: -0.30666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 460
+      width: 45
+      height: 75
+    spriteID: 28ce63608045b0b4186b6dc675956729
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 460}
+  - name: Windgirl_Frame_26
+    originalName: 
+    pivot: {x: 0.7666667, y: -0.31506848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 172
+      width: 60
+      height: 73
+    spriteID: 2e5dd1e54ebea604daf98ab7556225bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 172}
+  - name: Windgirl_Frame_27
+    originalName: 
+    pivot: {x: 0.7666667, y: -0.31506848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 253
+      width: 60
+      height: 73
+    spriteID: 2f1a9d2af2108a34fabe0e6a700c8556
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 253}
+  - name: Windgirl_Frame_28
+    originalName: 
+    pivot: {x: 0.8, y: -0.4181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 726
+      width: 45
+      height: 55
+    spriteID: 5ea22eab7ea721949b55bf717cd2f2f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 726}
+  - name: Windgirl_Frame_29
+    originalName: 
+    pivot: {x: 0.8, y: -0.4181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 789
+      width: 45
+      height: 55
+    spriteID: 3eb8bc41d03984d4d8c160b637e11c72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 789}
+  - name: Windgirl_Frame_30
+    originalName: 
+    pivot: {x: 0.8717949, y: -0.42592594}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 4
+      width: 39
+      height: 54
+    spriteID: 39ef9a15333d97946aa453ffb8ef99a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 4}
+  - name: Windgirl_Frame_31
+    originalName: 
+    pivot: {x: 0.8717949, y: -0.42592594}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 66
+      width: 39
+      height: 54
+    spriteID: 575044e5df90331429a17b56b054999c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 66}
+  - name: Windgirl_Frame_32
+    originalName: 
+    pivot: {x: 1.1153847, y: -0.48076925}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 695
+      width: 26
+      height: 52
+    spriteID: 736a080dd135aeb4f8a25261c384f671
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 695}
+  - name: Windgirl_Frame_33
+    originalName: 
+    pivot: {x: 1.1153847, y: -0.48076925}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 755
+      width: 26
+      height: 52
+    spriteID: 13594aba10ae2bf49948fcd9932bab1c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 755}
+  - name: Windgirl_Frame_34
+    originalName: 
+    pivot: {x: 1.2307693, y: -0.4107143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 631
+      width: 26
+      height: 56
+    spriteID: 5b0f1f10d61a9954ba6a3cfdd20ea2cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 631}
+  - name: Windgirl_Frame_35
+    originalName: 
+    pivot: {x: 1.0666667, y: -0.4107143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 567
+      width: 30
+      height: 56
+    spriteID: 94598a7281e6f2745b1fbbb0aacf7174
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 567}
+  - name: Windgirl_Frame_36
+    originalName: 
+    pivot: {x: 0.8648649, y: -0.36507937}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 817
+      width: 37
+      height: 63
+    spriteID: 376ac623e936ba848981e28fbb598327
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 817}
+  - name: Windgirl_Frame_37
+    originalName: 
+    pivot: {x: 0.8648649, y: -0.36507937}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 888
+      width: 37
+      height: 63
+    spriteID: 29b79aed833fe064e8995b9c06ca8afd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 888}
+  - name: Windgirl_Frame_0
+    originalName: 
+    pivot: {x: 1.1714286, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 437
+      width: 35
+      height: 69
+    spriteID: 773049f3b93de3545a61cbbc130447c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 437}
+  - name: Windgirl_Frame_3
+    originalName: 
+    pivot: {x: 0.8867925, y: -0.5178572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 4
+      width: 53
+      height: 56
+    spriteID: 62f5c24d8d156f64c86fc45dd1bea1b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 4}
+  - name: Windgirl_Frame_4
+    originalName: 
+    pivot: {x: 0.9019608, y: -0.37096775}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 791
+      width: 51
+      height: 62
+    spriteID: 22acc30b89fa9124d90c411a2a74fef1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 791}
+  - name: Windgirl_Frame_7
+    originalName: 
+    pivot: {x: 1.1714286, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 514
+      width: 35
+      height: 69
+    spriteID: 651aa7bad96bf8d49a71b70812faabfd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 514}
+  - name: Windgirl_Frame_8
+    originalName: 
+    pivot: {x: 1.1714286, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 591
+      width: 35
+      height: 69
+    spriteID: dd53027b5b79b6843b63e317e48c0b43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 591}
+  - name: Windgirl_Frame_9
+    originalName: 
+    pivot: {x: 1.1818182, y: -0.34328356}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 247
+      width: 33
+      height: 67
+    spriteID: 3d14396fa3e64da4a8478e90f54be050
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 247}
+  - name: Windgirl_Frame_10
+    originalName: 
+    pivot: {x: 1.1470588, y: -0.34328356}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 80
+      width: 34
+      height: 67
+    spriteID: e4d1b0256a290c648a7ad24416c2e381
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 80}
+  - name: Windgirl_Frame_11
+    originalName: 
+    pivot: {x: 1.21875, y: -0.34328356}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 322
+      width: 32
+      height: 67
+    spriteID: fd4994645759b164d846460ad9126e9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 322}
+  - name: Windgirl_Frame_12
+    originalName: 
+    pivot: {x: 1.2058823, y: -0.3382353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 4
+      width: 34
+      height: 68
+    spriteID: 0c3c8cf89ba72134bb2691562720ce1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 4}
+  - name: Windgirl_Frame_13
+    originalName: 
+    pivot: {x: 0.902439, y: -0.37704915}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 657
+      width: 41
+      height: 61
+    spriteID: 8a779e615b5b6d84384c1c4bc0cf408e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 657}
+  - name: Windgirl_Frame_14
+    originalName: 
+    pivot: {x: 0.902439, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 925
+      width: 41
+      height: 60
+    spriteID: 0f5d30d7c9c803a4891ea8d5a8162a8b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 925}
+  - name: Windgirl_Frame_15
+    originalName: 
+    pivot: {x: 1.2285714, y: -0.2857143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 136
+      width: 35
+      height: 70
+    spriteID: e8f0cdef8a04bd448a49c23960b31f72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 136}
+  - name: Windgirl_Frame_16
+    originalName: 
+    pivot: {x: 1.2285714, y: -0.2857143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 214
+      width: 35
+      height: 70
+    spriteID: 6d581ba0c1feb3748bd86c53e40f2376
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 214}
+  - name: Windgirl_Frame_17
+    originalName: 
+    pivot: {x: 1.2285714, y: -0.2857143}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 292
+      width: 35
+      height: 70
+    spriteID: 54919a823109b2e4f8d533d4e52a3d0a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 292}
+  - name: Windgirl_Frame_18
+    originalName: 
+    pivot: {x: 1.1428572, y: -0.4}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 323
+      y: 4
+      width: 35
+      height: 65
+    spriteID: 270eebefb075486468824ae64e2a2bf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 323, y: 4}
+  - name: Windgirl_Frame_19
+    originalName: 
+    pivot: {x: 1.027027, y: -0.40625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 745
+      width: 37
+      height: 64
+    spriteID: dca373da323e87f44931cd5a1b9200cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 745}
+  - name: Windgirl_Frame_20
+    originalName: 
+    pivot: {x: 1.1428572, y: -0.40625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 323
+      y: 77
+      width: 35
+      height: 64
+    spriteID: 5a0b8c14ae92488448c5301cf0140e58
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 323, y: 77}
+  - name: Windgirl_Frame_21
+    originalName: 
+    pivot: {x: 1.0789474, y: -0.4}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 852
+      width: 38
+      height: 65
+    spriteID: 6645425f7eff6da4c9de89c61d783b69
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 852}
+  - name: Windgirl_Frame_38
+    originalName: 
+    pivot: {x: 0.8043478, y: -0.37704915}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 308
+      width: 46
+      height: 61
+    spriteID: 1d71fd28f35486540a01c1c15c83e519
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 308}
+  - name: Windgirl_Frame_39
+    originalName: 
+    pivot: {x: 0.78, y: -0.37704915}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 861
+      width: 50
+      height: 61
+    spriteID: 5597b3e747ff492408329d38dee47371
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 861}
+  - name: Windgirl_Frame_40
+    originalName: 
+    pivot: {x: 0.7647059, y: -0.31944445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 223
+      width: 51
+      height: 72
+    spriteID: ca6bac3f5077ed84a9bf7527b7727a64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 223}
+  - name: Windgirl_Frame_41
+    originalName: 
+    pivot: {x: 0.92857146, y: -0.32394364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 72
+      width: 42
+      height: 71
+    spriteID: e458451aca8e85d43b8795a5807e66ec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 72}
+  - name: Windgirl_Frame_44
+    originalName: 
+    pivot: {x: -1.6666667, y: -0.4423077}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 138
+      y: 861
+      width: 15
+      height: 52
+    spriteID: 0d4a5550f348cd944a460c1b351fa0db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 138, y: 861}
+  - name: Windgirl_Frame_45
+    originalName: 
+    pivot: {x: -1.6666667, y: -0.4423077}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 139
+      y: 791
+      width: 15
+      height: 52
+    spriteID: 99aee5fca1e83d240b0369fce868fa28
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 139, y: 791}
+  - name: Windgirl_Frame_46
+    originalName: 
+    pivot: {x: -0.53846157, y: -0.31506848}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 486
+      width: 26
+      height: 73
+    spriteID: 9db0c5ede07ee0e419b52ac34f72b0b3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 486}
+  - name: Windgirl_Frame_47
+    originalName: 
+    pivot: {x: -0.68, y: -0.28395063}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 634
+      width: 25
+      height: 81
+    spriteID: 069971a6cc210a44fa66eda4effdd8f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 634}
+  - name: Windgirl_Frame_48
+    originalName: 
+    pivot: {x: -0.7083334, y: -0.28395063}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 543
+      width: 24
+      height: 81
+    spriteID: 3c4b92344a9fbfa4bb517fe8fc2c0402
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 543}
+  - name: Windgirl_Frame_49
+    originalName: 
+    pivot: {x: -0.68, y: -0.24719101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 128
+      y: 930
+      width: 25
+      height: 89
+    spriteID: 16db72388471a8b44b712da832a3a514
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 128, y: 930}
+  - name: Windgirl_Frame_50
+    originalName: 
+    pivot: {x: -0.7083334, y: -0.28395063}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 397
+      width: 24
+      height: 81
+    spriteID: cd48cc7b23f31b148b4b3e7ee279e449
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 397}
+  - name: Windgirl_Frame_51
+    originalName: 
+    pivot: {x: -0.5185185, y: -0.27380952}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 281
+      y: 155
+      width: 27
+      height: 84
+    spriteID: 121e9c81cc841d34fb38ad4f175fdc52
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 281, y: 155}
+  - name: Windgirl_Frame_52
+    originalName: 
+    pivot: {x: 1.1714286, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 668
+      width: 35
+      height: 69
+    spriteID: aedcaaef21d61fc44a21b9efa6cda11a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 668}
+  - name: Windgirl_Frame_53
+    originalName: 
+    pivot: {x: 0.99999994, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 231
+      width: 41
+      height: 69
+    spriteID: 6f68c7b8b31bdaa438753e4222875e2b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 231}
+  - name: Windgirl_Frame_54
+    originalName: 
+    pivot: {x: 1.025, y: -0.27710843}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 543
+      width: 40
+      height: 83
+    spriteID: 8a8c2945ddf26d14d85b745fc97f92d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 543}
+  - name: Windgirl_Frame_55
+    originalName: 
+    pivot: {x: 1.025, y: -0.28395063}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 634
+      width: 40
+      height: 81
+    spriteID: 1eac38b12de8ad74ebbbcca4bba86cf7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 634}
+  - name: Windgirl_Frame_56
+    originalName: 
+    pivot: {x: 1.025, y: -0.30666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 930
+      width: 40
+      height: 75
+    spriteID: e3b197615c472984ab65427cefbfa5a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 930}
+  - name: Windgirl_Frame_57
+    originalName: 
+    pivot: {x: 1, y: -0.31944445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 151
+      width: 40
+      height: 72
+    spriteID: 8e3902e91572d384d89f69990e6aa164
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 151}
+  - name: Windgirl_Frame_58
+    originalName: 
+    pivot: {x: 1, y: -0.2647059}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 581
+      width: 37
+      height: 68
+    spriteID: a73ef7a5b4c9f5c4fb9e631f46589250
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 581}
+  - name: Windgirl_Frame_59
+    originalName: 
+    pivot: {x: 1, y: -0.6388889}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 128
+      width: 36
+      height: 36
+    spriteID: 9066729ec84076c4caf2ec37b43e6b9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 128}
+  - name: Windgirl_Frame_64
+    originalName: 
+    pivot: {x: 0.902439, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 220
+      y: 68
+      width: 41
+      height: 60
+    spriteID: 37671c464ef727f4a91715569e20b1de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 220, y: 68}
+  - name: Windgirl_Frame_65
+    originalName: 
+    pivot: {x: 0.82222223, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 443
+      width: 45
+      height: 60
+    spriteID: c5448f6fed25b404f8173b82e33ed4ea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 443}
+  - name: Windgirl_Frame_66
+    originalName: 
+    pivot: {x: 0.82, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 4
+      width: 50
+      height: 60
+    spriteID: abe29f3f99c7e504fb0b6535b6e37ff5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 4}
+  - name: Windgirl_Frame_67
+    originalName: 
+    pivot: {x: 0.7777778, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 723
+      width: 54
+      height: 60
+    spriteID: d614f1c9e79a02845922c8b2cf61c1a2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 723}
+  - name: Windgirl_Frame_68
+    originalName: 
+    pivot: {x: 0.75, y: -0.38333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 731
+      width: 64
+      height: 60
+    spriteID: 091182be7b4cdde4aab3ffa69cf98495
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 731}
+  - name: Windgirl_Frame_69
+    originalName: 
+    pivot: {x: 0.6891892, y: -0.37704915}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 4
+      width: 74
+      height: 61
+    spriteID: 11fe2826121d83848b0356ecb799c579
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 4}
+  - name: Windgirl_Frame_70
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.3026316}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 68
+      height: 76
+    spriteID: 92d83473f6881b34e8c3fe7fd2659362
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: Windgirl_Frame_71
+    originalName: 
+    pivot: {x: 0.7058824, y: -0.3026316}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 88
+      width: 68
+      height: 76
+    spriteID: b1c8b55e2275d294d89d55820accd9b3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 88}
+  - name: Windgirl_Frame_42
+    originalName: 
+    pivot: {x: -2.5454545, y: -1.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 139
+      y: 265
+      width: 11
+      height: 12
+    spriteID: 693b4fd30f44b52429dee2d556ac9755
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 139, y: 265}
+  - name: Windgirl_Frame_43
+    originalName: 
+    pivot: {x: -1.6666667, y: -0.6764706}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 139
+      y: 223
+      width: 15
+      height: 34
+    spriteID: 88bbcd3816117d941b9ee94c054d4a4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 139, y: 223}
+  - name: Windgirl_Frame_60
+    originalName: 
+    pivot: {x: 1, y: -1.4375}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 993
+      width: 36
+      height: 16
+    spriteID: 6330af9cf25210942b9027cde7d4550c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 993}
+  - name: Windgirl_Frame_61
+    originalName: 
+    pivot: {x: 1, y: -1.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 172
+      width: 36
+      height: 16
+    spriteID: 61e864e7493043044acc49c426e419b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 172}
+  - name: Windgirl_Frame_62
+    originalName: 
+    pivot: {x: 1, y: -1.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 196
+      width: 36
+      height: 16
+    spriteID: 1218b843c4035c846983dfabf3b0bcbf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 196}
+  - name: Windgirl_Frame_63
+    originalName: 
+    pivot: {x: 1, y: -1.125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 366
+      y: 220
+      width: 36
+      height: 16
+    spriteID: 8c06fe1b9ffc45c4c8ff328114202023
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 366, y: 220}
+  - name: Windgirl_Frame_72
+    originalName: 
+    pivot: {x: 0.6181818, y: -0.34328356}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 73
+      width: 55
+      height: 67
+    spriteID: ada26dd3e0bd9d642b0ab5a48e261043
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 73}
+  - name: Windgirl_Frame_73
+    originalName: 
+    pivot: {x: 0.6181818, y: -0.34328356}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 148
+      width: 55
+      height: 67
+    spriteID: 3f82a45d76bebee428ba5ef6ae5e4a8f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 148}
+  - name: Windgirl_Frame_74
+    originalName: 
+    pivot: {x: 0.6181818, y: -0.3382353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 799
+      width: 55
+      height: 68
+    spriteID: c7cad2a53b0e5aa49a25f9d982ddbc4f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 799}
+  - name: Windgirl_Frame_75
+    originalName: 
+    pivot: {x: 0.6181818, y: -0.3382353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 875
+      width: 55
+      height: 68
+    spriteID: a896d0f99131bd54e9deeab610e2271b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 875}
+  - name: Windgirl_Frame_76
+    originalName: 
+    pivot: {x: 0.6481482, y: -0.34848487}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 303
+      width: 54
+      height: 66
+    spriteID: f92238cd8a8c7bc44b42e62471c879ff
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 303}
+  - name: Windgirl_Frame_77
+    originalName: 
+    pivot: {x: 0.625, y: -0.34848487}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 951
+      width: 56
+      height: 66
+    spriteID: 923f395de5729ec46abfc2aaba8bbe98
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 951}
+  - name: Windgirl_Frame_78
+    originalName: 
+    pivot: {x: 0.6315789, y: -0.32394364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 492
+      width: 57
+      height: 71
+    spriteID: cf6af3be081d9aa4aa32c90bd9cee537
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 492}
+  - name: Windgirl_Frame_79
+    originalName: 
+    pivot: {x: 0.6, y: -0.32394364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 334
+      width: 60
+      height: 71
+    spriteID: a10398491d3f9eb478bb865bd247ff9b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 334}
+  - name: Windgirl_Frame_80
+    originalName: 
+    pivot: {x: 0.6, y: -0.32394364}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 413
+      width: 60
+      height: 71
+    spriteID: abe54ae95266115459aa3037b4d6bc76
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 413}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 545014018
+    name: Windgirl
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: Windgirl_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 27
+        width: 47
+        height: 58
+      spriteId: f7078e4b821fdbd47a11df7e04df5e01
+    - name: Windgirl_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 41
+        height: 62
+      spriteId: f4d5d44eeebdfd742ba765708614f26c
+    - name: Windgirl_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 29
+        y: 23
+        width: 35
+        height: 61
+      spriteId: 675f02b886f1d14449dd4e544e9f27b8
+    - name: Windgirl_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 25
+        width: 41
+        height: 59
+      spriteId: 298420ea294c5c1438f4abcc35105cbb
+    - name: Windgirl_Frame_22
+      frameIndex: 22
+      additiveSortOrder: 0
+      cellRect:
+        x: 14
+        y: 23
+        width: 54
+        height: 72
+      spriteId: d854865ba9999614db800aea0f1957b8
+    - name: Windgirl_Frame_23
+      frameIndex: 23
+      additiveSortOrder: 0
+      cellRect:
+        x: 14
+        y: 23
+        width: 54
+        height: 72
+      spriteId: dae4a1d10e0d85a47acacc429810e4a4
+    - name: Windgirl_Frame_24
+      frameIndex: 24
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 23
+        width: 45
+        height: 75
+      spriteId: 08483c1596126bb499206e4421199f25
+    - name: Windgirl_Frame_25
+      frameIndex: 25
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 23
+        width: 45
+        height: 75
+      spriteId: 28ce63608045b0b4186b6dc675956729
+    - name: Windgirl_Frame_26
+      frameIndex: 26
+      additiveSortOrder: 0
+      cellRect:
+        x: 18
+        y: 23
+        width: 60
+        height: 73
+      spriteId: 2e5dd1e54ebea604daf98ab7556225bd
+    - name: Windgirl_Frame_27
+      frameIndex: 27
+      additiveSortOrder: 0
+      cellRect:
+        x: 18
+        y: 23
+        width: 60
+        height: 73
+      spriteId: 2f1a9d2af2108a34fabe0e6a700c8556
+    - name: Windgirl_Frame_28
+      frameIndex: 28
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 45
+        height: 55
+      spriteId: 5ea22eab7ea721949b55bf717cd2f2f2
+    - name: Windgirl_Frame_29
+      frameIndex: 29
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 45
+        height: 55
+      spriteId: 3eb8bc41d03984d4d8c160b637e11c72
+    - name: Windgirl_Frame_30
+      frameIndex: 30
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 39
+        height: 54
+      spriteId: 39ef9a15333d97946aa453ffb8ef99a1
+    - name: Windgirl_Frame_31
+      frameIndex: 31
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 39
+        height: 54
+      spriteId: 575044e5df90331429a17b56b054999c
+    - name: Windgirl_Frame_32
+      frameIndex: 32
+      additiveSortOrder: 0
+      cellRect:
+        x: 35
+        y: 25
+        width: 26
+        height: 52
+      spriteId: 736a080dd135aeb4f8a25261c384f671
+    - name: Windgirl_Frame_33
+      frameIndex: 33
+      additiveSortOrder: 0
+      cellRect:
+        x: 35
+        y: 25
+        width: 26
+        height: 52
+      spriteId: 13594aba10ae2bf49948fcd9932bab1c
+    - name: Windgirl_Frame_34
+      frameIndex: 34
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 23
+        width: 26
+        height: 56
+      spriteId: 5b0f1f10d61a9954ba6a3cfdd20ea2cb
+    - name: Windgirl_Frame_35
+      frameIndex: 35
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 23
+        width: 30
+        height: 56
+      spriteId: 94598a7281e6f2745b1fbbb0aacf7174
+    - name: Windgirl_Frame_36
+      frameIndex: 36
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 23
+        width: 37
+        height: 63
+      spriteId: 376ac623e936ba848981e28fbb598327
+    - name: Windgirl_Frame_37
+      frameIndex: 37
+      additiveSortOrder: 0
+      cellRect:
+        x: 32
+        y: 23
+        width: 37
+        height: 63
+      spriteId: 29b79aed833fe064e8995b9c06ca8afd
+    - name: Windgirl_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 35
+        height: 69
+      spriteId: 773049f3b93de3545a61cbbc130447c5
+    - name: Windgirl_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 17
+        y: 29
+        width: 53
+        height: 56
+      spriteId: 62f5c24d8d156f64c86fc45dd1bea1b7
+    - name: Windgirl_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 18
+        y: 23
+        width: 51
+        height: 62
+      spriteId: 22acc30b89fa9124d90c411a2a74fef1
+    - name: Windgirl_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 35
+        height: 69
+      spriteId: 651aa7bad96bf8d49a71b70812faabfd
+    - name: Windgirl_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 35
+        height: 69
+      spriteId: dd53027b5b79b6843b63e317e48c0b43
+    - name: Windgirl_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 33
+        height: 67
+      spriteId: 3d14396fa3e64da4a8478e90f54be050
+    - name: Windgirl_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 34
+        height: 67
+      spriteId: e4d1b0256a290c648a7ad24416c2e381
+    - name: Windgirl_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 32
+        height: 67
+      spriteId: fd4994645759b164d846460ad9126e9d
+    - name: Windgirl_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 34
+        height: 68
+      spriteId: 0c3c8cf89ba72134bb2691562720ce1a
+    - name: Windgirl_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 23
+        width: 41
+        height: 61
+      spriteId: 8a779e615b5b6d84384c1c4bc0cf408e
+    - name: Windgirl_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 23
+        width: 41
+        height: 60
+      spriteId: 0f5d30d7c9c803a4891ea8d5a8162a8b
+    - name: Windgirl_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 20
+        width: 35
+        height: 70
+      spriteId: e8f0cdef8a04bd448a49c23960b31f72
+    - name: Windgirl_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 20
+        width: 35
+        height: 70
+      spriteId: 6d581ba0c1feb3748bd86c53e40f2376
+    - name: Windgirl_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 20
+        width: 35
+        height: 70
+      spriteId: 54919a823109b2e4f8d533d4e52a3d0a
+    - name: Windgirl_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 24
+        y: 26
+        width: 35
+        height: 65
+      spriteId: 270eebefb075486468824ae64e2a2bf0
+    - name: Windgirl_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 26
+        y: 26
+        width: 37
+        height: 64
+      spriteId: dca373da323e87f44931cd5a1b9200cc
+    - name: Windgirl_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 24
+        y: 26
+        width: 35
+        height: 64
+      spriteId: 5a0b8c14ae92488448c5301cf0140e58
+    - name: Windgirl_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 26
+        width: 38
+        height: 65
+      spriteId: 6645425f7eff6da4c9de89c61d783b69
+    - name: Windgirl_Frame_38
+      frameIndex: 38
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 23
+        width: 46
+        height: 61
+      spriteId: 1d71fd28f35486540a01c1c15c83e519
+    - name: Windgirl_Frame_39
+      frameIndex: 39
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 50
+        height: 61
+      spriteId: 5597b3e747ff492408329d38dee47371
+    - name: Windgirl_Frame_40
+      frameIndex: 40
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 51
+        height: 72
+      spriteId: ca6bac3f5077ed84a9bf7527b7727a64
+    - name: Windgirl_Frame_41
+      frameIndex: 41
+      additiveSortOrder: 0
+      cellRect:
+        x: 25
+        y: 23
+        width: 42
+        height: 71
+      spriteId: e458451aca8e85d43b8795a5807e66ec
+    - name: Windgirl_Frame_44
+      frameIndex: 44
+      additiveSortOrder: 0
+      cellRect:
+        x: 89
+        y: 23
+        width: 15
+        height: 52
+      spriteId: 0d4a5550f348cd944a460c1b351fa0db
+    - name: Windgirl_Frame_45
+      frameIndex: 45
+      additiveSortOrder: 0
+      cellRect:
+        x: 89
+        y: 23
+        width: 15
+        height: 52
+      spriteId: 99aee5fca1e83d240b0369fce868fa28
+    - name: Windgirl_Frame_46
+      frameIndex: 46
+      additiveSortOrder: 0
+      cellRect:
+        x: 78
+        y: 23
+        width: 26
+        height: 73
+      spriteId: 9db0c5ede07ee0e419b52ac34f72b0b3
+    - name: Windgirl_Frame_47
+      frameIndex: 47
+      additiveSortOrder: 0
+      cellRect:
+        x: 81
+        y: 23
+        width: 25
+        height: 81
+      spriteId: 069971a6cc210a44fa66eda4effdd8f4
+    - name: Windgirl_Frame_48
+      frameIndex: 48
+      additiveSortOrder: 0
+      cellRect:
+        x: 81
+        y: 23
+        width: 24
+        height: 81
+      spriteId: 3c4b92344a9fbfa4bb517fe8fc2c0402
+    - name: Windgirl_Frame_49
+      frameIndex: 49
+      additiveSortOrder: 0
+      cellRect:
+        x: 81
+        y: 22
+        width: 25
+        height: 89
+      spriteId: 16db72388471a8b44b712da832a3a514
+    - name: Windgirl_Frame_50
+      frameIndex: 50
+      additiveSortOrder: 0
+      cellRect:
+        x: 81
+        y: 23
+        width: 24
+        height: 81
+      spriteId: cd48cc7b23f31b148b4b3e7ee279e449
+    - name: Windgirl_Frame_51
+      frameIndex: 51
+      additiveSortOrder: 0
+      cellRect:
+        x: 78
+        y: 23
+        width: 27
+        height: 84
+      spriteId: 121e9c81cc841d34fb38ad4f175fdc52
+    - name: Windgirl_Frame_52
+      frameIndex: 52
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 35
+        height: 69
+      spriteId: aedcaaef21d61fc44a21b9efa6cda11a
+    - name: Windgirl_Frame_53
+      frameIndex: 53
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 41
+        height: 69
+      spriteId: 6f68c7b8b31bdaa438753e4222875e2b
+    - name: Windgirl_Frame_54
+      frameIndex: 54
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 40
+        height: 83
+      spriteId: 8a8c2945ddf26d14d85b745fc97f92d7
+    - name: Windgirl_Frame_55
+      frameIndex: 55
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 40
+        height: 81
+      spriteId: 1eac38b12de8ad74ebbbcca4bba86cf7
+    - name: Windgirl_Frame_56
+      frameIndex: 56
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 40
+        height: 75
+      spriteId: e3b197615c472984ab65427cefbfa5a1
+    - name: Windgirl_Frame_57
+      frameIndex: 57
+      additiveSortOrder: 0
+      cellRect:
+        x: 24
+        y: 23
+        width: 40
+        height: 72
+      spriteId: 8e3902e91572d384d89f69990e6aa164
+    - name: Windgirl_Frame_58
+      frameIndex: 58
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 18
+        width: 37
+        height: 68
+      spriteId: a73ef7a5b4c9f5c4fb9e631f46589250
+    - name: Windgirl_Frame_59
+      frameIndex: 59
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 36
+        height: 36
+      spriteId: 9066729ec84076c4caf2ec37b43e6b9e
+    - name: Windgirl_Frame_64
+      frameIndex: 64
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 23
+        width: 41
+        height: 60
+      spriteId: 37671c464ef727f4a91715569e20b1de
+    - name: Windgirl_Frame_65
+      frameIndex: 65
+      additiveSortOrder: 0
+      cellRect:
+        x: 27
+        y: 23
+        width: 45
+        height: 60
+      spriteId: c5448f6fed25b404f8173b82e33ed4ea
+    - name: Windgirl_Frame_66
+      frameIndex: 66
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 23
+        width: 50
+        height: 60
+      spriteId: abe29f3f99c7e504fb0b6535b6e37ff5
+    - name: Windgirl_Frame_67
+      frameIndex: 67
+      additiveSortOrder: 0
+      cellRect:
+        x: 22
+        y: 23
+        width: 54
+        height: 60
+      spriteId: d614f1c9e79a02845922c8b2cf61c1a2
+    - name: Windgirl_Frame_68
+      frameIndex: 68
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 23
+        width: 64
+        height: 60
+      spriteId: 091182be7b4cdde4aab3ffa69cf98495
+    - name: Windgirl_Frame_69
+      frameIndex: 69
+      additiveSortOrder: 0
+      cellRect:
+        x: 13
+        y: 23
+        width: 74
+        height: 61
+      spriteId: 11fe2826121d83848b0356ecb799c579
+    - name: Windgirl_Frame_70
+      frameIndex: 70
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 23
+        width: 68
+        height: 76
+      spriteId: 92d83473f6881b34e8c3fe7fd2659362
+    - name: Windgirl_Frame_71
+      frameIndex: 71
+      additiveSortOrder: 0
+      cellRect:
+        x: 16
+        y: 23
+        width: 68
+        height: 76
+      spriteId: b1c8b55e2275d294d89d55820accd9b3
+    - name: Windgirl_Frame_42
+      frameIndex: 42
+      additiveSortOrder: 0
+      cellRect:
+        x: 92
+        y: 23
+        width: 11
+        height: 12
+      spriteId: 693b4fd30f44b52429dee2d556ac9755
+    - name: Windgirl_Frame_43
+      frameIndex: 43
+      additiveSortOrder: 0
+      cellRect:
+        x: 89
+        y: 23
+        width: 15
+        height: 34
+      spriteId: 88bbcd3816117d941b9ee94c054d4a4f
+    - name: Windgirl_Frame_60
+      frameIndex: 60
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 36
+        height: 16
+      spriteId: 6330af9cf25210942b9027cde7d4550c
+    - name: Windgirl_Frame_61
+      frameIndex: 61
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 18
+        width: 36
+        height: 16
+      spriteId: 61e864e7493043044acc49c426e419b7
+    - name: Windgirl_Frame_62
+      frameIndex: 62
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 18
+        width: 36
+        height: 16
+      spriteId: 1218b843c4035c846983dfabf3b0bcbf
+    - name: Windgirl_Frame_63
+      frameIndex: 63
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 18
+        width: 36
+        height: 16
+      spriteId: 8c06fe1b9ffc45c4c8ff328114202023
+    - name: Windgirl_Frame_72
+      frameIndex: 72
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 55
+        height: 67
+      spriteId: ada26dd3e0bd9d642b0ab5a48e261043
+    - name: Windgirl_Frame_73
+      frameIndex: 73
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 55
+        height: 67
+      spriteId: 3f82a45d76bebee428ba5ef6ae5e4a8f
+    - name: Windgirl_Frame_74
+      frameIndex: 74
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 55
+        height: 68
+      spriteId: c7cad2a53b0e5aa49a25f9d982ddbc4f
+    - name: Windgirl_Frame_75
+      frameIndex: 75
+      additiveSortOrder: 0
+      cellRect:
+        x: 30
+        y: 23
+        width: 55
+        height: 68
+      spriteId: a896d0f99131bd54e9deeab610e2271b
+    - name: Windgirl_Frame_76
+      frameIndex: 76
+      additiveSortOrder: 0
+      cellRect:
+        x: 29
+        y: 23
+        width: 54
+        height: 66
+      spriteId: f92238cd8a8c7bc44b42e62471c879ff
+    - name: Windgirl_Frame_77
+      frameIndex: 77
+      additiveSortOrder: 0
+      cellRect:
+        x: 29
+        y: 23
+        width: 56
+        height: 66
+      spriteId: 923f395de5729ec46abfc2aaba8bbe98
+    - name: Windgirl_Frame_78
+      frameIndex: 78
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 57
+        height: 71
+      spriteId: cf6af3be081d9aa4aa32c90bd9cee537
+    - name: Windgirl_Frame_79
+      frameIndex: 79
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 60
+        height: 71
+      spriteId: a10398491d3f9eb478bb865bd247ff9b
+    - name: Windgirl_Frame_80
+      frameIndex: 80
+      additiveSortOrder: 0
+      cellRect:
+        x: 28
+        y: 23
+        width: 60
+        height: 71
+      spriteId: abe54ae95266115459aa3037b4d6bc76
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 128, y: 128}
