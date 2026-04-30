@@ -122,6 +122,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &187277928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 187277929}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &187277929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187277928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.208, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 253024696}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &253024693
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,9 +166,10 @@ GameObject:
   - component: {fileID: 253024694}
   - component: {fileID: 253024698}
   - component: {fileID: 253024697}
+  - component: {fileID: 253024699}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,10 +256,12 @@ Transform:
   m_GameObject: {fileID: 253024693}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.49, y: -2.32, z: 0}
+  m_LocalPosition: {x: -6.49, y: -1.927, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 187277929}
+  - {fileID: 1952146141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &253024697
@@ -238,14 +272,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253024693}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -256,7 +290,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &253024698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,13 +304,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 12
-  groundCheck: {fileID: 0}
+  jumpForce: 8
+  groundCheck: {fileID: 187277929}
   groundCheckRadius: 0.15
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  attackPoint: {fileID: 0}
+    m_Bits: 64
+  attackPoint: {fileID: 1952146141}
   attackRadius: 0.4
   enemyLayer:
     serializedVersion: 2
@@ -284,6 +318,41 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 0.4
   maxHealth: 3
+--- !u!70 &253024699
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253024693}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.2, y: 0.4}
+  m_Direction: 0
 --- !u!1 &619664928
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619664930}
   - component: {fileID: 619664929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiles_0 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -554,7 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 984562265}
   - component: {fileID: 984562264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiles_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,9 +707,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1089456646}
   - component: {fileID: 1089456647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -872,7 +941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1506871690}
   - component: {fileID: 1506871689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiles_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1761322574}
   - component: {fileID: 1761322573}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiles_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1284,6 +1353,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1952146140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952146141}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952146141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952146140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.064, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 253024696}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2125706704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125706706}
   - component: {fileID: 2125706705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiles_0 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
