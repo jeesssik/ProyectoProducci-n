@@ -68,6 +68,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     private Rigidbody2D rb;
+
+    private bool isTouchingPlayer = false;
     private bool canAttack = true;
 
     private void Awake()
@@ -85,7 +87,7 @@ public class EnemyController : MonoBehaviour
         {
             LookAtPlayer();
 
-            if (distanceToPlayer <= attackRange)
+            if (isTouchingPlayer)
             {
                 StopMoving();
                 TryAttack();
@@ -149,5 +151,21 @@ public class EnemyController : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isTouchingPlayer = false;
+        }
     }
 }

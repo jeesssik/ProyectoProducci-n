@@ -1710,9 +1710,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6c531e8579bb64ca6a6ad3ad1a892f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 2
   player: {fileID: 160071826}
-  detectionRange: 9
+  detectionRange: 6
+  attackRange: 0.8
+  attackCooldown: 1.2
   spriteRenderer: {fileID: 1945765732}
+  animator: {fileID: 1945765734}
 --- !u!70 &1945765730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1815,7 +1819,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: -8054883086457545360, guid: 370c7f923c69cba45af39f844413fb5b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
