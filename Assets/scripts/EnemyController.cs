@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
             LookAtPlayer();
         }
     }
-
+ 
     private void LookAtPlayer()
     {
         bool playerIsOnLeft = player.position.x < transform.position.x;
