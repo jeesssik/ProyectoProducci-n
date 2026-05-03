@@ -13,8 +13,8 @@ public class MenuManager : MonoBehaviour
     public GameObject soundOptionsCanvas;
 
     [Header("Scene")]
-    public string gameSceneName = "GameScene";
-
+    public string gameSceneName = "Level-1";
+ 
     void Start()
     {
         ShowMainMenu();
@@ -26,7 +26,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene(1);
     }
 
     public void OnOptionsButton()
