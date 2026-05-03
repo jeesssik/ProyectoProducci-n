@@ -272,7 +272,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1710,13 +1710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6c531e8579bb64ca6a6ad3ad1a892f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
   player: {fileID: 160071826}
   detectionRange: 9
-  attackRange: 1
-  attackCooldown: 1.2
-  spriteRenderer: {fileID: 0}
-  animator: {fileID: 1945765734}
+  spriteRenderer: {fileID: 1945765732}
 --- !u!70 &1945765730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1830,7 +1826,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &1945765733
 Transform:
   m_ObjectHideFlags: 0
