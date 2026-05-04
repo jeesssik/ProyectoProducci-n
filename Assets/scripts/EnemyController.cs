@@ -1,52 +1,4 @@
-/*using UnityEngine;
 
-public class EnemyController : MonoBehaviour
-{
-    [Header("Detección")]
-    [SerializeField] private Transform player;
-    [SerializeField] private float detectionRange = 5f;
-
-    [Header("Visual")]
-    [SerializeField] private SpriteRenderer spriteRenderer;
-
-    private void Update()
-    {
-        if (player == null)
-        {
-            Debug.LogWarning("Falta asignar el Player en el EnemyController");
-            return;
-        }
-
-        if (spriteRenderer == null)
-        {
-            Debug.LogWarning("Falta asignar el SpriteRenderer en el EnemyController");
-            return;
-        }
-
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= detectionRange)
-        {
-            LookAtPlayer();
-        }
-    }
- 
-    private void LookAtPlayer()
-    {
-        bool playerIsOnLeft = player.position.x < transform.position.x;
-
-        // Probá primero con esta línea
-        spriteRenderer.flipX = playerIsOnLeft;
-
-        Debug.Log("Jugador a la izquierda: " + playerIsOnLeft + " | flipX: " + spriteRenderer.flipX);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-    }
-}*/
 
 using UnityEngine;
 
@@ -78,33 +30,32 @@ public class EnemyController : MonoBehaviour
     }
 
     private void Update()
+{
+    if (player == null) return;
+
+    float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+    if (distanceToPlayer <= detectionRange)
     {
-        if (player == null) return;
+        LookAtPlayer();
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer <= detectionRange)
+        if (isTouchingPlayer)
         {
-            LookAtPlayer();
-
-            if (isTouchingPlayer)
-            {
-                StopMoving();
-                TryAttack();
-            }
-            else
-            {
-                MoveTowardsPlayer();
-            }
+            StopMoving();
+            TryAttack();
         }
         else
         {
-            StopMoving();
+            MoveTowardsPlayer();
         }
-
-        UpdateAnimator();
+    }
+    else
+    {
+        StopMoving();
     }
 
+    UpdateAnimator();
+}
     private void MoveTowardsPlayer()
     {
         float directionX = Mathf.Sign(player.position.x - transform.position.x);
@@ -154,18 +105,19 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Player"))
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isTouchingPlayer = true;
-        }
+        isTouchingPlayer = true;
     }
+}
 
-    private void OnCollisionExit2D(Collision2D collision)
+private void OnCollisionExit2D(Collision2D collision)
+{
+    if (collision.gameObject.CompareTag("Player"))
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isTouchingPlayer = false;
-        }
+        isTouchingPlayer = false;
     }
+}
+
 }

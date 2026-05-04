@@ -1712,7 +1712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   player: {fileID: 160071826}
-  detectionRange: 6
+  detectionRange: 5
   attackRange: 0.8
   attackCooldown: 1.2
   spriteRenderer: {fileID: 1945765732}
