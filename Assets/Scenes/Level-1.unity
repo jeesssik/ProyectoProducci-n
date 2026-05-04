@@ -1261,7 +1261,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1650938265
 Transform:
   m_ObjectHideFlags: 0
@@ -1566,7 +1566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1788727067
 Transform:
   m_ObjectHideFlags: 0
@@ -1711,9 +1711,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  pointA: {fileID: 1650938265}
+  pointB: {fileID: 1788727067}
   player: {fileID: 160071826}
   detectionRange: 5
-  attackRange: 0.8
   attackCooldown: 1.2
   spriteRenderer: {fileID: 1945765732}
   animator: {fileID: 1945765734}
