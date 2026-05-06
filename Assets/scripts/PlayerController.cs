@@ -29,10 +29,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float attackRadius = 0.4f;
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int attackDamage = 1;
-
     [SerializeField] private GameOverManager gameOverManager;
 
 
+    [SerializeField] private PlayerHealthUI playerHealthUI;
     private bool isKnockbacked = false;
 
     private Rigidbody2D rb;
@@ -53,9 +53,15 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         currentHealth = maxHealth;
+
+        if (playerHealthUI != null)
+        {
+            playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
+        }
     }
+
+
 
     private void Update()
     {
@@ -179,6 +185,11 @@ public class PlayerController : MonoBehaviour
         currentHealth += healAmount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
+        if (playerHealthUI != null)
+        {
+            playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
+        }
+
         animator.SetTrigger("Heal");
 
         Invoke(nameof(ResetHeal), healCooldown);
@@ -192,7 +203,7 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         if (groundCheck == null) return;
-
+Debug.Log("Comprobando si el jugador está en el suelo...");
         isGrounded = Physics2D.OverlapCircle(
             groundCheck.position,
             groundCheckRadius,
@@ -217,6 +228,11 @@ public class PlayerController : MonoBehaviour
         if (isDead || isInvulnerable) return;
 
         currentHealth -= damage;
+
+        if (playerHealthUI != null)
+        {
+            playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
+        }
         Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
 
 

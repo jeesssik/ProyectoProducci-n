@@ -64,6 +64,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: IsFalling
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Jump
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 880394683756767056}
   m_Solo: 0
@@ -123,7 +126,7 @@ AnimatorStateMachine:
     m_Position: {x: 950, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 880394683756767056}
-    m_Position: {x: 600, y: 240, z: 0}
+    m_Position: {x: 530, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6801529333937394354}
     m_Position: {x: 1020, y: 230, z: 0}
@@ -539,6 +542,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: Death
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: Jump
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
