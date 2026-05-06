@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float healCooldown = 1.5f;
     [SerializeField] private float invulnerabilityTime = 1f;
 
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForceX = 6f;
+    [SerializeField] private float knockbackForceY = 3f;
+    [SerializeField] private float knockbackDuration = 0.2f;
+
+    private bool isKnockbacked = false;
+
     private Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -59,11 +66,26 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead) return;
+        if (isDead || isKnockbacked) return;
 
         Move();
     }
 
+    public void ApplyKnockback(Vector2 enemyPosition)
+    {
+        isKnockbacked = true;
+
+        float direction = transform.position.x < enemyPosition.x ? -1f : 1f;
+
+        rb.velocity = new Vector2(direction * knockbackForceX, knockbackForceY);
+
+        Invoke(nameof(EndKnockback), knockbackDuration);
+    }
+
+    private void EndKnockback()
+    {
+        isKnockbacked = false;
+    }
     private void ReadInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");

@@ -6,6 +6,12 @@ public class EnemyDamageTrigger : MonoBehaviour
     [SerializeField] private float damageCooldown = 1f;
 
     private bool canDamage = true;
+    private Animator enemyAnimator;
+
+    private void Awake()
+    {
+        enemyAnimator = GetComponentInParent<Animator>();
+    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -17,7 +23,14 @@ public class EnemyDamageTrigger : MonoBehaviour
 
             if (player != null)
             {
+                if (enemyAnimator != null)
+                {
+                    enemyAnimator.SetTrigger("Attack");
+                }
+
                 player.TakeDamage(damage);
+                player.ApplyKnockback(transform.position);
+
                 canDamage = false;
                 Invoke(nameof(ResetDamage), damageCooldown);
             }
