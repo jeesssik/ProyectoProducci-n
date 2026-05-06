@@ -1,28 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
+    [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 10f;
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.15f;
     [SerializeField] private LayerMask groundLayer;
 
-    [Header("Combat")]
+    [Header("Combate")]
     [SerializeField] private Transform attackPoint;
-    [SerializeField] private float attackRadius = 0.4f;
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private int attackDamage = 1;
-    [SerializeField] private float attackCooldown = 0.4f;
+    [SerializeField] private float attackCooldown = 0.45f;
 
-    [Header("Health")]
+    [Header("Vida")]
     [SerializeField] private int maxHealth = 3;
+    [SerializeField] private int healAmount = 1;
+    [SerializeField] private float healCooldown = 1.5f;
 
     private Rigidbody2D rb;
     private Animator animator;
@@ -31,14 +27,17 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isFacingRight = true;
     private bool canAttack = true;
+    private bool canHeal = true;
     private bool isDead = false;
 
+    private SpriteRenderer spriteRenderer;
     private int currentHealth;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         currentHealth = maxHealth;
     }
 
@@ -50,8 +49,9 @@ public class PlayerController : MonoBehaviour
         CheckGround();
         HandleJump();
         HandleAttack();
+        HandleHeal();
         FlipCharacter();
-        UpdateAnimations();
+        UpdateAnimator();
     }
 
     private void FixedUpdate()
@@ -61,18 +61,10 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    // -------------------------
-    // INPUT
-    // -------------------------
-
     private void ReadInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
     }
-
-    // -------------------------
-    // MOVEMENT
-    // -------------------------
 
     private void Move()
     {
@@ -87,62 +79,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FlipCharacter()
-    {
-        if (horizontalInput > 0 && !isFacingRight)
-        {
-            Flip();
-        }
-        else if (horizontalInput < 0 && isFacingRight)
-        {
-            Flip();
-        }
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-    }
-
-    // -------------------------
-    // COMBAT
-    // -------------------------
-
     private void HandleAttack()
     {
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
-            Attack();
+            canAttack = false;
+            animator.SetTrigger("Attack");
+
+            Invoke(nameof(ResetAttack), attackCooldown);
         }
-    }
-
-    private void Attack()
-    {
-        canAttack = false;
-
-        animator.SetTrigger("Attack");
-
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
-            attackPoint.position,
-            attackRadius//,
-          //  enemyLayer
-        );
-
-       /* foreach (Collider2D enemy in enemiesHit)
-        {
-            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(attackDamage);
-            }
-        }*/
-
-        Invoke(nameof(ResetAttack), attackCooldown);
     }
 
     private void ResetAttack()
@@ -150,9 +95,30 @@ public class PlayerController : MonoBehaviour
         canAttack = true;
     }
 
-    // -------------------------
-    // GROUND CHECK
-    // -------------------------
+    private void HandleHeal()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && canHeal && currentHealth < maxHealth)
+        {
+            Heal();
+        }
+    }
+
+    private void Heal()
+    {
+        canHeal = false;
+
+        currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        animator.SetTrigger("Heal");
+
+        Invoke(nameof(ResetHeal), healCooldown);
+    }
+
+    private void ResetHeal()
+    {
+        canHeal = true;
+    }
 
     private void CheckGround()
     {
@@ -163,9 +129,19 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    // -------------------------
-    // HEALTH
-    // -------------------------
+   private void FlipCharacter()
+{
+    if (horizontalInput > 0)
+    {
+        spriteRenderer.flipX = true;
+    }
+    else if (horizontalInput < 0)
+    {
+        spriteRenderer.flipX = false;
+    }
+}
+
+    
 
     public void TakeDamage(int damage)
     {
@@ -175,39 +151,25 @@ public class PlayerController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            currentHealth = 0;
+            isDead = true;
+
+            // Por ahora no hay animación de muerte.
+            // Más adelante podemos hacer respawn o desestabilización rúnica.
+            rb.velocity = Vector2.zero;
         }
         else
         {
-            animator.SetTrigger("TakeDamage");
+            animator.SetTrigger("Hurt");
         }
     }
 
-    private void Die()
-    {
-        isDead = true;
-        rb.velocity = Vector2.zero;
-
-        animator.SetBool("IsDead", true);
-        animator.SetTrigger("Death");
-
-        // Si usás respawn después, lo podés llamar acá
-    }
-
-    // -------------------------
-    // ANIMATIONS
-    // -------------------------
-
-    private void UpdateAnimations()
+    private void UpdateAnimator()
     {
         animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
         animator.SetBool("IsGrounded", isGrounded);
-        animator.SetBool("IsDead", isDead);
+        animator.SetBool("IsFalling", rb.velocity.y < -0.1f);
     }
-
-    // -------------------------
-    // DEBUG
-    // -------------------------
 
     private void OnDrawGizmosSelected()
     {
@@ -220,7 +182,7 @@ public class PlayerController : MonoBehaviour
         if (attackPoint != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+            Gizmos.DrawWireSphere(attackPoint.position, 0.35f);
         }
     }
 }
