@@ -218,6 +218,7 @@ public class PlayerController : MonoBehaviour
 
         currentHealth -= damage;
         Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
+        
 
         if (currentHealth <= 0)
         {
