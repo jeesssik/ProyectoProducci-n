@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -19,18 +20,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int healAmount = 1;
     [SerializeField] private float healCooldown = 1.5f;
+    [SerializeField] private float invulnerabilityTime = 1f;
 
     private Rigidbody2D rb;
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private float horizontalInput;
     private bool isGrounded;
-    private bool isFacingRight = true;
     private bool canAttack = true;
     private bool canHeal = true;
     private bool isDead = false;
+    private bool isInvulnerable = false;
 
-    private SpriteRenderer spriteRenderer;
     private int currentHealth;
 
     private void Awake()
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         currentHealth = maxHealth;
     }
 
@@ -122,6 +125,8 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGround()
     {
+        if (groundCheck == null) return;
+
         isGrounded = Physics2D.OverlapCircle(
             groundCheck.position,
             groundCheckRadius,
@@ -129,39 +134,55 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-   private void FlipCharacter()
-{
-    if (horizontalInput > 0)
+    private void FlipCharacter()
     {
-        spriteRenderer.flipX = true;
+        if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
-    else if (horizontalInput < 0)
-    {
-        spriteRenderer.flipX = false;
-    }
-}
-
-    
 
     public void TakeDamage(int damage)
     {
-        if (isDead) return;
+        if (isDead || isInvulnerable) return;
 
         currentHealth -= damage;
+        Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
 
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            isDead = true;
-
-            // Por ahora no hay animación de muerte.
-            // Más adelante podemos hacer respawn o desestabilización rúnica.
-            rb.velocity = Vector2.zero;
+            Die();
         }
         else
         {
             animator.SetTrigger("Hurt");
+            StartCoroutine(InvulnerabilityCoroutine());
         }
+    }
+
+    private IEnumerator InvulnerabilityCoroutine()
+    {
+        isInvulnerable = true;
+
+        yield return new WaitForSeconds(invulnerabilityTime);
+
+        isInvulnerable = false;
+    }
+
+    private void Die()
+    {
+        isDead = true;
+
+        rb.velocity = Vector2.zero;
+
+        animator.SetTrigger("Death");
+
+        Debug.Log("Player murió");
     }
 
     private void UpdateAnimator()

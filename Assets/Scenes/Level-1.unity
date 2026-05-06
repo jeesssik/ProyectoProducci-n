@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 312573133}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -588,7 +588,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1192236670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,7 +692,7 @@ GameObject:
   - component: {fileID: 1379749352}
   - component: {fileID: 1379749351}
   - component: {fileID: 1379749350}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -810,9 +810,10 @@ MonoBehaviour:
     m_Bits: 64
   attackPoint: {fileID: 1192236670}
   attackCooldown: 0.45
-  maxHealth: 3
+  maxHealth: 10
   healAmount: 1
   healCooldown: 1.5
+  invulnerabilityTime: 1
 --- !u!70 &1379749351
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1054,7 +1055,7 @@ GameObject:
   - component: {fileID: 1599026125}
   - component: {fileID: 1599026127}
   - component: {fileID: 1599026126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DamageTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1089,6 +1090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  damageCooldown: 1
 --- !u!61 &1599026127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1548,7 +1550,7 @@ GameObject:
   - component: {fileID: 1945765730}
   - component: {fileID: 1945765729}
   - component: {fileID: 1945765734}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1625,7 +1627,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
