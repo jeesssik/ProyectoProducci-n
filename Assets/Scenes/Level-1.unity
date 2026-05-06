@@ -397,7 +397,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 242538760}
-  - component: {fileID: 242538762}
   - component: {fileID: 242538763}
   m_Layer: 5
   m_Name: LifeBar
@@ -426,20 +425,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &242538762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242538759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2557d85771eed74f8c9ccd1c1abb1b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeBarImage: {fileID: 0}
-  lifeSprites: []
 --- !u!114 &242538763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,14 +439,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeBarImage: {fileID: 582357607}
   lifeSprites:
-  - {fileID: -665758071, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: 1433332380, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: -1213797547, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: -133486000, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: -2103601008, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: 1015639806, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
-  - {fileID: 59603210, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
   - {fileID: 617522491, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: 59603210, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: 1015639806, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: -2103601008, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: -133486000, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: -1213797547, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: 1433332380, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
+  - {fileID: -665758071, guid: 2121908756cce9e4eba617148e7ce77e, type: 3}
 --- !u!1 &312573132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2105,7 @@ MonoBehaviour:
     m_Bits: 128
   attackDamage: 1
   gameOverManager: {fileID: 862753218}
-  playerHealthUI: {fileID: 242538762}
+  playerHealthUI: {fileID: 242538763}
 --- !u!70 &1379749351
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

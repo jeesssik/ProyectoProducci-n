@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
     private void CheckGround()
     {
         if (groundCheck == null) return;
-Debug.Log("Comprobando si el jugador está en el suelo...");
+        // Debug.Log("Comprobando si el jugador está en el suelo...");
         isGrounded = Physics2D.OverlapCircle(
             groundCheck.position,
             groundCheckRadius,
