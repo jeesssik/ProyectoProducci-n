@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int attackDamage = 1;
 
-    
-  
+    [SerializeField] private GameOverManager gameOverManager;
+
 
     private bool isKnockbacked = false;
 
@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
 
         currentHealth -= damage;
         Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
-        
+
 
         if (currentHealth <= 0)
         {
@@ -244,12 +244,32 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         isDead = true;
-
         rb.velocity = Vector2.zero;
 
         animator.SetTrigger("Death");
 
         Debug.Log("Player murió");
+
+        if (gameOverManager != null)
+        {
+            StartCoroutine(ShowGameOverAfterDelay());
+        }
+        else
+        {
+            Debug.LogWarning("No está asignado el GameOverManager en el PlayerController.");
+        }
+    }
+
+    private IEnumerator ShowGameOverAfterDelay()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        gameOverManager.ShowGameOver();
+    }
+
+    private void ShowGameOver()
+    {
+        gameOverManager.ShowGameOver();
     }
 
     private void UpdateAnimator()
