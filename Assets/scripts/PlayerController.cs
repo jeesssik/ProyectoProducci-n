@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private int attackDamage = 1;
 
+    
+  
+
     private bool isKnockbacked = false;
 
     private Rigidbody2D rb;
@@ -131,6 +134,25 @@ public class PlayerController : MonoBehaviour
             }
 
             Invoke(nameof(ResetAttack), attackCooldown);
+        }
+    }
+
+    public void ApplyAttackDamage()
+    {
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            0.35f,
+            enemyLayer
+        );
+
+        foreach (Collider2D enemy in enemiesHit)
+        {
+            EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+            if (enemyController != null)
+            {
+                enemyController.TakeDamage(1);
+            }
         }
     }
     public bool IsDead()

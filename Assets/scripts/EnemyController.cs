@@ -77,6 +77,23 @@ public class EnemyController : MonoBehaviour
         UpdateAnimator();
     }
 
+    public void ApplyEnemyAttackDamage()
+    {
+        if (player == null) return;
+
+        float distance = Vector2.Distance(transform.position, player.position);
+
+        if (distance <= attackRange)
+        {
+            PlayerController playerController = player.GetComponent<PlayerController>();
+
+            if (playerController != null && !playerController.IsDead())
+            {
+                playerController.TakeDamage(1);
+                playerController.ApplyKnockback(transform.position);
+            }
+        }
+    }
     private void Patrol()
     {
         rb.velocity = new Vector2(patrolDirection * moveSpeed, rb.velocity.y);
