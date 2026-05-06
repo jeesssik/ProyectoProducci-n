@@ -1479,7 +1479,7 @@ MonoBehaviour:
   moveSpeed: 2
   pointA: {fileID: 1650938265}
   pointB: {fileID: 1788727067}
-  player: {fileID: 0}
+  player: {fileID: 1379749349}
   detectionRange: 5
   attackCooldown: 1.2
   spriteRenderer: {fileID: 1945765732}

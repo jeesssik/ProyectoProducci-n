@@ -123,8 +123,8 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: 1x atk_c_Frame_0
     originalName: 
-    pivot: {x: -1.0857143, y: -0.018518519}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -143,8 +143,8 @@ ScriptedImporter:
     uvTransform: {x: 345, y: 184}
   - name: 1x atk_c_Frame_1
     originalName: 
-    pivot: {x: -0.8292682, y: -0.01923077}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -163,8 +163,8 @@ ScriptedImporter:
     uvTransform: {x: 251, y: 184}
   - name: 1x atk_c_Frame_2
     originalName: 
-    pivot: {x: -0.4035088, y: -0.018867925}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 184}
   - name: 1x atk_c_Frame_3
     originalName: 
-    pivot: {x: 0.48366016, y: -0.01923077}
+    pivot: {x: 0.80228204, y: -0.010630443}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: 1x atk_c_Frame_4
     originalName: 
-    pivot: {x: 0.51655626, y: -0.01923077}
+    pivot: {x: 0.80681765, y: 0.0065714763}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 165, y: 4}
   - name: 1x atk_c_Frame_5
     originalName: 
-    pivot: {x: 0.51655626, y: -0.01923077}
+    pivot: {x: 0.800894, y: -0.019231077}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 324, y: 4}
   - name: 1x atk_c_Frame_6
     originalName: 
-    pivot: {x: 0.51655626, y: -0.01923077}
+    pivot: {x: 0.800894, y: -0.01923099}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 64}
   - name: 1x atk_c_Frame_7
     originalName: 
-    pivot: {x: 0.5133333, y: -0.01923077}
+    pivot: {x: 0.8025482, y: 0.006571256}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 163, y: 64}
   - name: 1x atk_c_Frame_8
     originalName: 
-    pivot: {x: 0.5, y: -0.01923077}
+    pivot: {x: 0.78794885, y: -0.010630314}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 321, y: 64}
   - name: 1x atk_c_Frame_9
     originalName: 
-    pivot: {x: 0.48951048, y: -0.01923077}
+    pivot: {x: 0.7835002, y: 0.0065711094}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 124}
   - name: 1x atk_c_Frame_10
     originalName: 
-    pivot: {x: 0.45925924, y: -0.019607844}
+    pivot: {x: 0.7772963, y: 0.015469121}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 155, y: 124}
   - name: 1x atk_c_Frame_11
     originalName: 
-    pivot: {x: 0.43846154, y: -0.019607844}
+    pivot: {x: 0.77905154, y: -0.010838677}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 298, y: 124}
   - name: 1x atk_c_Frame_12
     originalName: 
-    pivot: {x: -0.16666667, y: -0.021276595}
+    pivot: {x: 0.5414627, y: -0.03079256}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,8 +383,8 @@ ScriptedImporter:
     uvTransform: {x: 436, y: 124}
   - name: 1x atk_c_Frame_13
     originalName: 
-    pivot: {x: -0.22413796, y: -0.020833334}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -403,8 +403,8 @@ ScriptedImporter:
     uvTransform: {x: 130, y: 184}
   - name: 1x atk_c_Frame_14
     originalName: 
-    pivot: {x: -0.5094339, y: -0.018867925}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -423,8 +423,8 @@ ScriptedImporter:
     uvTransform: {x: 69, y: 184}
   - name: 1x atk_c_Frame_15
     originalName: 
-    pivot: {x: -0.7021277, y: -0.018867925}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
@@ -443,8 +443,8 @@ ScriptedImporter:
     uvTransform: {x: 196, y: 184}
   - name: 1x atk_c_Frame_16
     originalName: 
-    pivot: {x: -0.97297305, y: -0.018518519}
-    alignment: 9
+    pivot: {x: 0.5, y: 0}
+    alignment: 7
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
