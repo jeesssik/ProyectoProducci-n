@@ -133,7 +133,10 @@ public class PlayerController : MonoBehaviour
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
-
+    public bool IsDead()
+    {
+        return isDead;
+    }
     private void ResetAttack()
     {
         canAttack = true;

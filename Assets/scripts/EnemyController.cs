@@ -5,14 +5,15 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 2f;
-
+    [Header("Detección")]
+    [SerializeField] private float attackRange = 1f;
     [Header("Patrulla")]
     [SerializeField] private Transform pointA;
     [SerializeField] private Transform pointB;
 
     [Header("Detección")]
     [SerializeField] private Transform player;
-    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private float detectionRange = 4f;
 
     [Header("Ataque")]
     [SerializeField] private float attackCooldown = 1.2f;
@@ -30,15 +31,22 @@ public class EnemyController : MonoBehaviour
     private bool canAttack = true;
     private bool isTouchingPlayer = false;
 
+
+
+
     private int currentHealth;
-    private int maxHealth=7;
+    private int maxHealth = 7;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-
+        spriteRenderer = GetComponent<SpriteRenderer>();
         leftLimit = Mathf.Min(pointA.position.x, pointB.position.x);
         rightLimit = Mathf.Max(pointA.position.x, pointB.position.x);
+    }
+    private void StopMovement()
+    {
+        rb.velocity = new Vector2(0f, rb.velocity.y);
     }
 
     private void Update()
@@ -185,6 +193,56 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetTrigger("Hit");
+        }
+    }
+
+    private void HandleBehaviour()
+    {
+        if (player != null)
+        {
+            PlayerController playerController = player.GetComponent<PlayerController>();
+
+            if (playerController != null && playerController.IsDead())
+            {
+                StopMovement();
+                Patrol();
+                return;
+            }
+
+            float distance = Vector2.Distance(transform.position, player.position);
+
+            if (distance <= attackRange)
+            {
+                StopMovement();
+                TryAttack();
+                return;
+            }
+
+            if (distance <= detectionRange)
+            {
+                ChasePlayer();
+                return;
+            }
+        }
+
+        Patrol();
+    }
+
+    private void ChasePlayer()
+    {
+        if (player == null) return;
+
+        float directionX = player.position.x > transform.position.x ? 1f : -1f;
+
+        rb.velocity = new Vector2(directionX * moveSpeed, rb.velocity.y);
+
+        if (directionX > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
         }
     }
 }

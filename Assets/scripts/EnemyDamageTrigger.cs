@@ -21,22 +21,23 @@ public class EnemyDamageTrigger : MonoBehaviour
         {
             PlayerController player = other.GetComponent<PlayerController>();
 
-            if (player != null)
+            if (player == null || player.IsDead())
             {
-                if (enemyAnimator != null)
-                {
-                    enemyAnimator.SetTrigger("Attack");
-                }
-
-                player.TakeDamage(damage);
-                player.ApplyKnockback(transform.position);
-
-                canDamage = false;
-                Invoke(nameof(ResetDamage), damageCooldown);
+                return;
             }
+
+            if (enemyAnimator != null)
+            {
+                enemyAnimator.SetTrigger("Attack");
+            }
+
+            player.TakeDamage(damage);
+            player.ApplyKnockback(transform.position);
+
+            canDamage = false;
+            Invoke(nameof(ResetDamage), damageCooldown);
         }
     }
-
     private void ResetDamage()
     {
         canDamage = true;
