@@ -814,6 +814,14 @@ MonoBehaviour:
   healAmount: 1
   healCooldown: 1.5
   invulnerabilityTime: 1
+  knockbackForceX: 6
+  knockbackForceY: 3
+  knockbackDuration: 0.2
+  attackRadius: 0.4
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 1
 --- !u!70 &1379749351
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

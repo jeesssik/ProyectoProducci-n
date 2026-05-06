@@ -30,9 +30,12 @@ public class EnemyController : MonoBehaviour
     private bool canAttack = true;
     private bool isTouchingPlayer = false;
 
+    private int currentHealth;
+    private int maxHealth=7;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
 
         leftLimit = Mathf.Min(pointA.position.x, pointB.position.x);
         rightLimit = Mathf.Max(pointA.position.x, pointB.position.x);
@@ -159,15 +162,29 @@ public class EnemyController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-{
-    if (other.CompareTag("Player"))
     {
-        PlayerController player = other.GetComponent<PlayerController>();
-
-        if (player != null)
+        if (other.CompareTag("Player"))
         {
-            player.TakeDamage(1);
+            PlayerController player = other.GetComponent<PlayerController>();
+
+            if (player != null)
+            {
+                player.TakeDamage(1);
+            }
         }
     }
-}
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            animator.SetTrigger("Hit");
+        }
+    }
 }

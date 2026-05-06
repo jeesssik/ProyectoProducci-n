@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockbackForceX = 6f;
     [SerializeField] private float knockbackForceY = 3f;
     [SerializeField] private float knockbackDuration = 0.2f;
+    [SerializeField] private float attackRadius = 0.4f;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int attackDamage = 1;
 
     private bool isKnockbacked = false;
 
@@ -110,6 +113,22 @@ public class PlayerController : MonoBehaviour
         {
             canAttack = false;
             animator.SetTrigger("Attack");
+
+            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
+                attackPoint.position,
+                attackRadius,
+                enemyLayer
+            );
+
+            foreach (Collider2D enemy in enemiesHit)
+            {
+                EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+                if (enemyController != null)
+                {
+                    enemyController.TakeDamage(attackDamage);
+                }
+            }
 
             Invoke(nameof(ResetAttack), attackCooldown);
         }
