@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
             accel *= airControl;
             decel *= airControl;
         }
+        Debug.Log($"Grounded: {grounded}, Accel: {accel}, Decel: {decel}");
 
         float speedDiff = targetSpeed - rb.velocity.x;
         float rate = Mathf.Abs(targetSpeed) > 0.01f ? accel : decel;
