@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f220ff7e0fa6c34c81f132dea36e006
+guid: b001bb866b38df3458e40f3fd81a0a5e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,526 +93,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: botones_1
-      rect:
-        serializedVersion: 2
-        x: 524
-        y: 420
-        width: 494
-        height: 171
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62b5d49add55c334889aa6bd327e696d
-      internalID: 1293662128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_2
-      rect:
-        serializedVersion: 2
-        x: 1223
-        y: 664
-        width: 11
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14f01841ed494ab4eb5da857e0347184
-      internalID: -129472581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_3
-      rect:
-        serializedVersion: 2
-        x: 1289
-        y: 632
-        width: 7
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c2d8a4392c1c4f6498516d52e00e4c4d
-      internalID: -223945683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_4
-      rect:
-        serializedVersion: 2
-        x: 1290
-        y: 624
-        width: 6
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06db9bb745830c3408b6241aab5bda8f
-      internalID: 69030126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_5
-      rect:
-        serializedVersion: 2
-        x: 1426
-        y: 617
-        width: 13
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16f3096164bb5ef488cbe90f7eb71a4e
-      internalID: 1706547100
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_6
-      rect:
-        serializedVersion: 2
-        x: 1160
-        y: 599
-        width: 20
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef1c87deeb6be074986d2c6ba221f6f0
-      internalID: -1420424809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_7
-      rect:
-        serializedVersion: 2
-        x: 1201
-        y: 618
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3a1fa14608a51294a974030c11688e4b
-      internalID: -1335372772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_9
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 609
-        width: 5
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7135454b0429b04b9bec03b40d07401
-      internalID: 2127154542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_10
-      rect:
-        serializedVersion: 2
-        x: 879
-        y: 609
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1915685ad9634084d9c78dc6e75042fa
-      internalID: -116340281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_11
-      rect:
-        serializedVersion: 2
-        x: 1131
-        y: 606
-        width: 5
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cb8060120ffabc4c926337c429d05a1
-      internalID: 1932278717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_12
-      rect:
-        serializedVersion: 2
-        x: 1183
-        y: 607
-        width: 4
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d1479dbd7614bf40ba3260522efcd65
-      internalID: 995749959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_13
-      rect:
-        serializedVersion: 2
-        x: 1188
-        y: 611
-        width: 6
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2698d0ece99447448a2919367babd9c
-      internalID: 819044360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_14
-      rect:
-        serializedVersion: 2
-        x: 1236
-        y: 611
-        width: 4
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 643efcb08158690418331ca3d05a8cd1
-      internalID: 1938990110
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_15
-      rect:
-        serializedVersion: 2
-        x: 1295
-        y: 610
-        width: 5
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4899cfaa5c11c3049b2aa8e9ad177ae6
-      internalID: 892306542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_16
-      rect:
-        serializedVersion: 2
-        x: 1361
-        y: 609
-        width: 5
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90f75e6f1ba154a4a9e64dcbe122d6b4
-      internalID: -861413368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_17
-      rect:
-        serializedVersion: 2
-        x: 1432
-        y: 612
-        width: 8
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c3c12418a9890df4aa8b2defb0d7d43c
-      internalID: 1251644591
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_18
-      rect:
-        serializedVersion: 2
-        x: 1061
-        y: 408
-        width: 465
-        height: 202
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da7ef3d79e570694bacdd34a70558189
-      internalID: -1078736760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_19
-      rect:
-        serializedVersion: 2
-        x: 1275
-        y: 608
-        width: 7
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9579f2ec5de4924582e32ae9887432e
-      internalID: 1997829683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_20
-      rect:
-        serializedVersion: 2
-        x: 1379
-        y: 590
-        width: 19
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 127eedf108e67ef4d9f5e7b71bd87774
-      internalID: 1084256885
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_21
-      rect:
-        serializedVersion: 2
-        x: 1414
-        y: 606
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b50f5bce8fcd3164f9dbba2d36a162a5
-      internalID: -1833464265
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_22
-      rect:
-        serializedVersion: 2
-        x: 658
-        y: 599
-        width: 5
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a166b3bff83f94540a3c9866f169f213
-      internalID: -1845945126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_23
-      rect:
-        serializedVersion: 2
-        x: 736
-        y: 600
-        width: 4
-        height: 5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b77f258567b113645ae2c886d03c0169
-      internalID: -233056035
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_24
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 416
-        width: 460
-        height: 176
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ed5299cab313164ab7bb88d61a79cd6
-      internalID: 892155601
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: botones_25
+      name: ChatGPT Image 13 may 2026, 16_40_30_3
       rect:
         serializedVersion: 2
         x: 80
-        y: 586
-        width: 4
-        height: 6
+        y: 439
+        width: 8
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -620,18 +111,81 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e9cecfa07c18f4e9f6748a0a010a22
-      internalID: 2037851629
+      spriteID: f4092a734625a1f46ba50b73370e0d24
+      internalID: -1997623590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: botones_26
+      name: ChatGPT Image 13 may 2026, 16_40_30_4
       rect:
         serializedVersion: 2
-        x: 146
-        y: 409
+        x: 82
+        y: 720
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56101bc503a7947458472c28bee79e9f
+      internalID: 827388307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 617
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: effa9886ab75d7d468964b17db083a9a
+      internalID: -558606945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_6
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 535
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fee667582c1354e9e7a5823db676e5
+      internalID: -986784200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_7
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 527
         width: 6
         height: 7
       alignment: 0
@@ -641,18 +195,312 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f25777547c0d09947945f9e77d251a6b
-      internalID: -1444573904
+      spriteID: d2b7c7dfa8690294796b29482eb7a498
+      internalID: -502459566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: botones_27
+      name: ChatGPT Image 13 may 2026, 16_40_30_8
       rect:
         serializedVersion: 2
-        x: 995
-        y: 105
+        x: 82
+        y: 801
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969112bb40420b247bf0700a0a96e6f8
+      internalID: -1887129086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_9
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 488
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0070342c1b1a1ff4db4eaec44a862637
+      internalID: 1180639588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_10
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 471
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e6f3e96f91045648b1149cb9b7a2b40
+      internalID: -1834695495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_11
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 520
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cbdfbca95280147b42b939bc2a462e
+      internalID: 1216840544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_12
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 41
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27b4655972c4a94b8b06e692b1b44a9
+      internalID: -196135581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_13
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 400
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d36d0bdba43382447bd1af82ff3351fc
+      internalID: 143508095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_14
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 464
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc02c1f747e01064e91fa8babecaf04a
+      internalID: -579717498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_15
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 432
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0faa587f26cd00b4d9862ccfa7f05f1f
+      internalID: -459718735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_16
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 544
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f7bbf98bca2ac4cb21946f762b6e1d
+      internalID: -1273711688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 25
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fa9ba606ee35b245bce25a61205423f
+      internalID: -2122945598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_18
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 417
+        width: 5
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c92f38d8a901a4fa03a05ca38b0fbf
+      internalID: 172192587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_19
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 703
+        width: 1139
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbcee81af33472442849cc1a1e2f1738
+      internalID: -741014672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_21
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 601
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05d8a3546ce656f4c8f234f4d8198201
+      internalID: 1385669031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_22
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 556
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304918e8bb52e504b899d6c4082943fd
+      internalID: -2056946245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_24
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 324
         width: 4
         height: 4
       alignment: 0
@@ -662,8 +510,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 581768356651ace4f953ed016be3d960
-      internalID: 86562
+      spriteID: 8e815651c38082e44a4aec7350148d12
+      internalID: 1838872517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_25
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 672
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56578a0a4f72294598df9d1258e8b78
+      internalID: 152425510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_26
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 353
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5621fc00f3f5144f979472437174be6
+      internalID: -1989724289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_27
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 666
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b56edbb04773d44fbb899514032aea0
+      internalID: -1304809356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_28
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 360
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c09bbeee5c446d54e9a649bc0eb0aa3b
+      internalID: 1451766975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_29
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 672
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9db8f6d524ff3f147a805a27bb972205
+      internalID: 489353399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_30
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 665
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ab1874f1e713c4cb15a8c8aa8bdd83
+      internalID: -96578505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_0
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 385
+        width: 1139
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc998d099b35d964c82065558bbe0344
+      internalID: -1502278798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChatGPT Image 13 may 2026, 16_40_30_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 81
+        width: 1139
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5489064b7fc02de40a35916aa086df07
+      internalID: -1141373108
       vertices: []
       indices: 
       edges: []
@@ -679,34 +695,37 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      botones_0: -624855934
-      botones_1: 1293662128
-      botones_10: -116340281
-      botones_11: 1932278717
-      botones_12: 995749959
-      botones_13: 819044360
-      botones_14: 1938990110
-      botones_15: 892306542
-      botones_16: -861413368
-      botones_17: 1251644591
-      botones_18: -1078736760
-      botones_19: 1997829683
-      botones_2: -129472581
-      botones_20: 1084256885
-      botones_21: -1833464265
-      botones_22: -1845945126
-      botones_23: -233056035
-      botones_24: 892155601
-      botones_25: 2037851629
-      botones_26: -1444573904
-      botones_27: 86562
-      botones_3: -223945683
-      botones_4: 69030126
-      botones_5: 1706547100
-      botones_6: -1420424809
-      botones_7: -1335372772
-      botones_8: 1336330421
-      botones_9: 2127154542
+      ChatGPT Image 13 may 2026, 16_40_30_0: -1502278798
+      ChatGPT Image 13 may 2026, 16_40_30_1: -1141373108
+      ChatGPT Image 13 may 2026, 16_40_30_10: -1834695495
+      ChatGPT Image 13 may 2026, 16_40_30_11: 1216840544
+      ChatGPT Image 13 may 2026, 16_40_30_12: -196135581
+      ChatGPT Image 13 may 2026, 16_40_30_13: 143508095
+      ChatGPT Image 13 may 2026, 16_40_30_14: -579717498
+      ChatGPT Image 13 may 2026, 16_40_30_15: -459718735
+      ChatGPT Image 13 may 2026, 16_40_30_16: -1273711688
+      ChatGPT Image 13 may 2026, 16_40_30_17: -2122945598
+      ChatGPT Image 13 may 2026, 16_40_30_18: 172192587
+      ChatGPT Image 13 may 2026, 16_40_30_19: -741014672
+      ChatGPT Image 13 may 2026, 16_40_30_2: -1999299226
+      ChatGPT Image 13 may 2026, 16_40_30_20: 364009724
+      ChatGPT Image 13 may 2026, 16_40_30_21: 1385669031
+      ChatGPT Image 13 may 2026, 16_40_30_22: -2056946245
+      ChatGPT Image 13 may 2026, 16_40_30_23: -1595832033
+      ChatGPT Image 13 may 2026, 16_40_30_24: 1838872517
+      ChatGPT Image 13 may 2026, 16_40_30_25: 152425510
+      ChatGPT Image 13 may 2026, 16_40_30_26: -1989724289
+      ChatGPT Image 13 may 2026, 16_40_30_27: -1304809356
+      ChatGPT Image 13 may 2026, 16_40_30_28: 1451766975
+      ChatGPT Image 13 may 2026, 16_40_30_29: 489353399
+      ChatGPT Image 13 may 2026, 16_40_30_3: -1997623590
+      ChatGPT Image 13 may 2026, 16_40_30_30: -96578505
+      ChatGPT Image 13 may 2026, 16_40_30_4: 827388307
+      ChatGPT Image 13 may 2026, 16_40_30_5: -558606945
+      ChatGPT Image 13 may 2026, 16_40_30_6: -986784200
+      ChatGPT Image 13 may 2026, 16_40_30_7: -502459566
+      ChatGPT Image 13 may 2026, 16_40_30_8: -1887129086
+      ChatGPT Image 13 may 2026, 16_40_30_9: 1180639588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
