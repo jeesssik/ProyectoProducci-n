@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+
+    
+
     [Header("Canvases")]
     public GameObject mainMenuCanvas;
     public GameObject optionsCanvas;
@@ -13,72 +16,77 @@ public class MenuManager : MonoBehaviour
 
     [Header("Scene")]
     public string gameSceneName = "Level-1";
- 
+    
+    [SerializeField] 
+    private AudioClip menuMusic;
+
     void Start()
     {
         ShowMainMenu();
+        AudioManager.Instance.PlayMusic(menuMusic);
     }
 
-    // ------------------------
-    // BOTONES PRINCIPALES
-    // ------------------------
 
-    public void OnStartButton()
-    {
-        SceneManager.LoadScene(1);
-    }
+// ------------------------
+// BOTONES PRINCIPALES
+// ------------------------
 
-    public void OnOptionsButton()
-    {
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(true);
-        creditsCanvas.SetActive(false);
-    }
+public void OnStartButton()
+{
+    SceneManager.LoadScene(1);
+}
 
-    public void OnCreditsButton()
-    {
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
-        creditsCanvas.SetActive(true);
-    }
+public void OnOptionsButton()
+{
+    mainMenuCanvas.SetActive(false);
+    optionsCanvas.SetActive(true);
+    creditsCanvas.SetActive(false);
+}
 
-    public void OnExitButton()
-    {
-        #if UNITY_EDITOR
+public void OnCreditsButton()
+{
+    mainMenuCanvas.SetActive(false);
+    optionsCanvas.SetActive(false);
+    creditsCanvas.SetActive(true);
+}
+
+public void OnExitButton()
+{
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
-        Application.Quit();
-        #endif
-    }
+#else
+    Application.Quit();
+#endif
+}
 
-    // ------------------------
-    // VOLVER AL MENÚ
-    // ------------------------
+// ------------------------
+// VOLVER AL MENÚ
+// ------------------------
 
-    public void OnBackButton()
-    {
-        ShowMainMenu();
-    }
+public void OnBackButton()
+{
+    ShowMainMenu();
+}
 
-    private void ShowMainMenu()
-    {
-        mainMenuCanvas.SetActive(true);
-        optionsCanvas.SetActive(false);
-        creditsCanvas.SetActive(false);
-    }
+private void ShowMainMenu()
+{
+    mainMenuCanvas.SetActive(true);
+    optionsCanvas.SetActive(false);
+    creditsCanvas.SetActive(false);
+}
 
-    //------------------------
-    //BOTONES DE OPCIONES
-    //------------------------
+//------------------------
+//BOTONES DE OPCIONES
+//------------------------
 
-    public void onSoundButton()
-    {
-        
-        //abrir el menú de opciones de sonido
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
-        soundOptionsCanvas.SetActive(true);
+public void onSoundButton()
+{
+
+    //abrir el menú de opciones de sonido
+    mainMenuCanvas.SetActive(false);
+    optionsCanvas.SetActive(false);
+    soundOptionsCanvas.SetActive(true);
 
 
-    }
+}
 }
