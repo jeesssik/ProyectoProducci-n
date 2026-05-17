@@ -5786,7 +5786,8 @@ MonoBehaviour:
   relaxedGroundFallback: 1
   groundProbeRayDistance: 0.08
   attackPoint: {fileID: 1192236670}
-  attackCooldown: 0.45
+  attackPointOffsetX: 0.5
+  attackCooldown: 0
   maxHealth: 8
   healAmount: 1
   healCooldown: 1.5

@@ -66,6 +66,9 @@ public class PlayerController : MonoBehaviour
 
     [Header("Combate")]
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackPointOffsetX = 0.5f;
+
+    private bool isFacingRight = true;
     [SerializeField] private float attackCooldown = 0.45f;
 
     [Header("Vida")]
@@ -313,6 +316,7 @@ public class PlayerController : MonoBehaviour
         {
             canAttack = false;
             animator.SetTrigger("Attack");
+            FaceMouseDirection();
 
             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
                 attackPoint.position,
@@ -526,19 +530,51 @@ public class PlayerController : MonoBehaviour
         Tilemap tm = c.GetComponentInParent<Tilemap>();
         return tm != null;
     }
+private void Flip()
+{
+    isFacingRight = !isFacingRight;
 
-    private void FlipCharacter()
+    spriteRenderer.flipX = !spriteRenderer.flipX;
+
+    Vector3 attackPos = attackPoint.localPosition;
+
+    attackPos.x = isFacingRight
+        ? Mathf.Abs(attackPos.x)
+        : -Mathf.Abs(attackPos.x);
+
+    attackPoint.localPosition = attackPos;
+}
+private void FlipCharacter()
+{
+    if (horizontalInput > 0)
     {
-        if (horizontalInput > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if (horizontalInput < 0)
-        {
-            spriteRenderer.flipX = false;
-        }
+        SetFacingDirection(false);
     }
+    else if (horizontalInput < 0)
+    {
+        SetFacingDirection(true);
+    }
+}
+private void FaceMouseDirection()
+{
+    Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+    bool shouldFaceRight = mouseWorldPosition.x < transform.position.x;
+
+    SetFacingDirection(shouldFaceRight);
+}
+private void SetFacingDirection(bool faceRight)
+{
+    if (isFacingRight == faceRight) return;
+
+    isFacingRight = faceRight;
+
+    spriteRenderer.flipX = !spriteRenderer.flipX;
+
+    Vector3 attackPos = attackPoint.localPosition;
+    attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
+    attackPoint.localPosition = attackPos;
+}
     public void TakeDamage(int damage)
     {
         if (isDead || isInvulnerable) return;
