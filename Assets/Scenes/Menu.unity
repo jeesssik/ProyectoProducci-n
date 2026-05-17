@@ -446,7 +446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &187982029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4143,7 +4143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1220667461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4247,7 +4247,7 @@ MonoBehaviour:
   optionsCanvas: {fileID: 187982028}
   creditsCanvas: {fileID: 470193986}
   soundOptionsCanvas: {fileID: 1115884687}
-  gameSceneName: GameScene
+  gameSceneName: Level-1
   menuMusic: {fileID: 8300000, guid: 0d42917aabd21fa4fb38529691b864be, type: 3}
 --- !u!1 &1227311156
 GameObject:
