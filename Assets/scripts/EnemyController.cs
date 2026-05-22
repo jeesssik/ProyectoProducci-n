@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
 
 
     private int currentHealth;
-    private int maxHealth = 7;
+    private int maxHealth = 6;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -188,12 +188,23 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+       // Debug.Log("Enemy detectó trigger con: " + other.name);
+
+        if (other.CompareTag("PlayerAttack"))
+        {
+            Debug.Log("ENEMIGO RECIBIÓ IMPACTO DEL ATAQUE DEL JUGADOR");
+
+            TakeDamage(2);
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
 
             if (player != null)
             {
+                //Debug.Log("Enemy tocó al Player y le hace daño");
                 player.TakeDamage(1);
             }
         }
@@ -202,6 +213,8 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+          Debug.Log(gameObject.name + " recibió " + damage + " de daño. Vida actual: " + currentHealth);
+
 
         if (currentHealth <= 0)
         {

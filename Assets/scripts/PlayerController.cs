@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private GameOverManager gameOverManager;
 
+    [SerializeField] private GameObject attackHitbox;
 
     [SerializeField] private PlayerHealthUI playerHealthUI;
     private bool isKnockbacked = false;
@@ -119,6 +120,10 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
         currentHealth = maxHealth;
         _baseGravityScale = rb.gravityScale;
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
+        }
 
         if (playerHealthUI != null)
         {
@@ -201,7 +206,7 @@ public class PlayerController : MonoBehaviour
             accel *= airControl;
             decel *= airControl;
         }
-        Debug.Log($"Grounded: {grounded}, Accel: {accel}, Decel: {decel}");
+        //Debug.Log($"Grounded: {grounded}, Accel: {accel}, Decel: {decel}");
 
         float speedDiff = targetSpeed - rb.velocity.x;
         float rate = Mathf.Abs(targetSpeed) > 0.01f ? accel : decel;
@@ -310,33 +315,81 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /* private void HandleAttack()
+     {
+         if (Input.GetButtonDown("Fire1") && canAttack)
+         {
+             canAttack = false;
+             animator.SetTrigger("Attack");
+             FaceMouseDirection();
+
+             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
+                 attackPoint.position,
+                 attackRadius,
+                 enemyLayer
+             );
+
+             foreach (Collider2D enemy in enemiesHit)
+             {
+                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+                 if (enemyController != null)
+                 {
+                     enemyController.TakeDamage(attackDamage);
+                 }
+             }
+
+             Invoke(nameof(ResetAttack), attackCooldown);
+         }
+     }*/
+
     private void HandleAttack()
     {
         if (Input.GetButtonDown("Fire1") && canAttack)
         {
             canAttack = false;
-            animator.SetTrigger("Attack");
+
             FaceMouseDirection();
 
-            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
-                attackPoint.position,
-                attackRadius,
-                enemyLayer
-            );
-
-            foreach (Collider2D enemy in enemiesHit)
-            {
-                EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
-                if (enemyController != null)
-                {
-                    enemyController.TakeDamage(attackDamage);
-                }
-            }
+            animator.SetTrigger("Attack");
 
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
+
+   private void Start()
+{
+    if (attackHitbox != null)
+    {
+        attackHitbox.SetActive(false);
+    }
+}
+
+public void EnableAttackHitbox()
+{
+    //Debug.Log("EVENTO ANIMACION: Activando AttackHitbox");
+
+    if (attackHitbox != null)
+    {
+        attackHitbox.SetActive(true);
+    }
+    else
+    {
+        Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
+    }
+}
+
+public void DisableAttackHitbox()
+{
+    //Debug.Log("EVENTO ANIMACION: Desactivando AttackHitbox");
+
+    if (attackHitbox != null)
+    {
+        attackHitbox.SetActive(false);
+    }
+}
+
+   
 
     public void ApplyAttackDamage()
     {
@@ -530,51 +583,58 @@ public class PlayerController : MonoBehaviour
         Tilemap tm = c.GetComponentInParent<Tilemap>();
         return tm != null;
     }
-private void Flip()
-{
-    isFacingRight = !isFacingRight;
-
-    spriteRenderer.flipX = !spriteRenderer.flipX;
-
-    Vector3 attackPos = attackPoint.localPosition;
-
-    attackPos.x = isFacingRight
-        ? Mathf.Abs(attackPos.x)
-        : -Mathf.Abs(attackPos.x);
-
-    attackPoint.localPosition = attackPos;
-}
-private void FlipCharacter()
-{
-    if (horizontalInput > 0)
+    private void Flip()
     {
-        SetFacingDirection(false);
+        isFacingRight = !isFacingRight;
+
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+        Vector3 attackPos = attackPoint.localPosition;
+
+        attackPos.x = isFacingRight
+            ? Mathf.Abs(attackPos.x)
+            : -Mathf.Abs(attackPos.x);
+
+        attackPoint.localPosition = attackPos;
     }
-    else if (horizontalInput < 0)
+    private void FlipCharacter()
     {
-        SetFacingDirection(true);
+        if (horizontalInput > 0)
+        {
+            SetFacingDirection(false);
+        }
+        else if (horizontalInput < 0)
+        {
+            SetFacingDirection(true);
+        }
     }
-}
-private void FaceMouseDirection()
-{
-    Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    private void FaceMouseDirection()
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-    bool shouldFaceRight = mouseWorldPosition.x < transform.position.x;
+        bool shouldFaceRight = mouseWorldPosition.x < transform.position.x;
 
-    SetFacingDirection(shouldFaceRight);
-}
-private void SetFacingDirection(bool faceRight)
-{
-    if (isFacingRight == faceRight) return;
+        SetFacingDirection(shouldFaceRight);
+    }
+    private void SetFacingDirection(bool faceRight)
+    {
+        if (isFacingRight == faceRight) return;
 
-    isFacingRight = faceRight;
+        isFacingRight = faceRight;
 
-    spriteRenderer.flipX = !spriteRenderer.flipX;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
 
-    Vector3 attackPos = attackPoint.localPosition;
-    attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
-    attackPoint.localPosition = attackPos;
-}
+        Vector3 attackPos = attackPoint.localPosition;
+        attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
+        attackPoint.localPosition = attackPos;
+
+        if (attackHitbox != null)
+        {
+            Vector3 hitboxPos = attackHitbox.transform.localPosition;
+           hitboxPos.x = isFacingRight ? -Mathf.Abs(hitboxPos.x) : Mathf.Abs(hitboxPos.x);
+            attackHitbox.transform.localPosition = hitboxPos;
+        }
+    }
     public void TakeDamage(int damage)
     {
         if (isDead || isInvulnerable) return;
