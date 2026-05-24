@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
     private float _jumpBufferTimer;
     private bool _isGroundedForJump;
 
+    public bool IsAttackDamageActive { get; private set; }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -315,33 +317,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /* private void HandleAttack()
-     {
-         if (Input.GetButtonDown("Fire1") && canAttack)
-         {
-             canAttack = false;
-             animator.SetTrigger("Attack");
-             FaceMouseDirection();
-
-             Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
-                 attackPoint.position,
-                 attackRadius,
-                 enemyLayer
-             );
-
-             foreach (Collider2D enemy in enemiesHit)
-             {
-                 EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
-                 if (enemyController != null)
-                 {
-                     enemyController.TakeDamage(attackDamage);
-                 }
-             }
-
-             Invoke(nameof(ResetAttack), attackCooldown);
-         }
-     }*/
 
     private void HandleAttack()
     {
@@ -357,39 +332,38 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   private void Start()
-{
-    if (attackHitbox != null)
+    private void Start()
     {
-        attackHitbox.SetActive(false);
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
+        }
     }
-}
 
-public void EnableAttackHitbox()
-{
-    //Debug.Log("EVENTO ANIMACION: Activando AttackHitbox");
-
-    if (attackHitbox != null)
+    public void EnableAttackHitbox()
     {
-        attackHitbox.SetActive(true);
+        IsAttackDamageActive = true;
+
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
+        }
     }
-    else
+
+    public void DisableAttackHitbox()
     {
-        Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
+        IsAttackDamageActive = false;
+
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
+        }
     }
-}
 
-public void DisableAttackHitbox()
-{
-    //Debug.Log("EVENTO ANIMACION: Desactivando AttackHitbox");
-
-    if (attackHitbox != null)
-    {
-        attackHitbox.SetActive(false);
-    }
-}
-
-   
 
     public void ApplyAttackDamage()
     {
@@ -631,7 +605,7 @@ public void DisableAttackHitbox()
         if (attackHitbox != null)
         {
             Vector3 hitboxPos = attackHitbox.transform.localPosition;
-           hitboxPos.x = isFacingRight ? -Mathf.Abs(hitboxPos.x) : Mathf.Abs(hitboxPos.x);
+            hitboxPos.x = isFacingRight ? -Mathf.Abs(hitboxPos.x) : Mathf.Abs(hitboxPos.x);
             attackHitbox.transform.localPosition = hitboxPos;
         }
     }

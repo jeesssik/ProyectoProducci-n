@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     private bool canAttack = true;
     private bool isTouchingPlayer = false;
 
-
+    private bool canTakeDamage = true;
 
 
     private int currentHealth;
@@ -51,6 +51,9 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+
+        UpdateAnimator();
+        
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -188,7 +191,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       // Debug.Log("Enemy detectó trigger con: " + other.name);
+        // Debug.Log("Enemy detectó trigger con: " + other.name);
 
         if (other.CompareTag("PlayerAttack"))
         {
@@ -212,9 +215,12 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-          Debug.Log(gameObject.name + " recibió " + damage + " de daño. Vida actual: " + currentHealth);
+        if (!canTakeDamage) return;
 
+        canTakeDamage = false;
+
+        currentHealth -= damage;
+        Debug.Log(gameObject.name + " recibió " + damage + " de daño. Vida actual: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -222,10 +228,16 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            animator.ResetTrigger("Hit");
             animator.SetTrigger("Hit");
+            Invoke(nameof(ResetDamage), 0.3f);
         }
     }
 
+    private void ResetDamage()
+{
+    canTakeDamage = true;
+}
     private void HandleBehaviour()
     {
         if (player != null)
