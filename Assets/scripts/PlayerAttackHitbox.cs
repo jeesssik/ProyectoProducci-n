@@ -4,17 +4,8 @@ using UnityEngine;
 public class PlayerAttackHitbox : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
-    [SerializeField] private PlayerController playerController;
 
-    private readonly HashSet<EnemyController> enemiesHit = new HashSet<EnemyController>();
-
-    private void Awake()
-    {
-        if (playerController == null)
-        {
-            playerController = GetComponentInParent<PlayerController>();
-        }
-    }
+    private readonly HashSet<IDamageable> enemiesHit = new HashSet<IDamageable>();
 
     private void OnEnable()
     {
@@ -33,21 +24,22 @@ public class PlayerAttackHitbox : MonoBehaviour
 
     private void TryHit(Collider2D other)
     {
-        if (playerController == null) return;
+        IDamageable damageable = other.GetComponentInParent<IDamageable>();
 
-        // Solo hace daño si el PlayerController dice que estamos en ventana real de ataque
-        if (!playerController.IsAttackDamageActive) return;
+        if (damageable == null)
+        {
+            return;
+        }
 
-        EnemyController enemy = other.GetComponentInParent<EnemyController>();
+        if (enemiesHit.Contains(damageable))
+        {
+            return;
+        }
 
-        if (enemy == null) return;
+        enemiesHit.Add(damageable);
 
-        if (enemiesHit.Contains(enemy)) return;
+        Debug.Log("El ataque del jugador golpeó a: " + other.name);
 
-        enemiesHit.Add(enemy);
-
-        Debug.Log("ENEMIGO GOLPEADO CON ATAQUE: " + enemy.name);
-
-        enemy.TakeDamage(damage);
+        damageable.TakeDamage(damage);
     }
 }

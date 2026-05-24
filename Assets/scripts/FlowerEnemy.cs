@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FlowerEnemy : MonoBehaviour
+public class FlowerEnemy : MonoBehaviour, IDamageable
 {
     private enum FlowerState
     {
@@ -19,13 +19,13 @@ public class FlowerEnemy : MonoBehaviour
     [SerializeField] private float timeBetweenAttacks = 2f;
     [SerializeField] private bool useSpecialAttack = false;
 
-    [Header("Health")]
-    [SerializeField] private int maxHealth = 5;
-
     [Header("Attack Damage")]
     [SerializeField] private int attackDamage = 1;
-    [SerializeField] private float damageRange = 1.5f;
+    [SerializeField] private float damageRange = 2f;
     [SerializeField] private bool applyKnockbackToPlayer = true;
+
+    [Header("Health")]
+    [SerializeField] private int maxHealth = 5;
 
     private int currentHealth;
     private Animator animator;
@@ -79,51 +79,6 @@ public class FlowerEnemy : MonoBehaviour
         }
     }
 
-    public void ApplyFlowerAttackDamage()
-{
-    Debug.Log("EVENTO DE DAÑO DE LA FLOR EJECUTADO");
-
-    if (state == FlowerState.Dead) return;
-
-    if (player == null)
-    {
-        Debug.LogWarning("La flor no tiene referencia al Player");
-        return;
-    }
-
-    float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-    Debug.Log("La flor intenta hacer daño. Distancia: " + distanceToPlayer + " / Rango de daño: " + damageRange);
-
-    if (distanceToPlayer > damageRange)
-    {
-        Debug.Log("El jugador salió del rango de daño de la flor");
-        return;
-    }
-
-    PlayerController playerController = player.GetComponentInParent<PlayerController>();
-
-    if (playerController == null)
-    {
-        Debug.LogWarning("El objeto Player no tiene PlayerController");
-        return;
-    }
-
-    if (playerController.IsDead())
-    {
-        Debug.Log("El jugador ya está muerto");
-        return;
-    }
-
-    Debug.Log("LA FLOR GOLPEÓ AL PLAYER");
-
-    playerController.TakeDamage(attackDamage);
-
-    if (applyKnockbackToPlayer)
-    {
-        playerController.ApplyKnockback(transform.position);
-    }
-}
     private void FindPlayerIfNeeded()
     {
         if (player != null) return;
@@ -176,17 +131,55 @@ public class FlowerEnemy : MonoBehaviour
     }
 
     private void Attack()
-{
-    if (state != FlowerState.Active) return;
+    {
+        if (state != FlowerState.Active) return;
 
-    Debug.Log("La flor ataca");
+        
+        else
+        {
+            Debug.Log("La flor ataca");
+            animator.ResetTrigger("Attack");
+            animator.SetTrigger("Attack");
+        }
+    }
 
-    animator.ResetTrigger("Attack");
-    animator.SetTrigger("Attack");
+    public void ApplyFlowerAttackDamage()
+    {
+        Debug.Log("EVENTO DE DAÑO DE LA FLOR EJECUTADO");
 
-    // PRUEBA TEMPORAL
-    ApplyFlowerAttackDamage();
-}
+        if (state == FlowerState.Dead) return;
+        if (player == null) return;
+
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        Debug.Log("La flor intenta hacer daño. Distancia: " + distanceToPlayer + " / Rango de daño: " + damageRange);
+
+        if (distanceToPlayer > damageRange)
+        {
+            Debug.Log("El jugador está fuera del rango de daño de la flor");
+            return;
+        }
+
+        PlayerController playerController = player.GetComponentInParent<PlayerController>();
+
+        if (playerController == null)
+        {
+            Debug.LogWarning("No se encontró PlayerController en el jugador");
+            return;
+        }
+
+        if (playerController.IsDead()) return;
+
+        Debug.Log("LA FLOR GOLPEÓ AL PLAYER");
+
+        playerController.TakeDamage(attackDamage);
+
+        if (applyKnockbackToPlayer)
+        {
+            playerController.ApplyKnockback(transform.position);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         if (state == FlowerState.Dead) return;
@@ -207,7 +200,9 @@ public class FlowerEnemy : MonoBehaviour
             return;
         }
 
+        animator.ResetTrigger("Attack");
         animator.ResetTrigger("Hurt");
+
         animator.SetTrigger("Hurt");
     }
 
@@ -215,9 +210,12 @@ public class FlowerEnemy : MonoBehaviour
     {
         if (state == FlowerState.Dead) return;
 
+        Debug.Log("La flor murió");
+
         state = FlowerState.Dead;
 
-        Debug.Log("La flor murió");
+        animator.ResetTrigger("Attack");
+        animator.ResetTrigger("Hurt");
 
         animator.SetBool("IsDead", true);
 
@@ -226,13 +224,8 @@ public class FlowerEnemy : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
-
-        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
-
-        Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, damageRange);
     }
 }
