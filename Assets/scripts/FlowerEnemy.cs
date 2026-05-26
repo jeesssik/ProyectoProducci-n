@@ -1,3 +1,5 @@
+
+
 using UnityEngine;
 
 public class FlowerEnemy : MonoBehaviour, IDamageable
@@ -208,9 +210,10 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        
         if (state == FlowerState.Dead) return;
 
-        Debug.Log("La flor murió");
+         Debug.Log("FLOR MURIOOOOOOOO");
 
         state = FlowerState.Dead;
 
