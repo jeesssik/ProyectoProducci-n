@@ -172,6 +172,36 @@ public class PlayerController : MonoBehaviour
     {
         isKnockbacked = false;
     }
+
+    private void UpdateAttackHitboxPosition()
+    {
+        if (attackHitbox == null) return;
+
+        // En tu proyecto, por cómo está armado el flip/animación,
+        // isFacingRight parece estar invertido respecto al lado real del ataque.
+        bool attackToRight = !isFacingRight;
+
+        Vector3 hitboxPos = attackHitbox.transform.localPosition;
+
+        hitboxPos.x = attackToRight
+            ? Mathf.Abs(hitboxPos.x)
+            : -Mathf.Abs(hitboxPos.x);
+
+        attackHitbox.transform.localPosition = hitboxPos;
+
+        BoxCollider2D box = attackHitbox.GetComponent<BoxCollider2D>();
+
+        if (box != null)
+        {
+            Vector2 offset = box.offset;
+
+            offset.x = attackToRight
+                ? -Mathf.Abs(offset.x)
+                : Mathf.Abs(offset.x);
+
+            box.offset = offset;
+        }
+    }
     private void ReadInput()
     {
         horizontalInput = 0f;
@@ -608,6 +638,8 @@ public class PlayerController : MonoBehaviour
             hitboxPos.x = isFacingRight ? -Mathf.Abs(hitboxPos.x) : Mathf.Abs(hitboxPos.x);
             attackHitbox.transform.localPosition = hitboxPos;
         }
+
+        UpdateAttackHitboxPosition();
     }
     public void TakeDamage(int damage)
     {
