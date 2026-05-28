@@ -370,7 +370,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void EnableAttackHitbox()
+   /* public void EnableAttackHitbox()
     {
         IsAttackDamageActive = true;
 
@@ -382,7 +382,28 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
         }
+    }*/
+
+    public void EnableAttackHitbox()
+{
+    IsAttackDamageActive = true;
+
+    if (attackHitbox != null)
+    {
+        attackHitbox.SetActive(true);
+
+        PlayerAttackHitbox hitboxScript = attackHitbox.GetComponent<PlayerAttackHitbox>();
+
+        if (hitboxScript != null)
+        {
+            hitboxScript.HitEverythingInsideNow();
+        }
     }
+    else
+    {
+        Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
+    }
+}
 
     public void DisableAttackHitbox()
     {

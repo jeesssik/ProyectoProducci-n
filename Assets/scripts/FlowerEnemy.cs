@@ -97,7 +97,7 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     {
         if (state != FlowerState.Closed) return;
 
-        Debug.Log("La flor se está abriendo");
+       // Debug.Log("La flor se está abriendo");
 
         state = FlowerState.Opening;
 
@@ -109,7 +109,7 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     {
         if (state == FlowerState.Dead) return;
 
-        Debug.Log("La flor quedó activa");
+        //Debug.Log("La flor quedó activa");
 
         state = FlowerState.Active;
         attackTimer = timeBetweenAttacks;
@@ -147,18 +147,18 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     public void ApplyFlowerAttackDamage()
     {
-        Debug.Log("EVENTO DE DAÑO DE LA FLOR EJECUTADO");
+       // Debug.Log("EVENTO DE DAÑO DE LA FLOR EJECUTADO");
 
         if (state == FlowerState.Dead) return;
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        Debug.Log("La flor intenta hacer daño. Distancia: " + distanceToPlayer + " / Rango de daño: " + damageRange);
+       // Debug.Log("La flor intenta hacer daño. Distancia: " + distanceToPlayer + " / Rango de daño: " + damageRange);
 
         if (distanceToPlayer > damageRange)
         {
-            Debug.Log("El jugador está fuera del rango de daño de la flor");
+           // Debug.Log("El jugador está fuera del rango de daño de la flor");
             return;
         }
 
@@ -166,7 +166,7 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
         if (playerController == null)
         {
-            Debug.LogWarning("No se encontró PlayerController en el jugador");
+           // Debug.LogWarning("No se encontró PlayerController en el jugador");
             return;
         }
 

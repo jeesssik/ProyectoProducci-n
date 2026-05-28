@@ -42,4 +42,27 @@ public class PlayerAttackHitbox : MonoBehaviour
 
         damageable.TakeDamage(damage);
     }
+
+    public void HitEverythingInsideNow()
+{
+    Collider2D myCollider = GetComponent<Collider2D>();
+
+    if (myCollider == null)
+    {
+        Debug.LogWarning("PlayerAttackHitbox no tiene Collider2D.");
+        return;
+    }
+
+    ContactFilter2D filter = new ContactFilter2D();
+    filter.NoFilter();
+
+    Collider2D[] results = new Collider2D[20];
+
+    int count = Physics2D.OverlapCollider(myCollider, filter, results);
+
+    for (int i = 0; i < count; i++)
+    {
+        TryHit(results[i]);
+    }
+}
 }
