@@ -1,6 +1,5 @@
-
-
 using UnityEngine;
+using UnityEngine.UI; // <-- 1. AGREGADO: Necesario para controlar componentes de UI (Image)
 
 public class FlowerEnemy : MonoBehaviour, IDamageable
 {
@@ -28,6 +27,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
+    
+    // <-- 2. AGREGADO: Campo para arrastrar tu objeto "barra" en el Inspector
+    [SerializeField] private Image healthBarFill; 
 
     private int currentHealth;
     private Animator animator;
@@ -41,6 +43,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
         initialPosition = transform.position;
         attackTimer = timeBetweenAttacks;
+
+        // <-- 3. AGREGADO: Asegura que la barra empiece llena al 100%
+        UpdateHealthBar();
     }
 
     private void Start()
@@ -97,8 +102,6 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     {
         if (state != FlowerState.Closed) return;
 
-       // Debug.Log("La flor se está abriendo");
-
         state = FlowerState.Opening;
 
         animator.ResetTrigger("Open");
@@ -108,8 +111,6 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     public void FinishOpening()
     {
         if (state == FlowerState.Dead) return;
-
-        //Debug.Log("La flor quedó activa");
 
         state = FlowerState.Active;
         attackTimer = timeBetweenAttacks;
@@ -135,30 +136,22 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     private void Attack()
     {
         if (state != FlowerState.Active) return;
-
         
-        else
-        {
-            Debug.Log("La flor ataca");
-            animator.ResetTrigger("Attack");
-            animator.SetTrigger("Attack");
-        }
+        // Corregido un pequeño "else" huerfano que tenías aquí de un if borrado
+        Debug.Log("La flor ataca");
+        animator.ResetTrigger("Attack");
+        animator.SetTrigger("Attack");
     }
 
     public void ApplyFlowerAttackDamage()
     {
-       // Debug.Log("EVENTO DE DAÑO DE LA FLOR EJECUTADO");
-
         if (state == FlowerState.Dead) return;
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-       // Debug.Log("La flor intenta hacer daño. Distancia: " + distanceToPlayer + " / Rango de daño: " + damageRange);
-
         if (distanceToPlayer > damageRange)
         {
-           // Debug.Log("El jugador está fuera del rango de daño de la flor");
             return;
         }
 
@@ -166,7 +159,6 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
         if (playerController == null)
         {
-           // Debug.LogWarning("No se encontró PlayerController en el jugador");
             return;
         }
 
@@ -187,6 +179,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         if (state == FlowerState.Dead) return;
 
         currentHealth -= damage;
+
+        // <-- 4. AGREGADO: Actualiza la barra visual inmediatamente al recibir daño
+        UpdateHealthBar();
 
         Debug.Log("La flor recibió " + damage + " de daño. Vida actual: " + currentHealth);
 
@@ -210,10 +205,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        
         if (state == FlowerState.Dead) return;
 
-         Debug.Log("FLOR MURIOOOOOOOO");
+        Debug.Log("FLOR MURIOOOOOOOO");
 
         state = FlowerState.Dead;
 
@@ -223,6 +217,16 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         animator.SetBool("IsDead", true);
 
         Destroy(gameObject, 1.2f);
+    }
+
+    // <-- 5. AGREGADO: Función dedicada a calcular el porcentaje de vida y pasárselo a la imagen
+    private void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+        {
+            // Convertimos a float para que la división dé decimales precisos entre 0.0 y 1.0
+            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
+        }
     }
 
     private void OnDrawGizmosSelected()
