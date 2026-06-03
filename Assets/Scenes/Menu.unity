@@ -4455,6 +4455,13 @@ MonoBehaviour:
   musicMuted: 0
   ambientMuted: 0
   sfxMuted: 0
+  playerWalkStep: {fileID: 0}
+  playerJump: {fileID: 8300000, guid: b19e3bd8e09000d4dbaaa073601749ba, type: 3}
+  playerLand: {fileID: 8300000, guid: ce3925a9d9804304f8af80bea73165f7, type: 3}
+  playerAttack: {fileID: 0}
+  playerHurt: {fileID: 0}
+  playerDeath: {fileID: 0}
+  playerDash: {fileID: 0}
 --- !u!1 &1307686228
 GameObject:
   m_ObjectHideFlags: 0
