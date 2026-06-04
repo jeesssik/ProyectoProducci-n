@@ -1,3 +1,4 @@
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private bool isGrounded;
+    private bool wasGroundedLastFrame; // NUEVO: Para detectar el momento exacto del aterrizaje
     private bool canAttack = true;
     private bool canHeal = true;
     private bool isDead = false;
@@ -133,29 +135,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-
     private void Update()
-    {
-        if (isDead) return;
+{
+    if (isDead) return;
 
-        ReadInput();
-        CheckGround();
-        UpdateJumpTimers();
-        HandleJump();
-        HandleAttack();
-        HandleHeal();
-        FlipCharacter();
-        UpdateAnimator();
-    }
+    ReadInput();
+    // Quitamos CheckGround de acá para que no dependa de los frames de renderizado
+    UpdateJumpTimers();
+    HandleJump();
+    HandleAttack();
+    HandleHeal();
+    FlipCharacter();
+    UpdateAnimator();
+}
 
-    private void FixedUpdate()
-    {
-        if (isDead || isKnockbacked) return;
+private void FixedUpdate()
+{
+    if (isDead || isKnockbacked) return;
 
-        Move();
-        ApplyBetterJumpPhysics();
-    }
+    // Primero guardamos cómo estaba el suelo ANTES de movernos en este tick de físicas
+    wasGroundedLastFrame = isGrounded;
+
+    Move();
+    ApplyBetterJumpPhysics();
+
+    // Calculamos el suelo inmediatamente después del movimiento físico
+    CheckGround(); 
+}
 
     public void ApplyKnockback(Vector2 enemyPosition)
     {
@@ -177,8 +183,6 @@ public class PlayerController : MonoBehaviour
     {
         if (attackHitbox == null) return;
 
-        // En tu proyecto, por cómo está armado el flip/animación,
-        // isFacingRight parece estar invertido respecto al lado real del ataque.
         bool attackToRight = !isFacingRight;
 
         Vector3 hitboxPos = attackHitbox.transform.localPosition;
@@ -202,20 +206,16 @@ public class PlayerController : MonoBehaviour
             box.offset = offset;
         }
     }
+
     private void ReadInput()
     {
         horizontalInput = 0f;
-        // Input Manager axis (default Unity)
         try
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
         }
-        catch
-        {
-            // ignore, fallback below
-        }
+        catch { }
 
-        // Keyboard fallback (in case axes are missing / misconfigured)
         if (Mathf.Abs(horizontalInput) < 0.01f)
         {
             bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -238,7 +238,6 @@ public class PlayerController : MonoBehaviour
             accel *= airControl;
             decel *= airControl;
         }
-        //Debug.Log($"Grounded: {grounded}, Accel: {accel}, Decel: {decel}");
 
         float speedDiff = targetSpeed - rb.velocity.x;
         float rate = Mathf.Abs(targetSpeed) > 0.01f ? accel : decel;
@@ -249,7 +248,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        // Buffer de salto
         if (GetJumpDown())
         {
             _jumpBufferTimer = jumpBufferTime;
@@ -258,7 +256,6 @@ public class PlayerController : MonoBehaviour
         bool canUseCoyote = _coyoteTimer > 0f;
         bool bufferedJump = _jumpBufferTimer > 0f;
 
-        // IMPORTANT: only allow jumps from "real ground below" (prevents wall/side re-jumps).
         if (bufferedJump && (_isGroundedForJump || canUseCoyote))
         {
             float bonus = 0f;
@@ -271,8 +268,14 @@ public class PlayerController : MonoBehaviour
 
             float initialVy = Mathf.Min(jumpForce + bonus, maxInitialJumpVelocity);
             rb.velocity = new Vector2(rb.velocity.x, initialVy);
-            // Animator controller used in the scene expects this parameter to enter jump states.
+            
             animator.SetTrigger("Jump");
+
+            // INVOCACIÓN AUDIO: SALTO
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerJump);
+            }
 
             _jumpHoldTimer = jumpHoldTime;
             _isHoldingJump = true;
@@ -281,7 +284,6 @@ public class PlayerController : MonoBehaviour
             _jumpBufferTimer = 0f;
         }
 
-        // Soltar jump temprano => salto más corto (si todavía va subiendo)
         if (GetJumpUp())
         {
             _isHoldingJump = false;
@@ -316,7 +318,6 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyBetterJumpPhysics()
     {
-        // Sostener el salto (mientras sube y se mantiene apretado)
         if (_isHoldingJump && _jumpHoldTimer > 0f && rb.velocity.y > 0f)
         {
             if (maxUpwardVelocityWhileHolding <= 0f || rb.velocity.y < maxUpwardVelocityWhileHolding)
@@ -324,7 +325,6 @@ public class PlayerController : MonoBehaviour
             _jumpHoldTimer -= Time.fixedDeltaTime;
         }
 
-        // Ajuste de gravedad para mejor "feel"
         float grav = _baseGravityScale;
 
         if (rb.velocity.y < -0.01f)
@@ -340,13 +340,11 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && rb.velocity.y <= 0.01f)
         {
-            // reseteo para el próximo salto
             _jumpHoldTimer = 0f;
             _isHoldingJump = false;
             rb.gravityScale = _baseGravityScale;
         }
     }
-
 
     private void HandleAttack()
     {
@@ -357,6 +355,12 @@ public class PlayerController : MonoBehaviour
             FaceMouseDirection();
 
             animator.SetTrigger("Attack");
+
+            // INVOCACIÓN AUDIO: ESPADAZO AL AIRE
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.1f);
+            }
 
             Invoke(nameof(ResetAttack), attackCooldown);
         }
@@ -370,40 +374,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-   /* public void EnableAttackHitbox()
+    public void EnableAttackHitbox()
     {
         IsAttackDamageActive = true;
 
         if (attackHitbox != null)
         {
             attackHitbox.SetActive(true);
+
+            PlayerAttackHitbox hitboxScript = attackHitbox.GetComponent<PlayerAttackHitbox>();
+
+            if (hitboxScript != null)
+            {
+                hitboxScript.HitEverythingInsideNow();
+            }
         }
         else
         {
             Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
         }
-    }*/
-
-    public void EnableAttackHitbox()
-{
-    IsAttackDamageActive = true;
-
-    if (attackHitbox != null)
-    {
-        attackHitbox.SetActive(true);
-
-        PlayerAttackHitbox hitboxScript = attackHitbox.GetComponent<PlayerAttackHitbox>();
-
-        if (hitboxScript != null)
-        {
-            hitboxScript.HitEverythingInsideNow();
-        }
     }
-    else
-    {
-        Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
-    }
-}
 
 
 
@@ -416,7 +406,6 @@ public class PlayerController : MonoBehaviour
             attackHitbox.SetActive(false);
         }
     }
-
 
     public void ApplyAttackDamage()
     {
@@ -433,13 +422,16 @@ public class PlayerController : MonoBehaviour
             if (enemyController != null)
             {
                 enemyController.TakeDamage(1);
+                // NOTA: El sonido de impacto se reproducirá desde el script del enemigo al recibir daño.
             }
         }
     }
+
     public bool IsDead()
     {
         return isDead;
     }
+
     private void ResetAttack()
     {
         canAttack = true;
@@ -484,19 +476,45 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Prefer contact-based grounding: works great with Tilemap + Composite and from frame 1.
         if (capsule != null && IsGroundedByContacts())
         {
             isGrounded = true;
             _isGroundedForJump = IsGroundedByCastDown();
+            CheckAterrizaje(); // Llama a la validación de impacto de caída
             return;
         }
 
-        // Fallback: casts from GroundCheck.
         _isGroundedForJump = IsGroundedByCastDown();
-
         isGrounded = _isGroundedForJump;
+
+        CheckAterrizaje(); // Llama a la validación de impacto de caída
     }
+
+    // NUEVO MÉTODO: Detecta el frame exacto de aterrizaje
+    private void CheckAterrizaje()
+{
+    // Evaluamos el impacto: si el frame anterior NO estaba en el suelo, AHORA SÍ lo está,
+    // y además el Rigidbody venía bajando o quieto (evita errores al subir)
+    if (!wasGroundedLastFrame && isGrounded && rb.velocity.y <= 0.1f)
+    {
+        // INVOCACIÓN AUDIO: ATERRIZAJE
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand, 0.5f);
+        }
+    }
+}
+
+    // NUEVO MÉTODO PÚBLICO: Para llamarlo mediante Eventos de Animación (Animation Events)
+    // Agregá este evento en los frames de pisada de tus animaciones de caminata/carrera
+    public void PlayFootstepSFX()
+{
+    if (isGrounded && !isDead && AudioManager.Instance != null)
+    {
+        // Le pasamos un 0.25f (25% del volumen original)
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.05f);
+    }
+}
 
     private bool IgnoringSelfCollider(Collider2D c)
     {
@@ -514,7 +532,6 @@ public class PlayerController : MonoBehaviour
     private bool IsValidGroundHit(RaycastHit2D hit, float minNormalY)
     {
         if (!IsStandingOnCollider(hit.collider)) return false;
-        // If you touch a vertical wall, normal.y will be ~0. Only treat mostly-up normals as ground.
         return hit.normal.y >= minNormalY;
     }
 
@@ -522,7 +539,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGroundedByContacts()
     {
-        // Only consider contacts against groundLayer, and only normals that point upwards.
         ContactFilter2D filter = new ContactFilter2D
         {
             useLayerMask = true,
@@ -533,11 +549,10 @@ public class PlayerController : MonoBehaviour
         int count = capsule.GetContacts(filter, ContactScratch);
         if (count <= 0) return false;
 
-        // Stricter threshold to avoid "side contact counts as ground".
         const float minGroundNormalY = 0.75f;
-        const float maxGroundNormalX = 0.35f; // must be mostly vertical
+        const float maxGroundNormalX = 0.35f;
         float bottomY = capsule.bounds.min.y;
-        const float bottomBand = 0.08f; // only accept contacts near the feet
+        const float bottomBand = 0.08f;
 
         for (int i = 0; i < count; i++)
         {
@@ -553,10 +568,9 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGroundedByCastDown()
     {
-        // Use the feet position based on the capsule bounds, not the GroundCheck (which may be mispositioned).
         Vector2 origin;
         float radius;
-        float castDistance = Mathf.Max(0.12f, groundProbeRayDistance); // bigger default so it works from frame 1
+        float castDistance = Mathf.Max(0.12f, groundProbeRayDistance);
 
         if (capsule != null)
         {
@@ -570,7 +584,6 @@ public class PlayerController : MonoBehaviour
             radius = groundCheckRadius;
         }
 
-        // Less strict than contacts: we mainly want "something under the feet".
         const float minGroundNormalY = 0.6f;
         const float maxGroundNormalX = 0.6f;
 
@@ -610,20 +623,17 @@ public class PlayerController : MonoBehaviour
         Tilemap tm = c.GetComponentInParent<Tilemap>();
         return tm != null;
     }
+
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-
         spriteRenderer.flipX = !spriteRenderer.flipX;
 
         Vector3 attackPos = attackPoint.localPosition;
-
-        attackPos.x = isFacingRight
-            ? Mathf.Abs(attackPos.x)
-            : -Mathf.Abs(attackPos.x);
-
+        attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
         attackPoint.localPosition = attackPos;
     }
+
     private void FlipCharacter()
     {
         if (horizontalInput > 0)
@@ -635,20 +645,19 @@ public class PlayerController : MonoBehaviour
             SetFacingDirection(true);
         }
     }
+
     private void FaceMouseDirection()
     {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         bool shouldFaceRight = mouseWorldPosition.x < transform.position.x;
-
         SetFacingDirection(shouldFaceRight);
     }
+
     private void SetFacingDirection(bool faceRight)
     {
         if (isFacingRight == faceRight) return;
 
         isFacingRight = faceRight;
-
         spriteRenderer.flipX = !spriteRenderer.flipX;
 
         Vector3 attackPos = attackPoint.localPosition;
@@ -664,6 +673,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateAttackHitboxPosition();
     }
+
     public void TakeDamage(int damage)
     {
         if (isDead || isInvulnerable) return;
@@ -676,7 +686,6 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
 
-
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -685,6 +694,13 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetTrigger("Hurt");
+
+            // INVOCACIÓN AUDIO: RECIBIR DAÑO
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerHurt);
+            }
+
             StartCoroutine(InvulnerabilityCoroutine());
         }
     }
@@ -692,9 +708,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator InvulnerabilityCoroutine()
     {
         isInvulnerable = true;
-
         yield return new WaitForSeconds(invulnerabilityTime);
-
         isInvulnerable = false;
     }
 
@@ -704,6 +718,12 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         animator.SetTrigger("Death");
+
+        // INVOCACIÓN AUDIO: MUERTE
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDeath);
+        }
 
         Debug.Log("Player murió");
 
@@ -720,7 +740,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShowGameOverAfterDelay()
     {
         yield return new WaitForSeconds(1.2f);
-
         gameOverManager.ShowGameOver();
     }
 
