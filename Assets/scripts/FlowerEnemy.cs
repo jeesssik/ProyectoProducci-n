@@ -27,9 +27,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
-    
+
     [Header("UI Health Bar")]
-    [SerializeField] private Image healthBarFill; 
+    [SerializeField] private Image healthBarFill;
     [Tooltip("El objeto raíz de la barra de vida (el Canvas o el Fondo) para ocultarlo/mostrarlo por completo.")]
     [SerializeField] private GameObject healthBarObject; // CAMBIO: UI - Referencia al contenedor contenedor completo
 
@@ -125,30 +125,33 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
     private void HandleAttack(float distanceToPlayer)
     {
-        if (distanceToPlayer > attackRange)
+        // El temporizador de ataque debe correr SIEMPRE que estemos en estado Activo
+        // para que la flor mantenga su ritmo de ataque, esté o no el jugador pegado en ese instante.
+        if (attackTimer > 0f)
         {
-            attackTimer = timeBetweenAttacks;
-            return;
+            attackTimer -= Time.deltaTime;
         }
 
-        attackTimer -= Time.deltaTime;
-
-        if (attackTimer > 0f) return;
-
-        Attack();
-
-        attackTimer = timeBetweenAttacks;
+        // Si el temporizador ya llegó a cero Y el jugador está dentro del rango de ataque...
+        if (attackTimer <= 0f && distanceToPlayer <= attackRange)
+        {
+            Attack();
+        }
     }
 
     private void Attack()
     {
         if (state != FlowerState.Active) return;
-        
+
         Debug.Log("La flor ataca");
         animator.ResetTrigger("Attack");
         animator.SetTrigger("Attack");
-    }
 
+        // CAMBIO CLAVE: El temporizador se reinicia ACÁ, justo cuando el ataque se dispara.
+        // Esto garantiza que la animación corra completa y su Animation Event (ApplyFlowerAttackDamage)
+        // se ejecute correctamente frame a frame.
+        attackTimer = timeBetweenAttacks;
+    }
     public void ApplyFlowerAttackDamage()
     {
         if (state == FlowerState.Dead) return;
