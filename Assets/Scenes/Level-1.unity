@@ -8798,6 +8798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d6c531e8579bb64ca6a6ad3ad1a892f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lootPrefabFallback: {fileID: 4676018750155977410, guid: 561487c102bd68b44a43398cd31a0b32, type: 3}
   moveSpeed: 2
   attackRange: 1
   pointA: {fileID: 1650938265}
@@ -8973,7 +8974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootPrefab: {fileID: 4676018750155977410, guid: 561487c102bd68b44a43398cd31a0b32, type: 3}
-  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnOffset: {x: 0, y: 0.35, z: 0}
 --- !u!1 &2007665173
 GameObject:
   m_ObjectHideFlags: 0

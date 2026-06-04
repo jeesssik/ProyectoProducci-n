@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 2f;
@@ -34,8 +34,13 @@ public class EnemyController : MonoBehaviour
     private bool canTakeDamage = true;
 
 
+    [Header("Vida")]
+    [SerializeField] private int maxHealth = 6;
+
+    [Header("Loot al morir (respaldo si falta Enemy Loot Drop)")]
+    [SerializeField] private GameObject lootPrefabFallback;
+
     private int currentHealth;
-    private int maxHealth = 6;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -220,15 +225,11 @@ public class EnemyController : MonoBehaviour
         canTakeDamage = false;
 
         currentHealth -= damage;
-        Debug.Log(gameObject.name + " recibió " + damage + " de daño. Vida actual: " + currentHealth);
+        Debug.Log($"{name} recibió {damage} de daño. Vida actual: {currentHealth}/{maxHealth}");
 
         if (currentHealth <= 0)
         {
-            EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
-            if (loot != null)
-                loot.DropLoot();
-
-            Destroy(gameObject);
+            Die();
         }
         else
         {
@@ -239,9 +240,39 @@ public class EnemyController : MonoBehaviour
     }
 
     private void ResetDamage()
-{
-    canTakeDamage = true;
-}
+    {
+        canTakeDamage = true;
+    }
+
+    private void Die()
+    {
+        bool dropped = false;
+
+        EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
+        if (loot != null)
+        {
+            loot.DropLoot();
+            dropped = true;
+        }
+        else if (lootPrefabFallback != null)
+        {
+            Vector3 pos = transform.position + new Vector3(0f, 0.35f, 0f);
+            GameObject rune = Instantiate(lootPrefabFallback, pos, Quaternion.identity);
+            RuneDropLaunch launch = rune.GetComponent<RuneDropLaunch>();
+            if (launch != null)
+                launch.BeginDrop(pos);
+
+            dropped = true;
+            Debug.Log($"{name}: runa instanciada (fallback).");
+        }
+
+        Debug.Log($"{name} murió. Loot dropeado={dropped}");
+
+        if (!dropped)
+            Debug.LogWarning($"{name}: murió sin loot. Agregá Enemy Loot Drop o Loot Prefab Fallback.");
+
+        Destroy(gameObject);
+    }
     private void HandleBehaviour()
     {
         if (player != null)

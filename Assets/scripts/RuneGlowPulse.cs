@@ -19,12 +19,26 @@ public class RuneGlowPulse : MonoBehaviour
         if (glowRenderer == null)
             glowRenderer = GetComponent<SpriteRenderer>();
 
+        if (glowRenderer.sprite == null && transform.parent != null)
+        {
+            Transform visualTransform = transform.parent.Find("RuneVisual");
+            if (visualTransform != null)
+            {
+                SpriteRenderer visual = visualTransform.GetComponent<SpriteRenderer>();
+                if (visual != null && visual.sprite != null)
+                    glowRenderer.sprite = visual.sprite;
+            }
+        }
+
         _baseScale = transform.localScale;
         _baseColor = glowRenderer.color;
     }
 
     private void Update()
     {
+        if (glowRenderer.sprite == null)
+            return;
+
         float wave = (Mathf.Sin(Time.time * pulseSpeed) + 1f) * 0.5f;
 
         Color c = _baseColor;

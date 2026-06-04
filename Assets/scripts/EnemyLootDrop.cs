@@ -18,8 +18,12 @@ public class EnemyLootDrop : MonoBehaviour
         Vector3 spawnPosition = transform.position + spawnOffset;
         GameObject loot = Instantiate(lootPrefab, spawnPosition, Quaternion.identity);
 
+        Debug.Log($"Loot dropeado: {lootPrefab.name} cerca de {spawnPosition}. Buscá la runa ahí y pulsá Q.");
+
         RuneDropLaunch launch = loot.GetComponent<RuneDropLaunch>();
         if (launch != null)
             launch.BeginDrop(spawnPosition);
+        else
+            Debug.LogWarning($"{lootPrefab.name} no tiene RuneDropLaunch.");
     }
 }
