@@ -318,13 +318,17 @@ public class AudioManager : MonoBehaviour
     // REPRODUCCIÓN DE SFX
     // =====================================================
 
-    public void PlaySFX(AudioClip clip)
-    {
-        if (clip == null) return;
-        if (sfxMuted) return;
+ 
 
-        sfxSource.PlayOneShot(clip, sfxVolume);
-    }
+    // Si no le pasás volumen, por defecto va a sonar a 1.0f (máximo)
+public void PlaySFX(AudioClip clip, float volumeMultiplier = 1f)
+{
+    if (clip == null) return;
+    if (sfxMuted) return;
+
+    // Multiplicamos tu volumen maestro (sfxVolume) por el multiplicador individual de este sonido
+    sfxSource.PlayOneShot(clip, sfxVolume * volumeMultiplier);
+}
 
     // =====================================================
     // MUSIC & AMBIENT (Se mantienen igual)
