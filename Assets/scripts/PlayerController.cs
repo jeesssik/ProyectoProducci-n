@@ -74,8 +74,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Vida")]
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int healAmount = 1;
-    [SerializeField] private float healCooldown = 1.5f;
     [SerializeField] private float invulnerabilityTime = 1f;
 
     [Header("Knockback")]
@@ -101,7 +99,6 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool wasGroundedLastFrame; // NUEVO: Para detectar el momento exacto del aterrizaje
     private bool canAttack = true;
-    private bool canHeal = true;
     private bool isDead = false;
     private bool isInvulnerable = false;
 
@@ -140,11 +137,10 @@ public class PlayerController : MonoBehaviour
     if (isDead) return;
 
     ReadInput();
-    // Quitamos CheckGround de acá para que no dependa de los frames de renderizado
+    CheckGround();
     UpdateJumpTimers();
     HandleJump();
     HandleAttack();
-    HandleHeal();
     FlipCharacter();
     UpdateAnimator();
 }
@@ -437,20 +433,11 @@ private void FixedUpdate()
         canAttack = true;
     }
 
-    private void HandleHeal()
+    public void RestoreFullHealth()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canHeal && currentHealth < maxHealth)
-        {
-            Heal();
-        }
-    }
+        if (isDead) return;
 
-    private void Heal()
-    {
-        canHeal = false;
-
-        currentHealth += healAmount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        currentHealth = maxHealth;
 
         if (playerHealthUI != null)
         {
@@ -458,13 +445,6 @@ private void FixedUpdate()
         }
 
         animator.SetTrigger("Heal");
-
-        Invoke(nameof(ResetHeal), healCooldown);
-    }
-
-    private void ResetHeal()
-    {
-        canHeal = true;
     }
 
     private void CheckGround()

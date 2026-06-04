@@ -224,6 +224,10 @@ public class EnemyController : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
+            if (loot != null)
+                loot.DropLoot();
+
             Destroy(gameObject);
         }
         else
