@@ -359,7 +359,7 @@ private void FixedUpdate()
             // INVOCACIÓN AUDIO: ESPADAZO AL AIRE
             if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.6f);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.1f);
             }
 
             Invoke(nameof(ResetAttack), attackCooldown);
@@ -510,7 +510,7 @@ private void FixedUpdate()
     if (isGrounded && !isDead && AudioManager.Instance != null)
     {
         // Le pasamos un 0.25f (25% del volumen original)
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.01f);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.05f);
     }
 }
 
