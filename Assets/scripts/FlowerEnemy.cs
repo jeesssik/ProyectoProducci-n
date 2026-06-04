@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI; // <-- 1. AGREGADO: Necesario para controlar componentes de UI (Image)
+using UnityEngine.UI;
 
 public class FlowerEnemy : MonoBehaviour, IDamageable
 {
@@ -28,8 +28,10 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     [Header("Health")]
     [SerializeField] private int maxHealth = 5;
     
-    // <-- 2. AGREGADO: Campo para arrastrar tu objeto "barra" en el Inspector
+    [Header("UI Health Bar")]
     [SerializeField] private Image healthBarFill; 
+    [Tooltip("El objeto raíz de la barra de vida (el Canvas o el Fondo) para ocultarlo/mostrarlo por completo.")]
+    [SerializeField] private GameObject healthBarObject; // CAMBIO: UI - Referencia al contenedor contenedor completo
 
     private int currentHealth;
     private Animator animator;
@@ -44,8 +46,10 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         initialPosition = transform.position;
         attackTimer = timeBetweenAttacks;
 
-        // <-- 3. AGREGADO: Asegura que la barra empiece llena al 100%
         UpdateHealthBar();
+
+        // CAMBIO: UI - Asegura que la barra empiece completamente oculta al iniciar el nivel
+        SetHealthBarVisible(false);
     }
 
     private void Start()
@@ -104,6 +108,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
         state = FlowerState.Opening;
 
+        // CAMBIO: UI - Hacemos visible la barra en el instante exacto en que empieza a abrirse
+        SetHealthBarVisible(true);
+
         animator.ResetTrigger("Open");
         animator.SetTrigger("Open");
     }
@@ -137,7 +144,6 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     {
         if (state != FlowerState.Active) return;
         
-        // Corregido un pequeño "else" huerfano que tenías aquí de un if borrado
         Debug.Log("La flor ataca");
         animator.ResetTrigger("Attack");
         animator.SetTrigger("Attack");
@@ -179,8 +185,6 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         if (state == FlowerState.Dead) return;
 
         currentHealth -= damage;
-
-        // <-- 4. AGREGADO: Actualiza la barra visual inmediatamente al recibir daño
         UpdateHealthBar();
 
         Debug.Log("La flor recibió " + damage + " de daño. Vida actual: " + currentHealth);
@@ -211,6 +215,9 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
 
         state = FlowerState.Dead;
 
+        // CAMBIO: UI - Ocultamos la barra de vida al morir
+        SetHealthBarVisible(false);
+
         animator.ResetTrigger("Attack");
         animator.ResetTrigger("Hurt");
 
@@ -219,13 +226,20 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
         Destroy(gameObject, 1.2f);
     }
 
-    // <-- 5. AGREGADO: Función dedicada a calcular el porcentaje de vida y pasárselo a la imagen
     private void UpdateHealthBar()
     {
         if (healthBarFill != null)
         {
-            // Convertimos a float para que la división dé decimales precisos entre 0.0 y 1.0
             healthBarFill.fillAmount = (float)currentHealth / maxHealth;
+        }
+    }
+
+    // CAMBIO: UI - Función auxiliar para controlar la visibilidad sin romper nada si nos olvidamos de asignar el objeto
+    private void SetHealthBarVisible(bool visible)
+    {
+        if (healthBarObject != null)
+        {
+            healthBarObject.SetActive(visible);
         }
     }
 

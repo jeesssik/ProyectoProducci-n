@@ -7753,13 +7753,14 @@ MonoBehaviour:
   player: {fileID: 1379749349}
   detectionRange: 4
   attackRange: 1.5
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 0.5
   useSpecialAttack: 1
   attackDamage: 1
   damageRange: 2
   applyKnockbackToPlayer: 1
-  maxHealth: 5
+  maxHealth: 3
   healthBarFill: {fileID: 1353274679}
+  healthBarObject: {fileID: 15467783}
 --- !u!95 &1909414306
 Animator:
   serializedVersion: 5
