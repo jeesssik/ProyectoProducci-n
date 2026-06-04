@@ -359,7 +359,7 @@ private void FixedUpdate()
             // INVOCACIÓN AUDIO: ESPADAZO AL AIRE
             if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack);
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.6f);
             }
 
             Invoke(nameof(ResetAttack), attackCooldown);
@@ -498,7 +498,7 @@ private void FixedUpdate()
         // INVOCACIÓN AUDIO: ATERRIZAJE
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand, 0.5f);
         }
     }
 }

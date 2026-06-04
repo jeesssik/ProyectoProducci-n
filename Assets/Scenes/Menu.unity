@@ -2662,7 +2662,7 @@ MonoBehaviour:
   playerWalkStep: {fileID: 8300000, guid: 64735653bdcec9744b01c71e87e1df90, type: 3}
   playerJump: {fileID: 8300000, guid: b19e3bd8e09000d4dbaaa073601749ba, type: 3}
   playerLand: {fileID: 8300000, guid: ce3925a9d9804304f8af80bea73165f7, type: 3}
-  playerAttack: {fileID: 0}
+  playerAttack: {fileID: 8300000, guid: dcda26858c000d44faa363ab225356df, type: 3}
   playerHurt: {fileID: 8300000, guid: 976e389d3e9c164479eb6d5a0504fc4d, type: 3}
   playerDeath: {fileID: 8300000, guid: 51537fa4c7b57374ab66ecb5288d9b91, type: 3}
   playerDash: {fileID: 0}
