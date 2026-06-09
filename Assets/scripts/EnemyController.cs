@@ -1,5 +1,5 @@
-
 using UnityEngine;
+using UnityEngine.UI; // <-- AGREGADO: Necesario para controlar componentes de UI (Image)
 
 public class EnemyController : MonoBehaviour, IDamageable
 {
@@ -37,10 +37,16 @@ public class EnemyController : MonoBehaviour, IDamageable
     [Header("Vida")]
     [SerializeField] private int maxHealth = 6;
 
+    [Header("UI Health Bar")] // <-- AGREGADO: Campos para controlar la barra de vida de forma idéntica a la flor
+    [SerializeField] private Image healthBarFill; 
+    [Tooltip("El objeto raíz de la barra de vida (el Canvas o el Fondo) para ocultarlo/mostrarlo por completo.")]
+    [SerializeField] private GameObject healthBarObject; 
+
     [Header("Loot al morir (respaldo si falta Enemy Loot Drop)")]
     [SerializeField] private GameObject lootPrefabFallback;
 
     private int currentHealth;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +54,12 @@ public class EnemyController : MonoBehaviour, IDamageable
         spriteRenderer = GetComponent<SpriteRenderer>();
         leftLimit = Mathf.Min(pointA.position.x, pointB.position.x);
         rightLimit = Mathf.Max(pointA.position.x, pointB.position.x);
+
+        // <-- AGREGADO: Asegura que la barra empiece llena y completamente oculta al iniciar
+        UpdateHealthBar();
+        SetHealthBarVisible(false);
     }
+    
     private void StopMovement()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -56,7 +67,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-
         UpdateAnimator();
         
         if (player == null) return;
@@ -65,6 +75,9 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         if (distanceToPlayer <= detectionRange)
         {
+            // CAMBIO: Hacemos visible la barra en cuanto detecta al jugador y empieza la persecución
+            SetHealthBarVisible(true);
+
             LookAtPlayer();
 
             if (isTouchingPlayer)
@@ -79,6 +92,14 @@ public class EnemyController : MonoBehaviour, IDamageable
         }
         else
         {
+            // Opcional: Podés dejar que se oculte si pierde de vista al jugador, 
+            // pero para evitar que parpadee bruscamente en combate si el player se aleja un milisegundo,
+            // solo la apagamos si mantiene la vida al 100%. Si ya está herido, es mejor dejarla visible.
+            if (currentHealth == maxHealth)
+            {
+                SetHealthBarVisible(false);
+            }
+
             Patrol();
         }
 
@@ -102,6 +123,7 @@ public class EnemyController : MonoBehaviour, IDamageable
             }
         }
     }
+    
     private void Patrol()
     {
         rb.velocity = new Vector2(patrolDirection * moveSpeed, rb.velocity.y);
@@ -196,8 +218,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Debug.Log("Enemy detectó trigger con: " + other.name);
-
         if (other.CompareTag("PlayerAttack"))
         {
             Debug.Log("ENEMIGO RECIBIÓ IMPACTO DEL ATAQUE DEL JUGADOR");
@@ -212,7 +232,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
             if (player != null)
             {
-                //Debug.Log("Enemy tocó al Player y le hace daño");
                 player.TakeDamage(1);
             }
         }
@@ -225,6 +244,11 @@ public class EnemyController : MonoBehaviour, IDamageable
         canTakeDamage = false;
 
         currentHealth -= damage;
+        
+        // CAMBIO: Actualizamos el relleno y forzamos que la barra aparezca (por si lo atacamos por la espalda sin entrar en rango)
+        UpdateHealthBar();
+        SetHealthBarVisible(true);
+
         Debug.Log($"{name} recibió {damage} de daño. Vida actual: {currentHealth}/{maxHealth}");
 
         if (currentHealth <= 0)
@@ -246,6 +270,9 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        // CAMBIO: Ocultamos la barra por completo en el frame de la muerte
+        SetHealthBarVisible(false);
+
         bool dropped = false;
 
         EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
@@ -273,36 +300,23 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         Destroy(gameObject);
     }
-    private void HandleBehaviour()
+
+    // <-- AGREGADO: Función para recalcular el fill de la imagen de UI
+    private void UpdateHealthBar()
     {
-        if (player != null)
+        if (healthBarFill != null)
         {
-            PlayerController playerController = player.GetComponent<PlayerController>();
-
-            if (playerController != null && playerController.IsDead())
-            {
-                StopMovement();
-                Patrol();
-                return;
-            }
-
-            float distance = Vector2.Distance(transform.position, player.position);
-
-            if (distance <= attackRange)
-            {
-                StopMovement();
-                TryAttack();
-                return;
-            }
-
-            if (distance <= detectionRange)
-            {
-                ChasePlayer();
-                return;
-            }
+            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
         }
+    }
 
-        Patrol();
+    // <-- AGREGADO: Función auxiliar para apagar/prender el panel contenedor de la barra
+    private void SetHealthBarVisible(bool visible)
+    {
+        if (healthBarObject != null)
+        {
+            healthBarObject.SetActive(visible);
+        }
     }
 
     private void ChasePlayer()
