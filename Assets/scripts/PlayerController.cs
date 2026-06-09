@@ -1,4 +1,3 @@
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -68,9 +67,9 @@ public class PlayerController : MonoBehaviour
     [Header("Combate")]
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackPointOffsetX = 0.5f;
-
-    private bool isFacingRight = true;
     [SerializeField] private float attackCooldown = 0.45f;
+    [Tooltip("Tecla dedicada para ejecutar el ataque del jugador.")]
+    [SerializeField] private KeyCode attackKey = KeyCode.J; // <-- CAMBIO: Tecla configurable desde el Inspector (J por defecto)
 
     [Header("Vida")]
     [SerializeField] private int maxHealth = 3;
@@ -88,6 +87,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject attackHitbox;
 
     [SerializeField] private PlayerHealthUI playerHealthUI;
+    private bool isFacingRight = true;
+    private static readonly ContactPoint2D[] ContactScratch = new ContactPoint2D[24];
     private bool isKnockbacked = false;
 
     private Rigidbody2D rb;
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private bool isGrounded;
-    private bool wasGroundedLastFrame; // NUEVO: Para detectar el momento exacto del aterrizaje
+    private bool wasGroundedLastFrame; 
     private bool canAttack = true;
     private bool isDead = false;
     private bool isInvulnerable = false;
@@ -133,40 +134,35 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-{
-    if (isDead) return;
+    {
+        if (isDead) return;
 
-    ReadInput();
-    CheckGround();
-    UpdateJumpTimers();
-    HandleJump();
-    HandleAttack();
-    FlipCharacter();
-    UpdateAnimator();
-}
+        ReadInput();
+        CheckGround();
+        UpdateJumpTimers();
+        HandleJump();
+        HandleAttack();
+        FlipCharacter();
+        UpdateAnimator();
+    }
 
-private void FixedUpdate()
-{
-    if (isDead || isKnockbacked) return;
+    private void FixedUpdate()
+    {
+        if (isDead || isKnockbacked) return;
 
-    // Primero guardamos cómo estaba el suelo ANTES de movernos en este tick de físicas
-    wasGroundedLastFrame = isGrounded;
+        wasGroundedLastFrame = isGrounded;
 
-    Move();
-    ApplyBetterJumpPhysics();
+        Move();
+        ApplyBetterJumpPhysics();
 
-    // Calculamos el suelo inmediatamente después del movimiento físico
-    CheckGround(); 
-}
+        CheckGround(); 
+    }
 
     public void ApplyKnockback(Vector2 enemyPosition)
     {
         isKnockbacked = true;
-
         float direction = transform.position.x < enemyPosition.x ? -1f : 1f;
-
         rb.velocity = new Vector2(direction * knockbackForceX, knockbackForceY);
-
         Invoke(nameof(EndKnockback), knockbackDuration);
     }
 
@@ -180,7 +176,6 @@ private void FixedUpdate()
         if (attackHitbox == null) return;
 
         bool attackToRight = !isFacingRight;
-
         Vector3 hitboxPos = attackHitbox.transform.localPosition;
 
         hitboxPos.x = attackToRight
@@ -190,15 +185,12 @@ private void FixedUpdate()
         attackHitbox.transform.localPosition = hitboxPos;
 
         BoxCollider2D box = attackHitbox.GetComponent<BoxCollider2D>();
-
         if (box != null)
         {
             Vector2 offset = box.offset;
-
             offset.x = attackToRight
                 ? -Mathf.Abs(offset.x)
                 : Mathf.Abs(offset.x);
-
             box.offset = offset;
         }
     }
@@ -224,7 +216,6 @@ private void FixedUpdate()
     private void Move()
     {
         float targetSpeed = horizontalInput * maxRunSpeed;
-
         float accel = groundAcceleration;
         float decel = groundDeceleration;
 
@@ -267,7 +258,6 @@ private void FixedUpdate()
             
             animator.SetTrigger("Jump");
 
-            // INVOCACIÓN AUDIO: SALTO
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.playerJump);
@@ -275,7 +265,6 @@ private void FixedUpdate()
 
             _jumpHoldTimer = jumpHoldTime;
             _isHoldingJump = true;
-
             _coyoteTimer = 0f;
             _jumpBufferTimer = 0f;
         }
@@ -342,17 +331,18 @@ private void FixedUpdate()
         }
     }
 
+    // CAMBIO CLAVE: Cambiada la detección de mouse ("Fire1") a la tecla asignada del teclado
     private void HandleAttack()
     {
-        if (Input.GetButtonDown("Fire1") && canAttack)
+        if (Input.GetKeyDown(attackKey) && canAttack)
         {
             canAttack = false;
 
-            FaceMouseDirection();
+            // ELIMINADO: FaceMouseDirection(); ya no determina hacia dónde mira el jugador en base al cursor.
+            // Ahora atacará directamente hacia donde está orientado por su movimiento horizontal.
 
             animator.SetTrigger("Attack");
 
-            // INVOCACIÓN AUDIO: ESPADAZO AL AIRE
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.1f);
@@ -377,7 +367,6 @@ private void FixedUpdate()
         if (attackHitbox != null)
         {
             attackHitbox.SetActive(true);
-
             PlayerAttackHitbox hitboxScript = attackHitbox.GetComponent<PlayerAttackHitbox>();
 
             if (hitboxScript != null)
@@ -391,12 +380,9 @@ private void FixedUpdate()
         }
     }
 
-
-
     public void DisableAttackHitbox()
     {
         IsAttackDamageActive = false;
-
         if (attackHitbox != null)
         {
             attackHitbox.SetActive(false);
@@ -414,11 +400,9 @@ private void FixedUpdate()
         foreach (Collider2D enemy in enemiesHit)
         {
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
             if (enemyController != null)
             {
                 enemyController.TakeDamage(1);
-                // NOTA: El sonido de impacto se reproducirá desde el script del enemigo al recibir daño.
             }
         }
     }
@@ -436,7 +420,6 @@ private void FixedUpdate()
     public void RestoreFullHealth()
     {
         if (isDead) return;
-
         currentHealth = maxHealth;
 
         if (playerHealthUI != null)
@@ -460,41 +443,33 @@ private void FixedUpdate()
         {
             isGrounded = true;
             _isGroundedForJump = IsGroundedByCastDown();
-            CheckAterrizaje(); // Llama a la validación de impacto de caída
+            CheckAterrizaje(); 
             return;
         }
 
         _isGroundedForJump = IsGroundedByCastDown();
         isGrounded = _isGroundedForJump;
-
-        CheckAterrizaje(); // Llama a la validación de impacto de caída
+        CheckAterrizaje(); 
     }
 
-    // NUEVO MÉTODO: Detecta el frame exacto de aterrizaje
     private void CheckAterrizaje()
-{
-    // Evaluamos el impacto: si el frame anterior NO estaba en el suelo, AHORA SÍ lo está,
-    // y además el Rigidbody venía bajando o quieto (evita errores al subir)
-    if (!wasGroundedLastFrame && isGrounded && rb.velocity.y <= 0.1f)
     {
-        // INVOCACIÓN AUDIO: ATERRIZAJE
-        if (AudioManager.Instance != null)
+        if (!wasGroundedLastFrame && isGrounded && rb.velocity.y <= 0.1f)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand, 0.5f);
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand, 0.5f);
+            }
         }
     }
-}
 
-    // NUEVO MÉTODO PÚBLICO: Para llamarlo mediante Eventos de Animación (Animation Events)
-    // Agregá este evento en los frames de pisada de tus animaciones de caminata/carrera
     public void PlayFootstepSFX()
-{
-    if (isGrounded && !isDead && AudioManager.Instance != null)
     {
-        // Le pasamos un 0.25f (25% del volumen original)
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.05f);
+        if (isGrounded && !isDead && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.05f);
+        }
     }
-}
 
     private bool IgnoringSelfCollider(Collider2D c)
     {
@@ -514,8 +489,6 @@ private void FixedUpdate()
         if (!IsStandingOnCollider(hit.collider)) return false;
         return hit.normal.y >= minNormalY;
     }
-
-    private static readonly ContactPoint2D[] ContactScratch = new ContactPoint2D[24];
 
     private bool IsGroundedByContacts()
     {
@@ -626,12 +599,7 @@ private void FixedUpdate()
         }
     }
 
-    private void FaceMouseDirection()
-    {
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bool shouldFaceRight = mouseWorldPosition.x < transform.position.x;
-        SetFacingDirection(shouldFaceRight);
-    }
+    // ELIMINADA: FaceMouseDirection() para limpiar código obsoleto de control de mouse.
 
     private void SetFacingDirection(bool faceRight)
     {
@@ -675,7 +643,6 @@ private void FixedUpdate()
         {
             animator.SetTrigger("Hurt");
 
-            // INVOCACIÓN AUDIO: RECIBIR DAÑO
             if (AudioManager.Instance != null)
             {
                 AudioManager.Instance.PlaySFX(AudioManager.Instance.playerHurt);
@@ -696,10 +663,8 @@ private void FixedUpdate()
     {
         isDead = true;
         rb.velocity = Vector2.zero;
-
         animator.SetTrigger("Death");
 
-        // INVOCACIÓN AUDIO: MUERTE
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDeath);
