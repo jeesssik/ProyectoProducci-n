@@ -1387,7 +1387,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1220667461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1492,7 +1492,7 @@ MonoBehaviour:
   creditsCanvas: {fileID: 470193986}
   soundOptionsCanvas: {fileID: 1115884687}
   gameSceneName: Level-1
-  menuMusic: {fileID: 8300000, guid: 0d42917aabd21fa4fb38529691b864be, type: 3}
+  menuMusic: {fileID: 0}
 --- !u!1 &1228186389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,7 +1926,7 @@ MonoBehaviour:
   creditsCanvas: {fileID: 470193986}
   soundOptionsCanvas: {fileID: 1115884687}
   gameSceneName: Level-1
-  menuMusic: {fileID: 8300000, guid: 0d42917aabd21fa4fb38529691b864be, type: 3}
+  menuMusic: {fileID: 0}
 --- !u!4 &1429909886
 Transform:
   m_ObjectHideFlags: 0
@@ -2775,10 +2775,54 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1249566098}
+    - target: {fileID: 1710222522266923392, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126322824427453402, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126322824427453402, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2016334614, guid: f0871c4aea484b547bbb5692580a2aa6, type: 3}
+    - target: {fileID: 2300786319074904004, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300786319074904004, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2764722549502629767, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1249566098}
+    - target: {fileID: 3746465834854065895, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3746465834854065895, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259160233232491946, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259160233232491946, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259160233232491946, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4853248452897899070, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5296122468365443589, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2859,18 +2903,70 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6006413714886540259, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6623741067800602598, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1220667465}
+    - target: {fileID: 6739797508340506235, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739797508340506235, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6739797508340506235, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592127165779574462, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7592127165779574462, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8420792547972406803, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
       propertyPath: m_Name
       value: AudioCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420792547972406803, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8483147342003524422, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Transition
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8483147342003524422, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1249566098}
+    - target: {fileID: 8725419210257897523, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725419210257897523, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8725419210257897523, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026429955171800224, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026429955171800224, guid: 884065a59f49a184fbfab0b084eae315, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 426937365, guid: f0871c4aea484b547bbb5692580a2aa6, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
