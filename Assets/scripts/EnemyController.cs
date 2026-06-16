@@ -1,7 +1,7 @@
-
 using UnityEngine;
+using UnityEngine.UI; // <-- AGREGADO: Necesario para controlar componentes de UI (Image)
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
     [Header("Movimiento")]
     [SerializeField] private float moveSpeed = 2f;
@@ -31,11 +31,22 @@ public class EnemyController : MonoBehaviour
     private bool canAttack = true;
     private bool isTouchingPlayer = false;
 
+    private bool canTakeDamage = true;
 
 
+    [Header("Vida")]
+    [SerializeField] private int maxHealth = 6;
+
+    [Header("UI Health Bar")] // <-- AGREGADO: Campos para controlar la barra de vida de forma idéntica a la flor
+    [SerializeField] private Image healthBarFill; 
+    [Tooltip("El objeto raíz de la barra de vida (el Canvas o el Fondo) para ocultarlo/mostrarlo por completo.")]
+    [SerializeField] private GameObject healthBarObject; 
+
+    [Header("Loot al morir (respaldo si falta Enemy Loot Drop)")]
+    [SerializeField] private GameObject lootPrefabFallback;
 
     private int currentHealth;
-    private int maxHealth = 7;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,7 +54,12 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         leftLimit = Mathf.Min(pointA.position.x, pointB.position.x);
         rightLimit = Mathf.Max(pointA.position.x, pointB.position.x);
+
+        // <-- AGREGADO: Asegura que la barra empiece llena y completamente oculta al iniciar
+        UpdateHealthBar();
+        SetHealthBarVisible(false);
     }
+    
     private void StopMovement()
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
@@ -51,12 +67,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        UpdateAnimator();
+        
         if (player == null) return;
 
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
         if (distanceToPlayer <= detectionRange)
         {
+            // CAMBIO: Hacemos visible la barra en cuanto detecta al jugador y empieza la persecución
+            SetHealthBarVisible(true);
+
             LookAtPlayer();
 
             if (isTouchingPlayer)
@@ -71,6 +92,14 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            // Opcional: Podés dejar que se oculte si pierde de vista al jugador, 
+            // pero para evitar que parpadee bruscamente en combate si el player se aleja un milisegundo,
+            // solo la apagamos si mantiene la vida al 100%. Si ya está herido, es mejor dejarla visible.
+            if (currentHealth == maxHealth)
+            {
+                SetHealthBarVisible(false);
+            }
+
             Patrol();
         }
 
@@ -94,6 +123,7 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+    
     private void Patrol()
     {
         rb.velocity = new Vector2(patrolDirection * moveSpeed, rb.velocity.y);
@@ -188,6 +218,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("PlayerAttack"))
+        {
+            Debug.Log("ENEMIGO RECIBIÓ IMPACTO DEL ATAQUE DEL JUGADOR");
+
+            TakeDamage(2);
+            return;
+        }
+
         if (other.CompareTag("Player"))
         {
             PlayerController player = other.GetComponent<PlayerController>();
@@ -201,48 +239,84 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (!canTakeDamage) return;
+
+        canTakeDamage = false;
+
         currentHealth -= damage;
+        
+        // CAMBIO: Actualizamos el relleno y forzamos que la barra aparezca (por si lo atacamos por la espalda sin entrar en rango)
+        UpdateHealthBar();
+        SetHealthBarVisible(true);
+
+        Debug.Log($"{name} recibió {damage} de daño. Vida actual: {currentHealth}/{maxHealth}");
 
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
         else
         {
+            animator.ResetTrigger("Hit");
             animator.SetTrigger("Hit");
+            Invoke(nameof(ResetDamage), 0.3f);
         }
     }
 
-    private void HandleBehaviour()
+    private void ResetDamage()
     {
-        if (player != null)
+        canTakeDamage = true;
+    }
+
+    private void Die()
+    {
+        // CAMBIO: Ocultamos la barra por completo en el frame de la muerte
+        SetHealthBarVisible(false);
+
+        bool dropped = false;
+
+        EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
+        if (loot != null)
         {
-            PlayerController playerController = player.GetComponent<PlayerController>();
+            loot.DropLoot();
+            dropped = true;
+        }
+        else if (lootPrefabFallback != null)
+        {
+            Vector3 pos = transform.position + new Vector3(0f, 0.35f, 0f);
+            GameObject rune = Instantiate(lootPrefabFallback, pos, Quaternion.identity);
+            RuneDropLaunch launch = rune.GetComponent<RuneDropLaunch>();
+            if (launch != null)
+                launch.BeginDrop(pos);
 
-            if (playerController != null && playerController.IsDead())
-            {
-                StopMovement();
-                Patrol();
-                return;
-            }
-
-            float distance = Vector2.Distance(transform.position, player.position);
-
-            if (distance <= attackRange)
-            {
-                StopMovement();
-                TryAttack();
-                return;
-            }
-
-            if (distance <= detectionRange)
-            {
-                ChasePlayer();
-                return;
-            }
+            dropped = true;
+            Debug.Log($"{name}: runa instanciada (fallback).");
         }
 
-        Patrol();
+        Debug.Log($"{name} murió. Loot dropeado={dropped}");
+
+        if (!dropped)
+            Debug.LogWarning($"{name}: murió sin loot. Agregá Enemy Loot Drop o Loot Prefab Fallback.");
+
+        Destroy(gameObject);
+    }
+
+    // <-- AGREGADO: Función para recalcular el fill de la imagen de UI
+    private void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+        {
+            healthBarFill.fillAmount = (float)currentHealth / maxHealth;
+        }
+    }
+
+    // <-- AGREGADO: Función auxiliar para apagar/prender el panel contenedor de la barra
+    private void SetHealthBarVisible(bool visible)
+    {
+        if (healthBarObject != null)
+        {
+            healthBarObject.SetActive(visible);
+        }
     }
 
     private void ChasePlayer()

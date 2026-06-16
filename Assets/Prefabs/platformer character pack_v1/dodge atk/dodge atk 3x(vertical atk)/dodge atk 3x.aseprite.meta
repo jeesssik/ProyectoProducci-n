@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: dodge atk 3x_Frame_0
     originalName: 
-    pivot: {x: 0.5102041, y: -0.3795181}
+    pivot: {x: 0.46861672, y: 0.013308605}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -163,7 +163,7 @@ ScriptedImporter:
     uvTransform: {x: 561, y: 616}
   - name: dodge atk 3x_Frame_2
     originalName: 
-    pivot: {x: 0.5223881, y: -0.2827225}
+    pivot: {x: 0.4767661, y: 0.0053416947}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -183,7 +183,7 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 616}
   - name: dodge atk 3x_Frame_3
     originalName: 
-    pivot: {x: 0.51773053, y: -0.2827225}
+    pivot: {x: 0.488826, y: -0.010661819}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -203,7 +203,7 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 185}
   - name: dodge atk 3x_Frame_4
     originalName: 
-    pivot: {x: 0.51655626, y: -0.33888888}
+    pivot: {x: 0.5030609, y: 0.012063259}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -223,7 +223,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 748}
   - name: dodge atk 3x_Frame_5
     originalName: 
-    pivot: {x: 0.5163399, y: -0.34254143}
+    pivot: {x: 0.4963616, y: -0.004786539}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -243,7 +243,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 374}
   - name: dodge atk 3x_Frame_6
     originalName: 
-    pivot: {x: 0.51282054, y: -0.34615386}
+    pivot: {x: 0.50687724, y: 0.0053653927}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -263,7 +263,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 800}
   - name: dodge atk 3x_Frame_7
     originalName: 
-    pivot: {x: 0.50955415, y: -0.3480663}
+    pivot: {x: 0.4835952, y: 0.00094688794}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -283,7 +283,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 611}
   - name: dodge atk 3x_Frame_8
     originalName: 
-    pivot: {x: 0.5161291, y: -0.35754192}
+    pivot: {x: 0.5029821, y: -0.010320994}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -303,7 +303,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 187}
   - name: dodge atk 3x_Frame_9
     originalName: 
-    pivot: {x: 0.5161291, y: -0.37288135}
+    pivot: {x: 0.51612884, y: 0.0070452504}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -323,7 +323,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 563}
   - name: dodge atk 3x_Frame_19
     originalName: 
-    pivot: {x: 0.48598132, y: -0.14977972}
+    pivot: {x: 0.5136633, y: 0.14622523}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -343,7 +343,7 @@ ScriptedImporter:
     uvTransform: {x: 629, y: 4}
   - name: dodge atk 3x_Frame_20
     originalName: 
-    pivot: {x: 0.47899157, y: -0.15625}
+    pivot: {x: 0.5132403, y: 0.007500785}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -363,7 +363,7 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 384}
   - name: dodge atk 3x_Frame_21
     originalName: 
-    pivot: {x: 0.49180332, y: -0.345}
+    pivot: {x: 0.5029387, y: 0.0014239502}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -383,7 +383,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 218}
   - name: dodge atk 3x_Frame_22
     originalName: 
-    pivot: {x: 0.48936167, y: -0.38418075}
+    pivot: {x: 0.48936182, y: 0.018771242}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -403,7 +403,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 426}
   - name: dodge atk 3x_Frame_23
     originalName: 
-    pivot: {x: 0.48989898, y: -0.33495146}
+    pivot: {x: 0.5001909, y: -0.0035632595}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -423,7 +423,7 @@ ScriptedImporter:
     uvTransform: {x: 4, y: 4}
   - name: dodge atk 3x_Frame_24
     originalName: 
-    pivot: {x: 0.48756218, y: -0.3942857}
+    pivot: {x: 0.50276965, y: -0.010017071}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -443,7 +443,7 @@ ScriptedImporter:
     uvTransform: {x: 210, y: 4}
   - name: dodge atk 3x_Frame_25
     originalName: 
-    pivot: {x: 0.49009904, y: -0.3988439}
+    pivot: {x: 0.50018674, y: 0.0016460639}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -463,7 +463,7 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 4}
   - name: dodge atk 3x_Frame_26
     originalName: 
-    pivot: {x: 0.49009904, y: -0.6106195}
+    pivot: {x: 0.49514288, y: 0.038587183}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -483,7 +483,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 377}
   - name: dodge atk 3x_Frame_27
     originalName: 
-    pivot: {x: 0.49009904, y: -0.59999996}
+    pivot: {x: 0.50018674, y: -0.015243398}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -503,7 +503,7 @@ ScriptedImporter:
     uvTransform: {x: 419, y: 815}
   - name: dodge atk 3x_Frame_28
     originalName: 
-    pivot: {x: 0.49009904, y: -0.59999996}
+    pivot: {x: 0.50018674, y: 0.02905592}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -523,7 +523,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 254}
   - name: dodge atk 3x_Frame_29
     originalName: 
-    pivot: {x: 0.49261084, y: -0.5897436}
+    pivot: {x: 0.49763015, y: 0.0024345878}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -543,7 +543,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 4}
   - name: dodge atk 3x_Frame_30
     originalName: 
-    pivot: {x: 0.49261084, y: -0.5897436}
+    pivot: {x: 0.5026489, y: 0.019851163}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -563,7 +563,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 129}
   - name: dodge atk 3x_Frame_31
     originalName: 
-    pivot: {x: 0.49142855, y: -0.6160714}
+    pivot: {x: 0.5088951, y: -0.00655474}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -583,7 +583,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 498}
   - name: dodge atk 3x_Frame_32
     originalName: 
-    pivot: {x: 0.49142855, y: -0.6160714}
+    pivot: {x: 0.5147168, y: -0.015651703}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -603,7 +603,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 618}
   - name: dodge atk 3x_Frame_12
     originalName: 
-    pivot: {x: 0.55555564, y: -0.7826087}
+    pivot: {x: 0.48008218, y: -0.029513007}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -623,7 +623,7 @@ ScriptedImporter:
     uvTransform: {x: 955, y: 4}
   - name: dodge atk 3x_Frame_13
     originalName: 
-    pivot: {x: 0.55555564, y: -0.7826087}
+    pivot: {x: 0.59329337, y: 0.0037121307}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -643,7 +643,7 @@ ScriptedImporter:
     uvTransform: {x: 990, y: 4}
   - name: dodge atk 3x_Frame_14
     originalName: 
-    pivot: {x: 0.49999997, y: -0.81609195}
+    pivot: {x: 0.46816063, y: 0.038841512}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -663,7 +663,7 @@ ScriptedImporter:
     uvTransform: {x: 954, y: 377}
   - name: dodge atk 3x_Frame_15
     originalName: 
-    pivot: {x: 0.49999997, y: -0.81609195}
+    pivot: {x: 0.5318413, y: 0.027130477}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -683,7 +683,7 @@ ScriptedImporter:
     uvTransform: {x: 954, y: 254}
   - name: dodge atk 3x_Frame_16
     originalName: 
-    pivot: {x: 0.49999997, y: -0.027649771}
+    pivot: {x: 0.59552145, y: 0.0005220334}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -703,7 +703,7 @@ ScriptedImporter:
     uvTransform: {x: 168, y: 800}
   - name: dodge atk 3x_Frame_17
     originalName: 
-    pivot: {x: 0.50000006, y: -0.16582915}
+    pivot: {x: 0.4999991, y: 0.01337314}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -723,7 +723,7 @@ ScriptedImporter:
     uvTransform: {x: 369, y: 748}
   - name: dodge atk 3x_Frame_33
     originalName: 
-    pivot: {x: 0.42857146, y: -1.38}
+    pivot: {x: 0.49095184, y: 0.046451416}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -743,7 +743,7 @@ ScriptedImporter:
     uvTransform: {x: 546, y: 530}
   - name: dodge atk 3x_Frame_34
     originalName: 
-    pivot: {x: 0.42553183, y: -1.3529412}
+    pivot: {x: 0.53392386, y: 0.0055832206}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -763,7 +763,7 @@ ScriptedImporter:
     uvTransform: {x: 955, y: 129}
   - name: dodge atk 3x_Frame_35
     originalName: 
-    pivot: {x: 0.4418605, y: -1.3018868}
+    pivot: {x: 0.5129451, y: -0.01385095}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -783,7 +783,7 @@ ScriptedImporter:
     uvTransform: {x: 955, y: 188}
   - name: dodge atk 3x_Frame_36
     originalName: 
-    pivot: {x: 0.4418605, y: -1.3018868}
+    pivot: {x: 0.48925072, y: -0.013851525}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -803,7 +803,7 @@ ScriptedImporter:
     uvTransform: {x: 927, y: 498}
   - name: dodge atk 3x_Frame_18
     originalName: 
-    pivot: {x: 0.5, y: -0.13692947}
+    pivot: {x: 0.5164342, y: -0.001640858}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -823,7 +823,7 @@ ScriptedImporter:
     uvTransform: {x: 744, y: 738}
   - name: dodge atk 3x_Frame_10
     originalName: 
-    pivot: {x: 0.61403507, y: -0.76086956}
+    pivot: {x: 0.542534, y: 0.0069920635}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -843,7 +843,7 @@ ScriptedImporter:
     uvTransform: {x: 546, y: 384}
   - name: dodge atk 3x_Frame_11
     originalName: 
-    pivot: {x: 0.625, y: -0.77372265}
+    pivot: {x: 0.49763817, y: 0.0071812095}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:

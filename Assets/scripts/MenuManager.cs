@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,53 +9,79 @@ public class MenuManager : MonoBehaviour
     public GameObject creditsCanvas;
     public GameObject soundOptionsCanvas;
 
+    private GameObject currentCanvas;
+    private GameObject previousCanvas;
+
     [Header("Scene")]
     public string gameSceneName = "Level-1";
- 
-    void Start()
+
+    [SerializeField] private AudioClip menuMusic;
+
+    private void Start()
     {
         ShowMainMenu();
-    }
 
-    // ------------------------
-    // BOTONES PRINCIPALES
-    // ------------------------
+        if (AudioManager.Instance != null && menuMusic != null)
+        {
+            AudioManager.Instance.PlayMusic(menuMusic);
+        }
+    }
 
     public void OnStartButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(gameSceneName);
     }
 
     public void OnOptionsButton()
     {
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(true);
-        creditsCanvas.SetActive(false);
+        OpenCanvas(optionsCanvas);
     }
 
     public void OnCreditsButton()
     {
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
-        creditsCanvas.SetActive(true);
+        OpenCanvas(creditsCanvas);
+    }
+
+    public void OnSoundButton()
+    {
+        OpenCanvas(soundOptionsCanvas);
     }
 
     public void OnExitButton()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
-        #endif
+#endif
     }
-
-    // ------------------------
-    // VOLVER AL MENÚ
-    // ------------------------
 
     public void OnBackButton()
     {
-        ShowMainMenu();
+        if (previousCanvas == null)
+        {
+            ShowMainMenu();
+            return;
+        }
+
+        currentCanvas.SetActive(false);
+        previousCanvas.SetActive(true);
+
+        currentCanvas = previousCanvas;
+        previousCanvas = mainMenuCanvas;
+    }
+
+    private void OpenCanvas(GameObject newCanvas)
+    {
+        previousCanvas = currentCanvas;
+
+        if (currentCanvas != null)
+        {
+            currentCanvas.SetActive(false);
+        }
+
+        currentCanvas = newCanvas;
+        currentCanvas.SetActive(true);
     }
 
     private void ShowMainMenu()
@@ -65,20 +89,9 @@ public class MenuManager : MonoBehaviour
         mainMenuCanvas.SetActive(true);
         optionsCanvas.SetActive(false);
         creditsCanvas.SetActive(false);
-    }
+        soundOptionsCanvas.SetActive(false);
 
-    //------------------------
-    //BOTONES DE OPCIONES
-    //------------------------
-
-    public void onSoundButton()
-    {
-        
-        //abrir el menú de opciones de sonido
-        mainMenuCanvas.SetActive(false);
-        optionsCanvas.SetActive(false);
-        soundOptionsCanvas.SetActive(true);
-
-
+        currentCanvas = mainMenuCanvas;
+        previousCanvas = null;
     }
 }

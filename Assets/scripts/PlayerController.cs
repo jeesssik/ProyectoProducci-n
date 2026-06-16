@@ -66,12 +66,13 @@ public class PlayerController : MonoBehaviour
 
     [Header("Combate")]
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackPointOffsetX = 0.5f;
     [SerializeField] private float attackCooldown = 0.45f;
+    [Tooltip("Tecla dedicada para ejecutar el ataque del jugador.")]
+    [SerializeField] private KeyCode attackKey = KeyCode.J; // <-- CAMBIO: Tecla configurable desde el Inspector (J por defecto)
 
     [Header("Vida")]
     [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int healAmount = 1;
-    [SerializeField] private float healCooldown = 1.5f;
     [SerializeField] private float invulnerabilityTime = 1f;
 
     [Header("Knockback")]
@@ -83,8 +84,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private GameOverManager gameOverManager;
 
+    [SerializeField] private GameObject attackHitbox;
 
     [SerializeField] private PlayerHealthUI playerHealthUI;
+    private bool isFacingRight = true;
+    private static readonly ContactPoint2D[] ContactScratch = new ContactPoint2D[24];
     private bool isKnockbacked = false;
 
     private Rigidbody2D rb;
@@ -94,8 +98,8 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private bool isGrounded;
+    private bool wasGroundedLastFrame; 
     private bool canAttack = true;
-    private bool canHeal = true;
     private bool isDead = false;
     private bool isInvulnerable = false;
 
@@ -108,6 +112,8 @@ public class PlayerController : MonoBehaviour
     private float _jumpBufferTimer;
     private bool _isGroundedForJump;
 
+    public bool IsAttackDamageActive { get; private set; }
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -116,14 +122,16 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
         currentHealth = maxHealth;
         _baseGravityScale = rb.gravityScale;
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
+        }
 
         if (playerHealthUI != null)
         {
             playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
         }
     }
-
-
 
     private void Update()
     {
@@ -134,7 +142,6 @@ public class PlayerController : MonoBehaviour
         UpdateJumpTimers();
         HandleJump();
         HandleAttack();
-        HandleHeal();
         FlipCharacter();
         UpdateAnimator();
     }
@@ -143,18 +150,19 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead || isKnockbacked) return;
 
+        wasGroundedLastFrame = isGrounded;
+
         Move();
         ApplyBetterJumpPhysics();
+
+        CheckGround(); 
     }
 
     public void ApplyKnockback(Vector2 enemyPosition)
     {
         isKnockbacked = true;
-
         float direction = transform.position.x < enemyPosition.x ? -1f : 1f;
-
         rb.velocity = new Vector2(direction * knockbackForceX, knockbackForceY);
-
         Invoke(nameof(EndKnockback), knockbackDuration);
     }
 
@@ -162,20 +170,40 @@ public class PlayerController : MonoBehaviour
     {
         isKnockbacked = false;
     }
+
+    private void UpdateAttackHitboxPosition()
+    {
+        if (attackHitbox == null) return;
+
+        bool attackToRight = !isFacingRight;
+        Vector3 hitboxPos = attackHitbox.transform.localPosition;
+
+        hitboxPos.x = attackToRight
+            ? Mathf.Abs(hitboxPos.x)
+            : -Mathf.Abs(hitboxPos.x);
+
+        attackHitbox.transform.localPosition = hitboxPos;
+
+        BoxCollider2D box = attackHitbox.GetComponent<BoxCollider2D>();
+        if (box != null)
+        {
+            Vector2 offset = box.offset;
+            offset.x = attackToRight
+                ? -Mathf.Abs(offset.x)
+                : Mathf.Abs(offset.x);
+            box.offset = offset;
+        }
+    }
+
     private void ReadInput()
     {
         horizontalInput = 0f;
-        // Input Manager axis (default Unity)
         try
         {
             horizontalInput = Input.GetAxisRaw("Horizontal");
         }
-        catch
-        {
-            // ignore, fallback below
-        }
+        catch { }
 
-        // Keyboard fallback (in case axes are missing / misconfigured)
         if (Mathf.Abs(horizontalInput) < 0.01f)
         {
             bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
@@ -188,7 +216,6 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         float targetSpeed = horizontalInput * maxRunSpeed;
-
         float accel = groundAcceleration;
         float decel = groundDeceleration;
 
@@ -208,7 +235,6 @@ public class PlayerController : MonoBehaviour
 
     private void HandleJump()
     {
-        // Buffer de salto
         if (GetJumpDown())
         {
             _jumpBufferTimer = jumpBufferTime;
@@ -217,7 +243,6 @@ public class PlayerController : MonoBehaviour
         bool canUseCoyote = _coyoteTimer > 0f;
         bool bufferedJump = _jumpBufferTimer > 0f;
 
-        // IMPORTANT: only allow jumps from "real ground below" (prevents wall/side re-jumps).
         if (bufferedJump && (_isGroundedForJump || canUseCoyote))
         {
             float bonus = 0f;
@@ -230,17 +255,20 @@ public class PlayerController : MonoBehaviour
 
             float initialVy = Mathf.Min(jumpForce + bonus, maxInitialJumpVelocity);
             rb.velocity = new Vector2(rb.velocity.x, initialVy);
-            // Animator controller used in the scene expects this parameter to enter jump states.
+            
             animator.SetTrigger("Jump");
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerJump);
+            }
 
             _jumpHoldTimer = jumpHoldTime;
             _isHoldingJump = true;
-
             _coyoteTimer = 0f;
             _jumpBufferTimer = 0f;
         }
 
-        // Soltar jump temprano => salto más corto (si todavía va subiendo)
         if (GetJumpUp())
         {
             _isHoldingJump = false;
@@ -275,7 +303,6 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyBetterJumpPhysics()
     {
-        // Sostener el salto (mientras sube y se mantiene apretado)
         if (_isHoldingJump && _jumpHoldTimer > 0f && rb.velocity.y > 0f)
         {
             if (maxUpwardVelocityWhileHolding <= 0f || rb.velocity.y < maxUpwardVelocityWhileHolding)
@@ -283,7 +310,6 @@ public class PlayerController : MonoBehaviour
             _jumpHoldTimer -= Time.fixedDeltaTime;
         }
 
-        // Ajuste de gravedad para mejor "feel"
         float grav = _baseGravityScale;
 
         if (rb.velocity.y < -0.01f)
@@ -299,37 +325,67 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && rb.velocity.y <= 0.01f)
         {
-            // reseteo para el próximo salto
             _jumpHoldTimer = 0f;
             _isHoldingJump = false;
             rb.gravityScale = _baseGravityScale;
         }
     }
 
+    // CAMBIO CLAVE: Cambiada la detección de mouse ("Fire1") a la tecla asignada del teclado
     private void HandleAttack()
     {
-        if (Input.GetButtonDown("Fire1") && canAttack)
+        if (Input.GetKeyDown(attackKey) && canAttack)
         {
             canAttack = false;
+
+            // ELIMINADO: FaceMouseDirection(); ya no determina hacia dónde mira el jugador en base al cursor.
+            // Ahora atacará directamente hacia donde está orientado por su movimiento horizontal.
+
             animator.SetTrigger("Attack");
 
-            Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(
-                attackPoint.position,
-                attackRadius,
-                enemyLayer
-            );
-
-            foreach (Collider2D enemy in enemiesHit)
+            if (AudioManager.Instance != null)
             {
-                EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
-                if (enemyController != null)
-                {
-                    enemyController.TakeDamage(attackDamage);
-                }
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerAttack, 0.1f);
             }
 
             Invoke(nameof(ResetAttack), attackCooldown);
+        }
+    }
+
+    private void Start()
+    {
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
+        }
+    }
+
+    public void EnableAttackHitbox()
+    {
+        IsAttackDamageActive = true;
+
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(true);
+            PlayerAttackHitbox hitboxScript = attackHitbox.GetComponent<PlayerAttackHitbox>();
+
+            if (hitboxScript != null)
+            {
+                hitboxScript.HitEverythingInsideNow();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("AttackHitbox no está asignado en el Inspector del Player");
+        }
+    }
+
+    public void DisableAttackHitbox()
+    {
+        IsAttackDamageActive = false;
+        if (attackHitbox != null)
+        {
+            attackHitbox.SetActive(false);
         }
     }
 
@@ -344,36 +400,27 @@ public class PlayerController : MonoBehaviour
         foreach (Collider2D enemy in enemiesHit)
         {
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-
             if (enemyController != null)
             {
                 enemyController.TakeDamage(1);
             }
         }
     }
+
     public bool IsDead()
     {
         return isDead;
     }
+
     private void ResetAttack()
     {
         canAttack = true;
     }
 
-    private void HandleHeal()
+    public void RestoreFullHealth()
     {
-        if (Input.GetKeyDown(KeyCode.E) && canHeal && currentHealth < maxHealth)
-        {
-            Heal();
-        }
-    }
-
-    private void Heal()
-    {
-        canHeal = false;
-
-        currentHealth += healAmount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        if (isDead) return;
+        currentHealth = maxHealth;
 
         if (playerHealthUI != null)
         {
@@ -381,13 +428,6 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetTrigger("Heal");
-
-        Invoke(nameof(ResetHeal), healCooldown);
-    }
-
-    private void ResetHeal()
-    {
-        canHeal = true;
     }
 
     private void CheckGround()
@@ -399,18 +439,36 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        // Prefer contact-based grounding: works great with Tilemap + Composite and from frame 1.
         if (capsule != null && IsGroundedByContacts())
         {
             isGrounded = true;
             _isGroundedForJump = IsGroundedByCastDown();
+            CheckAterrizaje(); 
             return;
         }
 
-        // Fallback: casts from GroundCheck.
         _isGroundedForJump = IsGroundedByCastDown();
-
         isGrounded = _isGroundedForJump;
+        CheckAterrizaje(); 
+    }
+
+    private void CheckAterrizaje()
+    {
+        if (!wasGroundedLastFrame && isGrounded && rb.velocity.y <= 0.1f)
+        {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerLand, 0.5f);
+            }
+        }
+    }
+
+    public void PlayFootstepSFX()
+    {
+        if (isGrounded && !isDead && AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerWalkStep, 0.05f);
+        }
     }
 
     private bool IgnoringSelfCollider(Collider2D c)
@@ -429,15 +487,11 @@ public class PlayerController : MonoBehaviour
     private bool IsValidGroundHit(RaycastHit2D hit, float minNormalY)
     {
         if (!IsStandingOnCollider(hit.collider)) return false;
-        // If you touch a vertical wall, normal.y will be ~0. Only treat mostly-up normals as ground.
         return hit.normal.y >= minNormalY;
     }
 
-    private static readonly ContactPoint2D[] ContactScratch = new ContactPoint2D[24];
-
     private bool IsGroundedByContacts()
     {
-        // Only consider contacts against groundLayer, and only normals that point upwards.
         ContactFilter2D filter = new ContactFilter2D
         {
             useLayerMask = true,
@@ -448,11 +502,10 @@ public class PlayerController : MonoBehaviour
         int count = capsule.GetContacts(filter, ContactScratch);
         if (count <= 0) return false;
 
-        // Stricter threshold to avoid "side contact counts as ground".
         const float minGroundNormalY = 0.75f;
-        const float maxGroundNormalX = 0.35f; // must be mostly vertical
+        const float maxGroundNormalX = 0.35f;
         float bottomY = capsule.bounds.min.y;
-        const float bottomBand = 0.08f; // only accept contacts near the feet
+        const float bottomBand = 0.08f;
 
         for (int i = 0; i < count; i++)
         {
@@ -468,10 +521,9 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGroundedByCastDown()
     {
-        // Use the feet position based on the capsule bounds, not the GroundCheck (which may be mispositioned).
         Vector2 origin;
         float radius;
-        float castDistance = Mathf.Max(0.12f, groundProbeRayDistance); // bigger default so it works from frame 1
+        float castDistance = Mathf.Max(0.12f, groundProbeRayDistance);
 
         if (capsule != null)
         {
@@ -485,7 +537,6 @@ public class PlayerController : MonoBehaviour
             radius = groundCheckRadius;
         }
 
-        // Less strict than contacts: we mainly want "something under the feet".
         const float minGroundNormalY = 0.6f;
         const float maxGroundNormalX = 0.6f;
 
@@ -526,16 +577,49 @@ public class PlayerController : MonoBehaviour
         return tm != null;
     }
 
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+        Vector3 attackPos = attackPoint.localPosition;
+        attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
+        attackPoint.localPosition = attackPos;
+    }
+
     private void FlipCharacter()
     {
         if (horizontalInput > 0)
         {
-            spriteRenderer.flipX = true;
+            SetFacingDirection(false);
         }
         else if (horizontalInput < 0)
         {
-            spriteRenderer.flipX = false;
+            SetFacingDirection(true);
         }
+    }
+
+    // ELIMINADA: FaceMouseDirection() para limpiar código obsoleto de control de mouse.
+
+    private void SetFacingDirection(bool faceRight)
+    {
+        if (isFacingRight == faceRight) return;
+
+        isFacingRight = faceRight;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+        Vector3 attackPos = attackPoint.localPosition;
+        attackPos.x = isFacingRight ? Mathf.Abs(attackPos.x) : -Mathf.Abs(attackPos.x);
+        attackPoint.localPosition = attackPos;
+
+        if (attackHitbox != null)
+        {
+            Vector3 hitboxPos = attackHitbox.transform.localPosition;
+            hitboxPos.x = isFacingRight ? -Mathf.Abs(hitboxPos.x) : Mathf.Abs(hitboxPos.x);
+            attackHitbox.transform.localPosition = hitboxPos;
+        }
+
+        UpdateAttackHitboxPosition();
     }
 
     public void TakeDamage(int damage)
@@ -550,7 +634,6 @@ public class PlayerController : MonoBehaviour
         }
         Debug.Log("Player recibió daño. Vida actual: " + currentHealth);
 
-
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -559,6 +642,12 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetTrigger("Hurt");
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerHurt);
+            }
+
             StartCoroutine(InvulnerabilityCoroutine());
         }
     }
@@ -566,9 +655,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator InvulnerabilityCoroutine()
     {
         isInvulnerable = true;
-
         yield return new WaitForSeconds(invulnerabilityTime);
-
         isInvulnerable = false;
     }
 
@@ -576,8 +663,12 @@ public class PlayerController : MonoBehaviour
     {
         isDead = true;
         rb.velocity = Vector2.zero;
-
         animator.SetTrigger("Death");
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDeath);
+        }
 
         Debug.Log("Player murió");
 
@@ -594,7 +685,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShowGameOverAfterDelay()
     {
         yield return new WaitForSeconds(1.2f);
-
         gameOverManager.ShowGameOver();
     }
 
