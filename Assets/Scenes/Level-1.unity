@@ -1246,7 +1246,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 515899559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862753220}
+        m_TargetAssemblyTypeName: WinManager, Assembly-CSharp
+        m_MethodName: GoToNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &515899559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,7 +2125,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 12
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2353,7 +2365,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 15
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2750,8 +2762,8 @@ Tilemap:
     m_Data: {fileID: 515365770, guid: 0dc3e28a9e72af24db425f51bb6cf985, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -1897500194, guid: 0dc3e28a9e72af24db425f51bb6cf985, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 52322235, guid: 0dc3e28a9e72af24db425f51bb6cf985, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: 1954343013, guid: 0dc3e28a9e72af24db425f51bb6cf985, type: 3}
   - m_RefCount: 1
@@ -3825,7 +3837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1490127833}
   mainMenuSceneName: Menu
-  nextLevelSceneName: 
+  nextLevelSceneName: Level-2
 --- !u!1 &892719620
 GameObject:
   m_ObjectHideFlags: 0
@@ -5282,6 +5294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   damageCooldown: 1
+  damageFromPlayerAttack: 2
+  playerAttackTag: PlayerAttack
 --- !u!61 &1599026127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5848,6 +5862,8 @@ MonoBehaviour:
   attackCooldown: 1.2
   spriteRenderer: {fileID: 1945765732}
   animator: {fileID: 1945765734}
+  maxHealth: 6
+  lootPrefabFallback: {fileID: 4676018750155977410, guid: 561487c102bd68b44a43398cd31a0b32, type: 3}
 --- !u!70 &1945765730
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
