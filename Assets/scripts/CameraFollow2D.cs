@@ -241,7 +241,9 @@ public class CameraFollow2D : MonoBehaviour
 {
     public enum VerticalFollowMode
     {
+        /// <summary>Sigue al jugador arriba y abajo.</summary>
         Full,
+        /// <summary>Solo sube con el jugador; no baja si cae (estilo clásico de plataformas).</summary>
         UpOnly
     }
 
@@ -256,14 +258,18 @@ public class CameraFollow2D : MonoBehaviour
     [SerializeField] private Transform leftBound;
     [SerializeField] private Transform rightBound;
     [SerializeField] private Transform topBound;
+    [SerializeField] private Transform bottomBound;
     [SerializeField] private BoxCollider2D leftBoundBox;
     [SerializeField] private BoxCollider2D rightBoundBox;
+    [SerializeField] private BoxCollider2D bottomBoundBox;
+    [Tooltip("Collider del borde superior (Top suele usar BoxCollider 3D).")]
+    [SerializeField] private BoxCollider topBoundCollider;
     [SerializeField] private bool useInnerColliderEdgeAsLimit = true;
 
     [Tooltip("Si está activado, la cámara NO se mueve en X hasta que el jugador cruce por primera vez el centro horizontal de la pantalla.")]
     [SerializeField] private bool deferHorizontalUntilFirstCenterCross = true;
 
-    [SerializeField] private VerticalFollowMode verticalMode = VerticalFollowMode.UpOnly;
+    [SerializeField] private VerticalFollowMode verticalMode = VerticalFollowMode.Full;
 
     [Tooltip("Tiempo suave horizontal (solo eje X).")]
     [SerializeField] private float horizontalSmoothTime = 0.12f;
@@ -285,6 +291,8 @@ public class CameraFollow2D : MonoBehaviour
     // Guardamos los límites calculados para usarlos de forma segura en las validaciones de destrabe
     private float? _calculatedLeftLimit;
     private float? _calculatedRightLimit;
+    private float? _calculatedMinCameraY;
+    private float? _calculatedMaxCameraY;
 
     private void Awake()
     {
@@ -295,11 +303,13 @@ public class CameraFollow2D : MonoBehaviour
         }
 
         ResetSmoothState();
+        TryAutoWireBorderReferences();
     }
 
     private void Start()
     {
         InitHorizontalDeferState();
+        RefreshVerticalLimits();
     }
 
     private void OnEnable()
@@ -396,10 +406,13 @@ public class CameraFollow2D : MonoBehaviour
             if (_calculatedLeftLimit.HasValue) newX = Mathf.Max(newX, _calculatedLeftLimit.Value);
             if (_calculatedRightLimit.HasValue) newX = Mathf.Min(newX, _calculatedRightLimit.Value);
 
-            if (topBound != null)
-                newY = Mathf.Min(newY, topBound.position.y - halfH);
+            RefreshVerticalLimits();
+            if (_calculatedMinCameraY.HasValue)
+                newY = Mathf.Max(newY, _calculatedMinCameraY.Value);
+            if (_calculatedMaxCameraY.HasValue)
+                newY = Mathf.Min(newY, _calculatedMaxCameraY.Value);
 
-            const float edgeEpsilon = 0.01f; // Aumentado levemente para un margen de detección física más seguro
+            const float edgeEpsilon = 0.01f;
             if (_horizontalFollowUnlocked && deferHorizontalUntilFirstCenterCross)
             {
                 bool pinnedLeft = _calculatedLeftLimit.HasValue && Mathf.Abs(newX - _calculatedLeftLimit.Value) <= edgeEpsilon;
@@ -418,7 +431,10 @@ public class CameraFollow2D : MonoBehaviour
         {
             if (leftBound != null) newX = Mathf.Max(newX, leftBound.position.x);
             if (rightBound != null) newX = Mathf.Min(newX, rightBound.position.x);
-            if (topBound != null) newY = Mathf.Min(newY, topBound.position.y);
+
+            RefreshVerticalLimits();
+            if (_calculatedMinCameraY.HasValue) newY = Mathf.Max(newY, _calculatedMinCameraY.Value);
+            if (_calculatedMaxCameraY.HasValue) newY = Mathf.Min(newY, _calculatedMaxCameraY.Value);
         }
 
         transform.position = new Vector3(newX, newY, target.position.z + offset.z);
@@ -448,5 +464,100 @@ public class CameraFollow2D : MonoBehaviour
             _horizontalFollowUnlocked = true;
             _velX = 0f;
         }
+    }
+
+    private float? GetTopInnerEdgeY()
+    {
+        if (topBoundCollider != null)
+            return useInnerColliderEdgeAsLimit
+                ? topBoundCollider.bounds.min.y
+                : topBoundCollider.bounds.max.y;
+
+        if (topBound != null)
+            return topBound.position.y;
+
+        return null;
+    }
+
+    private float? GetBottomInnerEdgeY()
+    {
+        float? edge = null;
+
+        if (bottomBoundBox != null)
+        {
+            edge = useInnerColliderEdgeAsLimit
+                ? bottomBoundBox.bounds.max.y
+                : bottomBoundBox.bounds.min.y;
+        }
+
+        // El pivot de Bottom suele marcar la línea visible; el collider puede tener offset en X/Y.
+        if (bottomBound != null)
+        {
+            float pivotY = bottomBound.position.y;
+            edge = edge.HasValue ? Mathf.Max(edge.Value, pivotY) : pivotY;
+        }
+
+        return edge;
+    }
+
+    private void RefreshVerticalLimits()
+    {
+        Camera cam = GetComponent<Camera>();
+        if (cam == null || !cam.orthographic)
+        {
+            _calculatedMinCameraY = null;
+            _calculatedMaxCameraY = null;
+            return;
+        }
+
+        float halfH = cam.orthographicSize;
+        float? bottomEdge = GetBottomInnerEdgeY();
+        float? topEdge = GetTopInnerEdgeY();
+
+        _calculatedMinCameraY = bottomEdge.HasValue ? bottomEdge.Value + halfH : null;
+        _calculatedMaxCameraY = topEdge.HasValue ? topEdge.Value - halfH : null;
+
+        if (_calculatedMinCameraY.HasValue && _calculatedMaxCameraY.HasValue
+            && _calculatedMinCameraY.Value > _calculatedMaxCameraY.Value)
+        {
+            // El viewport es más alto que Borders: centrar sin bloquear el seguimiento horizontal.
+            float centerY = (bottomEdge.Value + topEdge.Value) * 0.5f;
+            _calculatedMinCameraY = centerY;
+            _calculatedMaxCameraY = centerY;
+        }
+    }
+
+    private void TryAutoWireBorderReferences()
+    {
+        GameObject bordersGo = GameObject.Find("Borders");
+        if (bordersGo == null)
+            return;
+
+        Transform borders = bordersGo.transform;
+
+        if (bottomBound == null)
+        {
+            Transform bottom = borders.Find("Bottom");
+            if (bottom != null)
+            {
+                bottomBound = bottom;
+                if (bottomBoundBox == null)
+                    bottomBoundBox = bottom.GetComponent<BoxCollider2D>();
+            }
+        }
+
+        if (topBoundCollider == null)
+        {
+            Transform top = topBound != null ? topBound : borders.Find("Top");
+            if (top != null)
+            {
+                if (topBound == null)
+                    topBound = top;
+                topBoundCollider = top.GetComponent<BoxCollider>();
+            }
+        }
+
+        if (bottomBoundBox == null && bottomBound != null)
+            bottomBoundBox = bottomBound.GetComponent<BoxCollider2D>();
     }
 }

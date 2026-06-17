@@ -11014,11 +11014,14 @@ MonoBehaviour:
   leftBound: {fileID: 892719621}
   rightBound: {fileID: 161543473}
   topBound: {fileID: 849146006}
+  bottomBound: {fileID: 1570798946}
   leftBoundBox: {fileID: 892719622}
   rightBoundBox: {fileID: 161543474}
+  bottomBoundBox: {fileID: 1570798947}
+  topBoundCollider: {fileID: 849146007}
   useInnerColliderEdgeAsLimit: 1
   deferHorizontalUntilFirstCenterCross: 1
-  verticalMode: 1
+  verticalMode: 0
   horizontalSmoothTime: 0.12
   verticalSmoothTimeUp: 0.18
   verticalSmoothTimeDown: 0.2
@@ -16303,7 +16306,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 70.69635, y: -6.5066247}
+  m_Offset: {x: 70.69635, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
