@@ -3,6 +3,12 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class WinRunePickup : MonoBehaviour
 {
+    [Header("Runa")]
+    [SerializeField] private RuneType runeType = RuneType.Yellow;
+
+    [Tooltip("Si está activo, recoger esta runa muestra la pantalla de victoria del nivel.")]
+    [SerializeField] private bool triggersLevelWin = true;
+
     [Header("Interacción")]
     [SerializeField] private KeyCode pickupKey = KeyCode.Q;
     [SerializeField] private string playerTag = "Player";
@@ -22,9 +28,6 @@ public class WinRunePickup : MonoBehaviour
 
         if (winManager == null)
             winManager = FindFirstObjectByType<WinManager>();
-
-        if (winManager == null)
-            winManager = new GameObject("WinManager").AddComponent<WinManager>();
     }
 
     private void Update()
@@ -49,17 +52,33 @@ public class WinRunePickup : MonoBehaviour
             if (player == null || player.IsDead())
                 continue;
 
-            PickUp();
+            PickUp(player);
             return;
         }
     }
 
-    private void PickUp()
+    private void PickUp(PlayerController player)
     {
+        if (!RuneProgress.IsUnlocked(runeType))
+            RuneProgress.Unlock(runeType);
+
+        PlayerRuneAbilities abilities = player.GetComponent<PlayerRuneAbilities>();
+        if (abilities != null)
+            abilities.RefreshFromProgress();
+
         if (disablePickedObject)
             gameObject.SetActive(false);
 
-        winManager.ShowWin();
+        if (triggersLevelWin)
+        {
+            if (winManager == null)
+                winManager = FindFirstObjectByType<WinManager>();
+
+            if (winManager == null)
+                winManager = new GameObject("WinManager").AddComponent<WinManager>();
+
+            winManager.ShowWin();
+        }
     }
 
     private void OnDrawGizmosSelected()

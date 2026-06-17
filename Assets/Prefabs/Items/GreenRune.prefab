@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 50
-  m_Sprite: {fileID: -202727845, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
+  m_Sprite: {fileID: -1425435744, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.17, y: 0.24}
+  m_Size: {x: 0.18, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,14 +99,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 810000012}
   frames:
-  - {fileID: -202727845, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 1643596328, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 1414620234, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 1097920387, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 2089865763, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 1765941848, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: 1759210546, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  - {fileID: -1436794438, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
+  - {fileID: -1425435744, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 118447420, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 449147687, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 604429989, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 1994064432, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 1660840408, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: -1364596740, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  - {fileID: 2055754064, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
   framesPerSecond: 10
 --- !u!1 &810000020
 GameObject:
@@ -182,12 +182,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 49
-  m_Sprite: {fileID: -202727845, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
-  m_Color: {r: 1, g: 0.88, b: 0.35, a: 0.55}
+  m_Sprite: {fileID: -1425435744, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  m_Color: {r: 0.45, g: 1, b: 0.55, a: 0.55}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.17, y: 0.24}
+  m_Size: {x: 0.18, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
   maxAlpha: 0.7
   minScaleMultiplier: 1.1
   maxScaleMultiplier: 1.35
---- !u!1 &4676018750155977410
+--- !u!1 &920000100
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 810000001}
   - component: {fileID: 1111267718923327898}
   m_Layer: 0
-  m_Name: WinRune
+  m_Name: GreenRune
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676018750155977410}
+  m_GameObject: {fileID: 920000100}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -255,7 +255,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676018750155977410}
+  m_GameObject: {fileID: 920000100}
   m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676018750155977410}
+  m_GameObject: {fileID: 920000100}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8f3e2d1c0b9a807162534435465768f, type: 3}
@@ -306,7 +306,7 @@ CapsuleCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676018750155977410}
+  m_GameObject: {fileID: 920000100}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -333,7 +333,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.17, y: 0.24}
+  m_Size: {x: 0.18, y: 0.23}
   m_Direction: 0
 --- !u!114 &1111267718923327898
 MonoBehaviour:
@@ -341,14 +341,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4676018750155977410}
+  m_GameObject: {fileID: 920000100}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d0b4f1a0fd1c7d4db0b5e3a3b7a1c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runeType: 0
-  triggersLevelWin: 1
+  runeType: 1
+  triggersLevelWin: 0
   pickupKey: 113
   playerTag: Player
   pickupRadius: 1.2

@@ -52,6 +52,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("Gravedad extra si soltás Jump temprano. >1 = salto más corto si soltás rápido.")]
     [SerializeField] private float jumpCutGravityMultiplier = 2.6f;
 
+    [Header("Doble salto (Runa verde)")]
+    [Tooltip("Impulso vertical del segundo salto en el aire.")]
+    [SerializeField] private float airJumpForce = 10f;
+
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.15f;
@@ -92,6 +96,7 @@ public class PlayerController : MonoBehaviour
     private bool isKnockbacked = false;
 
     private Rigidbody2D rb;
+    private PlayerRuneAbilities _runeAbilities;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private CapsuleCollider2D capsule;
@@ -111,11 +116,16 @@ public class PlayerController : MonoBehaviour
     private float _coyoteTimer;
     private float _jumpBufferTimer;
     private bool _isGroundedForJump;
+    private int _jumpCount;
 
     public bool IsAttackDamageActive { get; private set; }
+    public bool IsGrounded => isGrounded;
+    public float HorizontalInput => horizontalInput;
+    public float FacingDirection => isFacingRight ? 1f : -1f;
 
     private void Awake()
     {
+        _runeAbilities = GetComponent<PlayerRuneAbilities>();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -149,6 +159,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead || isKnockbacked) return;
+
+        if (_runeAbilities != null && _runeAbilities.IsDashing)
+        {
+            wasGroundedLastFrame = isGrounded;
+            CheckGround();
+            return;
+        }
 
         wasGroundedLastFrame = isGrounded;
 
@@ -240,22 +257,33 @@ public class PlayerController : MonoBehaviour
             _jumpBufferTimer = jumpBufferTime;
         }
 
-        bool canUseCoyote = _coyoteTimer > 0f;
         bool bufferedJump = _jumpBufferTimer > 0f;
+        bool canUseCoyote = _coyoteTimer > 0f;
+        int maxJumps = RuneProgress.IsUnlocked(RuneType.Green) ? 2 : 1;
 
-        if (bufferedJump && (_isGroundedForJump || canUseCoyote))
+        bool wantsGroundJump = _jumpCount == 0 && (_isGroundedForJump || canUseCoyote);
+        bool wantsExtraAirJump = _jumpCount > 0 && !isGrounded;
+        bool wantsAirRecoveryJump = _jumpCount == 0 && !isGrounded && RuneProgress.IsUnlocked(RuneType.Green);
+
+        if (bufferedJump && _jumpCount < maxJumps && (wantsGroundJump || wantsExtraAirJump || wantsAirRecoveryJump))
         {
+            bool isAirJump = !wantsGroundJump;
             float bonus = 0f;
-            float speedAbs = Mathf.Abs(rb.velocity.x);
-            if (runJumpBonusAtSpeed > 0.01f)
+
+            if (!isAirJump)
             {
-                float t = Mathf.Clamp01(speedAbs / runJumpBonusAtSpeed);
-                bonus = runJumpBonus * t;
+                float speedAbs = Mathf.Abs(rb.velocity.x);
+                if (runJumpBonusAtSpeed > 0.01f)
+                {
+                    float t = Mathf.Clamp01(speedAbs / runJumpBonusAtSpeed);
+                    bonus = runJumpBonus * t;
+                }
             }
 
-            float initialVy = Mathf.Min(jumpForce + bonus, maxInitialJumpVelocity);
+            float baseForce = isAirJump ? airJumpForce : jumpForce;
+            float initialVy = Mathf.Min(baseForce + bonus, maxInitialJumpVelocity);
             rb.velocity = new Vector2(rb.velocity.x, initialVy);
-            
+
             animator.SetTrigger("Jump");
 
             if (AudioManager.Instance != null)
@@ -267,6 +295,7 @@ public class PlayerController : MonoBehaviour
             _isHoldingJump = true;
             _coyoteTimer = 0f;
             _jumpBufferTimer = 0f;
+            _jumpCount++;
         }
 
         if (GetJumpUp())
@@ -443,13 +472,20 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = true;
             _isGroundedForJump = IsGroundedByCastDown();
-            CheckAterrizaje(); 
+            CheckAterrizaje();
+
+            if (isGrounded && rb.velocity.y <= 0.01f)
+                _jumpCount = 0;
+
             return;
         }
 
         _isGroundedForJump = IsGroundedByCastDown();
         isGrounded = _isGroundedForJump;
-        CheckAterrizaje(); 
+        CheckAterrizaje();
+
+        if (isGrounded && rb.velocity.y <= 0.01f)
+            _jumpCount = 0;
     }
 
     private void CheckAterrizaje()

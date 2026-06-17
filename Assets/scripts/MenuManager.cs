@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnStartButton()
     {
+        RuneProgress.ResetForNewGame();
         SceneManager.LoadScene(gameSceneName);
     }
 

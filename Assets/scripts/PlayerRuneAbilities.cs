@@ -1,0 +1,249 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[DisallowMultipleComponent]
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
+public class PlayerRuneAbilities : MonoBehaviour
+{
+    [Header("Input")]
+    [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
+
+    [Header("Dash terrestre (Runa amarilla)")]
+    [SerializeField] private float groundDashSpeed = 14f;
+    [SerializeField] private float groundDashDuration = 0.16f;
+    [SerializeField] private float groundDashCooldown = 0.85f;
+
+    [Header("Dash colisiones")]
+    [SerializeField] private LayerMask dashObstacleLayers;
+    [SerializeField] private float dashCollisionSkin = 0.03f;
+
+    [Header("Dash daño")]
+    [SerializeField] private int dashDamage = 1;
+    [SerializeField] private LayerMask dashEnemyLayers;
+
+    [Header("UI")]
+    [SerializeField] private AbilityHUD abilityHud;
+
+    private PlayerController _player;
+    private Rigidbody2D _rb;
+    private CapsuleCollider2D _capsule;
+
+    private float _groundCooldownTimer;
+    private bool _isDashing;
+    private readonly HashSet<IDamageable> _dashDamaged = new HashSet<IDamageable>();
+    private readonly RaycastHit2D[] _castHits = new RaycastHit2D[12];
+    private static readonly Collider2D[] OverlapScratch = new Collider2D[12];
+
+    public bool IsDashing => _isDashing;
+
+    private void Awake()
+    {
+        _player = GetComponent<PlayerController>();
+        _rb = GetComponent<Rigidbody2D>();
+        _capsule = GetComponent<CapsuleCollider2D>();
+
+        if (abilityHud == null)
+            abilityHud = GetComponent<AbilityHUD>();
+
+        if (dashObstacleLayers.value == 0)
+            dashObstacleLayers = LayerMask.GetMask("Ground", "Default");
+
+        if (dashEnemyLayers.value == 0)
+            dashEnemyLayers = LayerMask.GetMask("Enemy", "EnemyHitBox");
+    }
+
+    private void OnEnable()
+    {
+        RuneProgress.OnRuneUnlocked += HandleRuneUnlocked;
+        RefreshFromProgress();
+    }
+
+    private void OnDisable()
+    {
+        RuneProgress.OnRuneUnlocked -= HandleRuneUnlocked;
+    }
+
+    private void Update()
+    {
+        if (_player.IsDead() || _isDashing)
+            return;
+
+        TickCooldowns();
+
+        if (!Input.GetKeyDown(dashKey))
+            return;
+
+        if (!_player.IsGrounded || !RuneProgress.IsUnlocked(RuneType.Yellow) || _groundCooldownTimer > 0f)
+            return;
+
+        if (!TryGetDashDirection(out float direction))
+            return;
+
+        StartCoroutine(DashRoutine(direction, groundDashSpeed, groundDashDuration, groundDashCooldown));
+    }
+
+    public void RefreshFromProgress()
+    {
+        if (abilityHud != null)
+            abilityHud.RefreshSlots();
+    }
+
+    private void HandleRuneUnlocked(RuneType rune)
+    {
+        RefreshFromProgress();
+    }
+
+    private static bool TryGetDashDirection(out float direction)
+    {
+        direction = 0f;
+
+        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+
+        if (left == right)
+            return false;
+
+        direction = left ? -1f : 1f;
+        return true;
+    }
+
+    private IEnumerator DashRoutine(float direction, float speed, float duration, float cooldown)
+    {
+        _isDashing = true;
+        _dashDamaged.Clear();
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash);
+
+        float timer = duration;
+        while (timer > 0f)
+        {
+            float step = speed * Time.fixedDeltaTime;
+            float moveDistance = step;
+
+            if (TryGetBlockedDistance(direction, step, out float blockedDistance))
+            {
+                moveDistance = blockedDistance;
+                if (moveDistance > 0f)
+                    ApplyDashStep(direction, moveDistance);
+
+                DealDashDamageAlongPath(direction, moveDistance);
+                break;
+            }
+
+            ApplyDashStep(direction, moveDistance);
+            DealDashDamageAlongPath(direction, moveDistance);
+
+            timer -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
+        }
+
+        float vy = _rb.velocity.y;
+        if (_player.IsGrounded)
+            vy = Mathf.Min(vy, 0f);
+
+        _rb.velocity = new Vector2(0f, vy);
+        _isDashing = false;
+        _groundCooldownTimer = cooldown;
+
+        if (abilityHud != null)
+            abilityHud.StartCooldown(RuneType.Yellow, cooldown);
+    }
+
+    private void ApplyDashStep(float direction, float distance)
+    {
+        Vector2 pos = _rb.position;
+        pos.x += direction * distance;
+        _rb.MovePosition(pos);
+
+        float vy = _rb.velocity.y;
+        if (_player.IsGrounded)
+            vy = Mathf.Min(vy, 0f);
+
+        _rb.velocity = new Vector2(0f, vy);
+    }
+
+    private bool TryGetBlockedDistance(float direction, float distance, out float allowedDistance)
+    {
+        allowedDistance = distance;
+
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(dashObstacleLayers);
+        filter.useTriggers = false;
+
+        int count = _rb.Cast(new Vector2(direction, 0f), filter, _castHits, distance + dashCollisionSkin);
+        if (count <= 0)
+            return false;
+
+        float minDistance = _castHits[0].distance;
+        for (int i = 1; i < count; i++)
+        {
+            if (_castHits[i].distance < minDistance)
+                minDistance = _castHits[i].distance;
+        }
+
+        allowedDistance = Mathf.Max(0f, minDistance - dashCollisionSkin);
+        return true;
+    }
+
+    private void DealDashDamageAlongPath(float direction, float distance)
+    {
+        if (distance <= 0f)
+            return;
+
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(dashEnemyLayers);
+        filter.useTriggers = true;
+
+        int count = _rb.Cast(new Vector2(direction, 0f), filter, _castHits, distance);
+        for (int i = 0; i < count; i++)
+        {
+            Collider2D col = _castHits[i].collider;
+            if (col == null)
+                continue;
+
+            TryDamageEnemy(col);
+        }
+
+        ContactFilter2D overlapFilter = new ContactFilter2D();
+        overlapFilter.SetLayerMask(dashEnemyLayers);
+        overlapFilter.useTriggers = true;
+
+        int overlapCount = Physics2D.OverlapCollider(_capsule, overlapFilter, OverlapScratch);
+        for (int i = 0; i < overlapCount; i++)
+        {
+            if (OverlapScratch[i] != null)
+                TryDamageEnemy(OverlapScratch[i]);
+        }
+    }
+
+    private void TryDamageEnemy(Collider2D col)
+    {
+        IDamageable damageable = col.GetComponentInParent<IDamageable>();
+        if (damageable == null || damageable is PlayerController)
+            return;
+
+        if (!_dashDamaged.Add(damageable))
+            return;
+
+        damageable.TakeDamage(dashDamage);
+    }
+
+    private void TickCooldowns()
+    {
+        if (_groundCooldownTimer > 0f)
+            _groundCooldownTimer -= Time.deltaTime;
+
+        if (abilityHud != null)
+        {
+            float normalized = RuneProgress.IsUnlocked(RuneType.Yellow) && groundDashCooldown > 0f
+                ? Mathf.Clamp01(_groundCooldownTimer / groundDashCooldown)
+                : 0f;
+
+            abilityHud.SetCooldownNormalized(RuneType.Yellow, normalized);
+        }
+    }
+}
