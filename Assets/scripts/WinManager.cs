@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,8 +13,8 @@ public class WinManager : MonoBehaviour
 
     [Header("Scenes")]
     [SerializeField] private string mainMenuSceneName = "Menu";
-    [Tooltip("Si está vacío, carga la siguiente escena por Build Index.")]
-    [SerializeField] private string nextLevelSceneName = "";
+    [Tooltip("Nombre de la escena del siguiente nivel (debe estar en Build Settings).")]
+    [SerializeField] private string nextLevelSceneName = "Level-2";
 
     private bool _shown;
     private bool _wired;
@@ -59,14 +60,49 @@ public class WinManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        if (!string.IsNullOrWhiteSpace(nextLevelSceneName))
+        string target = ResolveNextSceneName();
+        if (string.IsNullOrEmpty(target))
         {
-            SceneManager.LoadScene(nextLevelSceneName);
+            Debug.LogError("WinManager: no hay escena siguiente configurada.");
             return;
         }
 
-        int nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(nextIndex);
+        if (!IsSceneInBuildSettings(target))
+        {
+            Debug.LogError(
+                $"WinManager: la escena \"{target}\" no está en Build Settings. " +
+                "En Unity: File → Build Settings y añadí Level-2 a la lista.");
+            return;
+        }
+
+        SceneManager.LoadScene(target, LoadSceneMode.Single);
+    }
+
+    private string ResolveNextSceneName()
+    {
+        if (!string.IsNullOrWhiteSpace(nextLevelSceneName))
+            return nextLevelSceneName.Trim();
+
+        // Fallback si el Inspector quedó vacío (evita LoadScene por índice).
+        if (SceneManager.GetActiveScene().name == "Level-1")
+            return "Level-2";
+
+        return null;
+    }
+
+    private static bool IsSceneInBuildSettings(string sceneName)
+    {
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            string path = SceneUtility.GetScenePathByBuildIndex(i);
+            if (string.IsNullOrEmpty(path))
+                continue;
+
+            if (Path.GetFileNameWithoutExtension(path) == sceneName)
+                return true;
+        }
+
+        return false;
     }
 
     public void GoToMainMenu()

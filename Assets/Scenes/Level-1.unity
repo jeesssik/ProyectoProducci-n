@@ -2214,7 +2214,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 515899559}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 862753220}
+        m_TargetAssemblyTypeName: WinManager, Assembly-CSharp
+        m_MethodName: GoToNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &515899559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5404,7 +5416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1490127833}
   mainMenuSceneName: Menu
-  nextLevelSceneName: 
+  nextLevelSceneName: Level-2
 --- !u!1 &892719620
 GameObject:
   m_ObjectHideFlags: 0
@@ -9973,8 +9985,11 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1945765732}
   animator: {fileID: 1945765734}
   maxHealth: 6
+<<<<<<< HEAD
   healthBarFill: {fileID: 0}
   healthBarObject: {fileID: 1123989059}
+=======
+>>>>>>> edac72fd65fafdb1b9ac258859f8fe2878c41ff2
   lootPrefabFallback: {fileID: 4676018750155977410, guid: 561487c102bd68b44a43398cd31a0b32, type: 3}
 --- !u!70 &1945765730
 CapsuleCollider2D:
