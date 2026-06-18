@@ -10,11 +10,13 @@ public class EnemyDamageTrigger : MonoBehaviour
     private bool canDamage = true;
     private Animator enemyAnimator;
     private EnemyController _enemy;
+    private IDamageable _damageable;
 
     private void Awake()
     {
         enemyAnimator = GetComponentInParent<Animator>();
         _enemy = GetComponentInParent<EnemyController>();
+        _damageable = GetComponentInParent<IDamageable>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -24,6 +26,8 @@ public class EnemyDamageTrigger : MonoBehaviour
 
         if (_enemy != null)
             _enemy.TakeDamage(damageFromPlayerAttack);
+        else if (_damageable != null)
+            _damageable.TakeDamage(damageFromPlayerAttack);
     }
 
     private void OnTriggerStay2D(Collider2D other)
