@@ -7,12 +7,12 @@ public class EnemyLootDrop : MonoBehaviour
     [Tooltip("Suele subir un poco en Y para que la runa no nazca dentro del piso.")]
     [SerializeField] private Vector3 spawnOffset = new Vector3(0f, 0.35f, 0f);
 
-    public void DropLoot()
+    public bool DropLoot()
     {
         if (lootPrefab == null)
         {
             Debug.LogWarning($"{name}: no hay prefab de loot asignado en EnemyLootDrop.");
-            return;
+            return false;
         }
 
         Vector3 spawnPosition = transform.position + spawnOffset;
@@ -25,5 +25,7 @@ public class EnemyLootDrop : MonoBehaviour
             launch.BeginDrop(spawnPosition);
         else
             Debug.LogWarning($"{lootPrefab.name} no tiene RuneDropLaunch.");
+
+        return true;
     }
 }

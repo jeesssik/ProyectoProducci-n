@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
     public bool IsGrounded => isGrounded;
     public float HorizontalInput => horizontalInput;
     public float FacingDirection => isFacingRight ? 1f : -1f;
+    public bool IsRuneDodgeInvulnerable { get; private set; }
 
     private void Awake()
     {
@@ -160,7 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead || isKnockbacked) return;
 
-        if (_runeAbilities != null && _runeAbilities.IsDashing)
+        if (_runeAbilities != null && _runeAbilities.IsInRuneMovement)
         {
             wasGroundedLastFrame = isGrounded;
             CheckGround();
@@ -658,9 +659,14 @@ public class PlayerController : MonoBehaviour
         UpdateAttackHitboxPosition();
     }
 
+    public void SetRuneDodgeInvulnerable(bool active)
+    {
+        IsRuneDodgeInvulnerable = active;
+    }
+
     public void TakeDamage(int damage)
     {
-        if (isDead || isInvulnerable) return;
+        if (isDead || isInvulnerable || IsRuneDodgeInvulnerable) return;
 
         currentHealth -= damage;
 

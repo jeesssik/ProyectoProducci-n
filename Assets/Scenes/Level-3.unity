@@ -595,7 +595,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 33.8633, y: 6.4255, z: 9.934103}
-  m_LocalScale: {x: 8.426656, y: 9.743025, z: 1.4881158}
+  m_LocalScale: {x: 88.46875, y: 10.4375, z: 1.4881158}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1840622145}
@@ -673,12 +673,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc08f0cb3dd20624a9d562d10f62c251, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01d4eff544d32d042b19713f0f938433, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.84, y: 2.72}
+  m_Size: {x: 0.32, y: 2.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1443,7 +1443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &192162278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06ce6b91fabe7a48b478b271a8e0e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 920000100, guid: d4e5f6a7b8c9012345678abcdef01234, type: 3}
+  lootPrefab: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
   spawnOffset: {x: 0, y: 0.35, z: 0}
 --- !u!95 &192162279
 Animator:
@@ -1508,7 +1508,7 @@ MonoBehaviour:
   maxHealth: 6
   healthBarFill: {fileID: 0}
   healthBarObject: {fileID: 913449713}
-  lootPrefabFallback: {fileID: 0}
+  lootPrefabFallback: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
 --- !u!70 &192162281
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2086,7 +2086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &332074388
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2465,7 +2465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &408666257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10862,12 +10862,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145127a3024d25041bb958178c1e7ce6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c57ce796ca8ed6945b05b3035ae08ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.0279045, y: 3.1423817}
+  m_Size: {x: 0.32, y: 2.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 1
   m_WasSpriteAssigned: 1
@@ -10883,7 +10883,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 70.0701, y: 5.0671, z: 9.934103}
-  m_LocalScale: {x: 111.49867, y: 8.533711, z: 1.7699171}
+  m_LocalScale: {x: 501.75, y: 9.138393, z: 1.7699171}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1840622145}
@@ -11550,7 +11550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &837624267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12072,7 +12072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winCanvas: {fileID: 1490127833}
   mainMenuSceneName: Menu
-  nextLevelSceneName: Level-3
+  nextLevelSceneName: 
 --- !u!1 &874125438
 GameObject:
   m_ObjectHideFlags: 0
@@ -12645,7 +12645,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 65.2327, y: 1.7669, z: 9.934103}
-  m_LocalScale: {x: 6.363951, y: 5.889239, z: 0.905365}
+  m_LocalScale: {x: 14.544643, y: 6.3080356, z: 0.905365}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1840622145}
@@ -12707,12 +12707,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2fa57e56157d2c46a190122cb8fc084, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc09313e06e7b834ab5968b8408e0f0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.84, y: 2.72}
+  m_Size: {x: 2.24, y: 2.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -13014,7 +13014,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1078249363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14301,7 +14301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06ce6b91fabe7a48b478b271a8e0e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 0}
+  lootPrefab: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
   spawnOffset: {x: 0, y: 0.35, z: 0}
 --- !u!95 &1264100304
 Animator:
@@ -14353,7 +14353,7 @@ MonoBehaviour:
   maxHealth: 6
   healthBarFill: {fileID: 0}
   healthBarObject: {fileID: 1625179590}
-  lootPrefabFallback: {fileID: 0}
+  lootPrefabFallback: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
 --- !u!70 &1264100306
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -16808,7 +16808,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 5.3815, y: 6.6979, z: 9.934103}
-  m_LocalScale: {x: 8.561336, y: 9.898745, z: 1.5119}
+  m_LocalScale: {x: 35.3875, y: 10.4375, z: 1.5119}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1840622145}
@@ -16854,12 +16854,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc08f0cb3dd20624a9d562d10f62c251, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7c804158a692e4488f99c63277d1de2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.84, y: 2.72}
+  m_Size: {x: 0.8, y: 2.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -17034,7 +17034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06ce6b91fabe7a48b478b271a8e0e0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 920000100, guid: c3d4e5f6a7b8901234567890abcdef12, type: 3}
+  lootPrefab: {fileID: 0}
   spawnOffset: {x: 0, y: 0.35, z: 0}
 --- !u!95 &1759953601
 Animator:
@@ -17083,10 +17083,11 @@ MonoBehaviour:
   attackCooldown: 1.2
   spriteRenderer: {fileID: 1759953605}
   animator: {fileID: 1759953601}
-  maxHealth: 6
+  maxHealth: 12
   healthBarFill: {fileID: 0}
   healthBarObject: {fileID: 1178982872}
   lootPrefabFallback: {fileID: 0}
+  triggersWinOnDeath: 1
 --- !u!70 &1759953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -17239,7 +17240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1766402178
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17891,7 +17892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1865988831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18549,7 +18550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1904121975
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -18726,7 +18727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1909414305
 MonoBehaviour:
   m_ObjectHideFlags: 0

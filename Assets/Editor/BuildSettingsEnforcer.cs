@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Asegura que Menu, Level-1 y Level-2 estén en Build Settings al abrir el proyecto.
+/// Asegura que Menu, Level-1, Level-2 y Level-3 estén en Build Settings al abrir el proyecto.
 /// </summary>
 [InitializeOnLoad]
 public static class BuildSettingsEnforcer
@@ -14,6 +14,7 @@ public static class BuildSettingsEnforcer
         "Assets/Scenes/Menu.unity",
         "Assets/Scenes/Level-1.unity",
         "Assets/Scenes/Level-2.unity",
+        "Assets/Scenes/Level-3.unity",
     };
 
     static BuildSettingsEnforcer()

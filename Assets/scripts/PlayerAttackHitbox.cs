@@ -6,6 +6,12 @@ public class PlayerAttackHitbox : MonoBehaviour
     [SerializeField] private int damage = 1;
 
     private readonly HashSet<IDamageable> enemiesHit = new HashSet<IDamageable>();
+    private PlayerRuneAbilities _runeAbilities;
+
+    private void Awake()
+    {
+        _runeAbilities = GetComponentInParent<PlayerRuneAbilities>();
+    }
 
     private void OnEnable()
     {
@@ -38,9 +44,13 @@ public class PlayerAttackHitbox : MonoBehaviour
 
         enemiesHit.Add(damageable);
 
+        int hitDamage = damage;
+        if (_runeAbilities != null && _runeAbilities.TryConsumeReprisalAttack(out int reprisalDamage))
+            hitDamage = reprisalDamage;
+
         Debug.Log("El ataque del jugador golpeó a: " + other.name);
 
-        damageable.TakeDamage(damage);
+        damageable.TakeDamage(hitDamage);
     }
 
     public void HitEverythingInsideNow()

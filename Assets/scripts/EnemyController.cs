@@ -37,6 +37,11 @@ public class EnemyController : MonoBehaviour, IDamageable
     [Header("Loot al morir (respaldo si falta Enemy Loot Drop)")]
     [SerializeField] private GameObject lootPrefabFallback;
 
+    [Header("Victoria")]
+    [SerializeField] private bool triggersWinOnDeath;
+
+    public bool TriggersWinOnDeath => triggersWinOnDeath;
+
     private Rigidbody2D rb;
     private Collider2D bodyCollider;
 
@@ -373,11 +378,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         bool dropped = false;
         EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
         if (loot != null)
-        {
-            loot.DropLoot();
-            dropped = true;
-        }
-        else if (lootPrefabFallback != null)
+            dropped = loot.DropLoot();
+
+        if (!dropped && lootPrefabFallback != null)
         {
             Vector3 pos = transform.position + new Vector3(0f, 0.35f, 0f);
             GameObject rune = Instantiate(lootPrefabFallback, pos, Quaternion.identity);
@@ -390,6 +393,13 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         if (!dropped)
             Debug.LogWarning($"{name}: murió sin loot. Agregá Enemy Loot Drop o Loot Prefab Fallback.");
+
+        if (triggersWinOnDeath)
+        {
+            WinManager winManager = FindFirstObjectByType<WinManager>();
+            if (winManager != null)
+                winManager.ShowWin();
+        }
 
         Destroy(gameObject);
     }

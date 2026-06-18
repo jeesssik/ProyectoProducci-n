@@ -50,6 +50,8 @@ public class WinManager : MonoBehaviour
             _wired = true;
         }
 
+        RefreshNextLevelButton(winCanvas);
+
         if (winCanvas != null)
             winCanvas.SetActive(true);
 
@@ -86,6 +88,9 @@ public class WinManager : MonoBehaviour
         // Fallback si el Inspector quedó vacío (evita LoadScene por índice).
         if (SceneManager.GetActiveScene().name == "Level-1")
             return "Level-2";
+
+        if (SceneManager.GetActiveScene().name == "Level-2")
+            return "Level-3";
 
         return null;
     }
@@ -178,12 +183,84 @@ public class WinManager : MonoBehaviour
         title.alignment = TextAlignmentOptions.Center;
         title.color = Color.white;
 
-        CreateButton(content.transform, "Nivel 2", GoToNextLevel);
+        CreateButton(content.transform, FormatNextLevelLabel(ResolveNextSceneName()), GoToNextLevel);
         CreateButton(content.transform, "Menu", GoToMainMenu);
         CreateButton(content.transform, "Exit", ExitGame);
 
         root.SetActive(false);
         return root;
+    }
+
+    private void RefreshNextLevelButton(GameObject canvasRoot)
+    {
+        if (canvasRoot == null)
+            return;
+
+        string next = ResolveNextSceneName();
+        bool hasNext = !string.IsNullOrEmpty(next) && IsSceneInBuildSettings(next);
+        string label = hasNext ? FormatNextLevelLabel(next) : string.Empty;
+
+        Button[] buttons = canvasRoot.GetComponentsInChildren<Button>(true);
+        foreach (Button b in buttons)
+        {
+            if (!IsNextLevelButton(b))
+                continue;
+
+            b.gameObject.SetActive(hasNext);
+            if (!hasNext)
+                continue;
+
+            SetButtonLabel(b, label);
+        }
+    }
+
+    private static bool IsNextLevelButton(Button button)
+    {
+        string name = button.gameObject.name.ToLowerInvariant();
+        if (name.Contains("nivel") || name.Contains("level") || name.Contains("next"))
+            return true;
+
+        string label = GetButtonLabel(button).ToLowerInvariant();
+        return label.Contains("nivel") || label.Contains("level") || label.Contains("next");
+    }
+
+    private static string GetButtonLabel(Button button)
+    {
+        TMP_Text tmp = button.GetComponentInChildren<TMP_Text>(true);
+        if (tmp != null)
+            return tmp.text ?? string.Empty;
+
+        Text uiText = button.GetComponentInChildren<Text>(true);
+        return uiText != null ? uiText.text ?? string.Empty : string.Empty;
+    }
+
+    private static void SetButtonLabel(Button button, string label)
+    {
+        TMP_Text tmp = button.GetComponentInChildren<TMP_Text>(true);
+        if (tmp != null)
+        {
+            tmp.text = label;
+            return;
+        }
+
+        Text uiText = button.GetComponentInChildren<Text>(true);
+        if (uiText != null)
+            uiText.text = label;
+    }
+
+    private static string FormatNextLevelLabel(string sceneName)
+    {
+        if (string.IsNullOrWhiteSpace(sceneName))
+            return "Siguiente nivel";
+
+        const string prefix = "Level-";
+        if (sceneName.StartsWith(prefix, System.StringComparison.OrdinalIgnoreCase)
+            && int.TryParse(sceneName.Substring(prefix.Length), out int levelNumber))
+        {
+            return $"Nivel {levelNumber}";
+        }
+
+        return $"Ir a {sceneName}";
     }
 
     private void TryWireButtons(GameObject canvasRoot)
@@ -215,14 +292,7 @@ public class WinManager : MonoBehaviour
             }
 
             // Fallback: detect by label text.
-            string label = "";
-            TMP_Text tmp = b.GetComponentInChildren<TMP_Text>(true);
-            if (tmp != null) label = tmp.text;
-            else
-            {
-                Text uiText = b.GetComponentInChildren<Text>(true);
-                if (uiText != null) label = uiText.text;
-            }
+            string label = GetButtonLabel(b);
 
             string l = (label ?? "").ToLowerInvariant();
             if (l.Contains("nivel") || l.Contains("level") || l.Contains("next"))

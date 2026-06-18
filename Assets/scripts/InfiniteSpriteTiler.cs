@@ -57,7 +57,6 @@ public class InfiniteSpriteTiler : MonoBehaviour
         GameObject go = new GameObject($"{gameObject.name}_tile_{xOffsetTiles:+#;-#;0}");
         go.transform.SetParent(transform.parent, worldPositionStays: true);
 
-        // Copy only the SpriteRenderer (avoid duplicating scripts and infinite recursion).
         SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
         sr.sprite = sourceRenderer.sprite;
         sr.flipX = sourceRenderer.flipX;
@@ -80,17 +79,20 @@ public class InfiniteSpriteTiler : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_tiles == null || _tiles.Length == 0) return;
-        if (cameraTransform == null) return;
+        if (_tiles == null || _tiles.Length == 0)
+            return;
 
-        // Re-anchor tiles around the center object, then wrap based on camera position.
+        if (cameraTransform == null)
+            return;
+
         Vector3 centerPos = followCenterObject ? transform.position : _centerStartPos;
 
         for (int i = 0; i < _tiles.Length; i++)
         {
             int tileOffset = i - copiesPerSide;
             Transform t = _tiles[i];
-            if (t == null) continue;
+            if (t == null)
+                continue;
 
             Vector3 p = t.position;
             p.x = centerPos.x + _tileWorldWidth * tileOffset;
@@ -99,7 +101,6 @@ public class InfiniteSpriteTiler : MonoBehaviour
             t.position = p;
         }
 
-        // If camera moved too far, shift the whole group by one width (keeps numbers stable).
         float camX = cameraTransform.position.x;
         float leftMostX = centerPos.x - _tileWorldWidth * copiesPerSide;
         float rightMostX = centerPos.x + _tileWorldWidth * copiesPerSide;
@@ -116,4 +117,3 @@ public class InfiniteSpriteTiler : MonoBehaviour
         }
     }
 }
-

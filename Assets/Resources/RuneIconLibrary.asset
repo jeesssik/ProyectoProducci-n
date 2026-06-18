@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f6a5b4c3d2e1f00988776655443322, type: 3}
+  m_Name: RuneIconLibrary
+  m_EditorClassIdentifier: 
+  yellowIcon: {fileID: -202727845, guid: ca33d48862f137e45ad9fc905cd5ef38, type: 3}
+  greenIcon: {fileID: -1425435744, guid: 2a242b23dbae51545aff5ae57dd0712b, type: 3}
+  celesteIcon: {fileID: 1662609024, guid: 896127e878fd39248a8faaaf111010db, type: 3}
+  redIcon: {fileID: -1009192404, guid: 6bef399ff5895244aa3a3637567623d4, type: 3}
