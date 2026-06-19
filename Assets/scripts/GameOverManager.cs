@@ -26,6 +26,7 @@ public class GameOverManager : MonoBehaviour
             gameOverCanvas.SetActive(true);
         }
 
+        AbilityHUD.SetAllHidden(true);
         Time.timeScale = 0f;
     }
 

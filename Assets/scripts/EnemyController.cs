@@ -40,6 +40,10 @@ public class EnemyController : MonoBehaviour, IDamageable
     [Header("Victoria")]
     [SerializeField] private bool triggersWinOnDeath;
 
+    [Header("Comportamiento especial")]
+    [SerializeField] private bool preventFall;
+    [SerializeField] private float maxChaseVerticalDrop = 1.25f;
+
     public bool TriggersWinOnDeath => triggersWinOnDeath;
 
     private Rigidbody2D rb;
@@ -56,6 +60,7 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private int currentHealth;
     private float desiredVelocityX;
+    private float lastGroundedY;
 
     private void Awake()
     {
@@ -72,6 +77,7 @@ public class EnemyController : MonoBehaviour, IDamageable
         TryWireHealthBarReferences();
         UpdateHealthBar();
         SetHealthBarVisible(false);
+        lastGroundedY = transform.position.y;
     }
 
     private void Start()
@@ -88,42 +94,58 @@ public class EnemyController : MonoBehaviour, IDamageable
 
         if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
         {
-            isChasing = true;
-            SetHealthBarVisible(true);
-            LookAtPlayer();
+            float verticalDelta = player.position.y - transform.position.y;
+            bool playerTooFarBelow = preventFall && verticalDelta < -maxChaseVerticalDrop;
 
-            if (isTouchingPlayer)
+            if (!playerTooFarBelow)
             {
-                desiredVelocityX = 0f;
-                TryAttack();
-            }
-            else
-            {
-                float directionX = Mathf.Sign(player.position.x - transform.position.x);
-                if (directionX == 0f)
-                    directionX = patrolDirection;
+                isChasing = true;
+                SetHealthBarVisible(true);
+                LookAtPlayer();
 
-                if (HasGroundAhead(directionX))
-                    desiredVelocityX = directionX * moveSpeed;
-                else
+                if (isTouchingPlayer)
+                {
                     desiredVelocityX = 0f;
+                    TryAttack();
+                }
+                else
+                {
+                    float directionX = Mathf.Sign(player.position.x - transform.position.x);
+                    if (directionX == 0f)
+                        directionX = patrolDirection;
+
+                    if (HasGroundAhead(directionX))
+                        desiredVelocityX = directionX * moveSpeed;
+                    else
+                        desiredVelocityX = 0f;
+                }
+
+                return;
             }
         }
-        else
-        {
-            isChasing = false;
 
-            if (currentHealth >= maxHealth)
-                SetHealthBarVisible(false);
+        isChasing = false;
 
-            desiredVelocityX = patrolDirection * moveSpeed;
-        }
+        if (currentHealth >= maxHealth)
+            SetHealthBarVisible(false);
+
+        desiredVelocityX = patrolDirection * moveSpeed;
     }
 
     private void FixedUpdate()
     {
+        bool grounded = IsGrounded();
+        if (grounded)
+            lastGroundedY = transform.position.y;
+
         if (!isChasing)
             UpdatePatrolDirection();
+
+        if (preventFall && !grounded)
+        {
+            RecoverFromFall();
+            return;
+        }
 
         if (rb != null)
         {
@@ -132,6 +154,16 @@ public class EnemyController : MonoBehaviour, IDamageable
 
             rb.velocity = new Vector2(desiredVelocityX, rb.velocity.y);
         }
+    }
+
+    private void RecoverFromFall()
+    {
+        desiredVelocityX = 0f;
+
+        if (rb != null)
+            rb.velocity = Vector2.zero;
+
+        transform.position = new Vector3(transform.position.x, lastGroundedY, transform.position.z);
     }
 
     private void UpdatePatrolDirection()
@@ -214,7 +246,13 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     private bool HasGroundBelow(Vector2 origin)
     {
-        return Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayers);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, groundCheckDistance, groundLayers);
+        return hit.collider != null && !IsSelfCollider(hit.collider);
+    }
+
+    private bool IsSelfCollider(Collider2D col)
+    {
+        return col.transform == transform || col.transform.IsChildOf(transform);
     }
 
     private Vector2 GetFeetPosition()

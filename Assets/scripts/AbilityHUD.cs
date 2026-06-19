@@ -40,6 +40,23 @@ public class AbilityHUD : MonoBehaviour
     private bool _built;
     private Coroutine _toastRoutine;
     private Font _uiFont;
+    private bool _forcedHidden;
+
+    public void SetGameplayOverlayHidden(bool hidden)
+    {
+        _forcedHidden = hidden;
+        BuildIfNeeded();
+
+        if (_canvas != null)
+            _canvas.gameObject.SetActive(!hidden);
+    }
+
+    public static void SetAllHidden(bool hidden)
+    {
+        AbilityHUD[] huds = FindObjectsByType<AbilityHUD>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (AbilityHUD hud in huds)
+            hud.SetGameplayOverlayHidden(hidden);
+    }
 
     private void Awake()
     {
@@ -68,6 +85,13 @@ public class AbilityHUD : MonoBehaviour
     public void RefreshSlots()
     {
         BuildIfNeeded();
+
+        if (_forcedHidden)
+        {
+            if (_canvas != null)
+                _canvas.gameObject.SetActive(false);
+            return;
+        }
 
         bool anyUnlocked = false;
 

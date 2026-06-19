@@ -10,6 +10,9 @@ public class WinManager : MonoBehaviour
 {
     [Header("UI (optional)")]
     [SerializeField] private GameObject winCanvas;
+    [SerializeField] private TextMeshProUGUI narrativeText;
+    [TextArea(2, 6)]
+    [SerializeField] private string winNarrativeText;
 
     [Header("Scenes")]
     [SerializeField] private string mainMenuSceneName = "Menu";
@@ -51,10 +54,12 @@ public class WinManager : MonoBehaviour
         }
 
         RefreshNextLevelButton(winCanvas);
+        ApplyNarrativeText();
 
         if (winCanvas != null)
             winCanvas.SetActive(true);
 
+        AbilityHUD.SetAllHidden(true);
         Time.timeScale = 0f;
     }
 
@@ -182,6 +187,9 @@ public class WinManager : MonoBehaviour
         title.fontSize = 42;
         title.alignment = TextAlignmentOptions.Center;
         title.color = Color.white;
+
+        narrativeText = CreateNarrativeText(content.transform);
+        ApplyNarrativeText();
 
         CreateButton(content.transform, FormatNextLevelLabel(ResolveNextSceneName()), GoToNextLevel);
         CreateButton(content.transform, "Menu", GoToMainMenu);
@@ -352,6 +360,67 @@ public class WinManager : MonoBehaviour
         GameObject es = new GameObject("EventSystem");
         es.AddComponent<EventSystem>();
         es.AddComponent<StandaloneInputModule>();
+    }
+
+    private void ApplyNarrativeText()
+    {
+        if (string.IsNullOrWhiteSpace(winNarrativeText))
+        {
+            if (narrativeText != null)
+                narrativeText.gameObject.SetActive(false);
+            return;
+        }
+
+        if (narrativeText == null && winCanvas != null)
+            narrativeText = FindNarrativeText(winCanvas.transform);
+
+        if (narrativeText == null && winCanvas != null)
+            narrativeText = CreateNarrativeText(winCanvas.transform);
+
+        if (narrativeText == null)
+            return;
+
+        narrativeText.text = winNarrativeText.Trim();
+        narrativeText.gameObject.SetActive(true);
+    }
+
+    private static TextMeshProUGUI FindNarrativeText(Transform root)
+    {
+        Transform[] children = root.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in children)
+        {
+            if (child.name != "WinNarrative" && child.name != "NarrativeText")
+                continue;
+
+            TextMeshProUGUI tmp = child.GetComponent<TextMeshProUGUI>();
+            if (tmp != null)
+                return tmp;
+        }
+
+        return null;
+    }
+
+    private static TextMeshProUGUI CreateNarrativeText(Transform parent)
+    {
+        GameObject textGo = new GameObject("WinNarrative");
+        textGo.transform.SetParent(parent, false);
+        textGo.layer = parent.gameObject.layer;
+
+        RectTransform rt = textGo.AddComponent<RectTransform>();
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.anchoredPosition = new Vector2(0f, -90f);
+        rt.sizeDelta = new Vector2(920f, 180f);
+
+        TextMeshProUGUI tmp = textGo.AddComponent<TextMeshProUGUI>();
+        tmp.alignment = TextAlignmentOptions.Top;
+        tmp.fontSize = 24f;
+        tmp.color = new Color(0.95f, 0.95f, 0.95f, 1f);
+        tmp.enableWordWrapping = true;
+        tmp.richText = true;
+
+        return tmp;
     }
 }
 

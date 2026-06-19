@@ -74,6 +74,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseCanvas.SetActive(true);
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        AbilityHUD.SetAllHidden(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -83,6 +84,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        AbilityHUD.SetAllHidden(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
