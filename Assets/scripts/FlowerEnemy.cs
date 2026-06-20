@@ -106,13 +106,16 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     {
         if (state != FlowerState.Closed) return;
 
-        state = FlowerState.Opening;
 
-        // CAMBIO: UI - Hacemos visible la barra en el instante exacto en que empieza a abrirse
+        state = FlowerState.Active;
+
         SetHealthBarVisible(true);
 
         animator.ResetTrigger("Open");
         animator.SetTrigger("Open");
+
+        // Inicializamos el contador de ataque
+        attackTimer = timeBetweenAttacks;
     }
 
     public void FinishOpening()
