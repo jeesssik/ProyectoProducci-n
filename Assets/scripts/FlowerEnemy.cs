@@ -216,18 +216,13 @@ public class FlowerEnemy : MonoBehaviour, IDamageable
     private void Die()
     {
         if (state == FlowerState.Dead) return;
-
-        Debug.Log("FLOR MURIOOOOOOOO");
-
         state = FlowerState.Dead;
 
-        // CAMBIO: UI - Ocultamos la barra de vida al morir
         SetHealthBarVisible(false);
 
         animator.ResetTrigger("Attack");
         animator.ResetTrigger("Hurt");
-
-        animator.SetBool("IsDead", true);
+        animator.SetTrigger("Death");
 
         Destroy(gameObject, 1.2f);
     }
