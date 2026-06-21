@@ -46,3 +46,4 @@ sysinfo.txt
 # Keep solution and package lock tracked
 !/*.sln
 !Packages/packages-lock.json
+BuildTest.rar
