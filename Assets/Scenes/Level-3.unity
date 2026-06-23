@@ -15133,7 +15133,6 @@ MonoBehaviour:
   attackPointOffsetX: 0.5
   attackCooldown: 0
   attackKey: 106
-  potionKey: 101
   maxHealth: 8
   invulnerabilityTime: 1
   knockbackForceX: 6

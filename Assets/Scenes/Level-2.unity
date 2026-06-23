@@ -10301,7 +10301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730aa253aa8a8c49b1f5f278680e8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupKey: 113
+  pickupKey: 101
   playerTag: Player
   pickupRadius: 1.2
   interactionPrompt: {fileID: 0}
@@ -14528,7 +14528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c730aa253aa8a8c49b1f5f278680e8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupKey: 113
+  pickupKey: 101
   playerTag: Player
   pickupRadius: 1.2
   interactionPrompt: {fileID: 0}
@@ -15082,7 +15082,6 @@ MonoBehaviour:
   attackPointOffsetX: 0.5
   attackCooldown: 0
   attackKey: 113
-  potionKey: 101
   maxHealth: 8
   invulnerabilityTime: 1
   knockbackForceX: 6

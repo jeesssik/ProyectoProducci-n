@@ -190,7 +190,7 @@ SpriteRenderer:
   m_Size: {x: 0.18, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &810000023
@@ -220,7 +220,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 735459576202844097}
-  - component: {fileID: 810000002}
   - component: {fileID: 8858292077939568117}
   - component: {fileID: 810000001}
   - component: {fileID: 1111267718923327898}
@@ -248,58 +247,6 @@ Transform:
   - {fileID: 810000021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &810000002
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920000100}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!114 &810000001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920000100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f3e2d1c0b9a807162534435465768f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arcDuration: 0.4
-  arcHeight: 0.5
-  arcHorizontalDistance: 0.25
-  randomizeHorizontalDirection: 1
-  landingYOffset: 0.2
-  groundRayStartHeight: 1.5
-  groundRayDistance: 2.5
-  maxSnapBelowSpawn: 1.2
-  maxSnapAboveSpawn: 0.4
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  sortingOrder: 50
 --- !u!70 &8858292077939568117
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -329,12 +276,37 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.18, y: 0.23}
   m_Direction: 0
+--- !u!114 &810000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920000100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f3e2d1c0b9a807162534435465768f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arcDuration: 0.4
+  arcHeight: 0.5
+  arcHorizontalDistance: 0.25
+  randomizeHorizontalDirection: 1
+  landingYOffset: 0.2
+  groundRayStartHeight: 1.5
+  groundRayDistance: 2.5
+  maxSnapBelowSpawn: 1.2
+  maxSnapAboveSpawn: 0.4
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  sortingOrder: 50
 --- !u!114 &1111267718923327898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   runeType: 2
   triggersLevelWin: 1
-  pickupKey: 113
+  pickupKey: 101
   playerTag: Player
   pickupRadius: 1.2
   winManager: {fileID: 0}
