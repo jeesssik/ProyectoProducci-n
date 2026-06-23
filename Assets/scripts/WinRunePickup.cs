@@ -10,7 +10,7 @@ public class WinRunePickup : MonoBehaviour
     [SerializeField] private bool triggersLevelWin = true;
 
     [Header("Interacción")]
-    [SerializeField] private KeyCode pickupKey = KeyCode.Q;
+    [SerializeField] private KeyCode pickupKey = KeyCode.E;
     [SerializeField] private string playerTag = "Player";
     [SerializeField] private float pickupRadius = 1.2f;
 
