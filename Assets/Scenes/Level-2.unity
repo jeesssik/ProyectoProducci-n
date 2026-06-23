@@ -19496,14 +19496,14 @@ MonoBehaviour:
   pointA: {fileID: 179438696}
   pointB: {fileID: 155088205}
   player: {fileID: 1379749349}
-  detectionRange: 4
-  attackRange: 5
+  detectionRange: 3.16
+  attackRange: 3.6
   groundLayers:
     serializedVersion: 2
     m_Bits: 64
   ledgeLookAhead: 0.55
   groundCheckDistance: 0.75
-  attackCooldown: 1.5
+  attackCooldown: 2
   dardoPrefab: {fileID: 1833982111}
   firePoint: {fileID: 2055307540}
   spriteRenderer: {fileID: 2056855834}
@@ -19634,7 +19634,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2056855838
 BoxCollider2D:
   m_ObjectHideFlags: 0
