@@ -107,20 +107,24 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
                 float distanceToPlayerX = Mathf.Abs(player.position.x - transform.position.x);
 
-                // 🔥 MODIFICADO: Si está en rango de ataque, frena, dispara y RECIÉN ACÁ muestra la barra de vida
                 if (distanceToPlayerX <= attackRange)
                 {
-                    SetHealthBarVisible(true); // <-- Se hace visible en rango de tiro
+                    SetHealthBarVisible(true); 
 
-                    desiredVelocityX = 0f; // Se planta firme
+                    desiredVelocityX = 0f; 
                     if (rb != null) rb.velocity = new Vector2(0f, rb.velocity.y);
                     
                     TryAttack();
                 }
                 else
                 {
-                    // Si lo ve pero está lejos, avanza hacia él ocultando la barra de vida
-                    SetHealthBarVisible(false); // <-- Se oculta si sale del rango de tiro
+                    SetHealthBarVisible(false); 
+
+                    // 🔥 CAMBIO AQUÍ: Si el jugador se escapó del rango de ataque, cancelamos el trigger
+                    if (animator != null)
+                    {
+                        animator.ResetTrigger("Attack");
+                    }
 
                     float directionX = Mathf.Sign(player.position.x - transform.position.x);
                     if (directionX == 0f) directionX = patrolDirection;
@@ -135,9 +139,14 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
             }
         }
 
-        // Si no detecta al jugador, vuelve al estado normal de patrulla y apaga la barra
         isChasing = false;
-        SetHealthBarVisible(false); // <-- Se oculta patrullando normalmente
+        SetHealthBarVisible(false); 
+
+        // 🔥 TAMBIÉN AQUÍ: Si se pierde la detección completa, nos aseguramos de limpiar el trigger
+        if (animator != null)
+        {
+            animator.ResetTrigger("Attack");
+        }
 
         desiredVelocityX = patrolDirection * moveSpeed;
     }
