@@ -40,6 +40,7 @@ public class PlayerRuneAbilities : MonoBehaviour
     private PlayerController _player;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _capsule;
+    private Animator _animator;
 
     private float _groundCooldownTimer;
     private float _backDodgeCooldownTimer;
@@ -70,6 +71,7 @@ public class PlayerRuneAbilities : MonoBehaviour
         _player = GetComponent<PlayerController>();
         _rb = GetComponent<Rigidbody2D>();
         _capsule = GetComponent<CapsuleCollider2D>();
+        _animator = GetComponentInChildren<Animator>();
 
         if (abilityHud == null)
             abilityHud = GetComponent<AbilityHUD>();
@@ -158,6 +160,10 @@ public class PlayerRuneAbilities : MonoBehaviour
     {
         _isDashing = true;
         _dashDamaged.Clear();
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Dash"); 
+        }
 
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash);
