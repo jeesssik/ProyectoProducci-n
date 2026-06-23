@@ -1585,6 +1585,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 913449713}
   lootPrefabFallback: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &192162281
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2301,7 +2303,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &332074392
@@ -2608,6 +2610,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 1972729481}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &408666260
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11573,6 +11577,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 2058931966}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &837624270
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -12907,6 +12913,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 1890471655}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &1078249366
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -14182,6 +14190,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 1625179590}
   lootPrefabFallback: {fileID: 920000100, guid: f6a7b8c9d0e1123456789012345678ab, type: 3}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &1264100306
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15123,6 +15133,7 @@ MonoBehaviour:
   attackPointOffsetX: 0.5
   attackCooldown: 0
   attackKey: 106
+  potionKey: 101
   maxHealth: 8
   invulnerabilityTime: 1
   knockbackForceX: 6
@@ -16053,7 +16064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1490127834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16933,6 +16944,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 1178982872}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 1
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &1759953603
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -17224,7 +17237,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1766402182
@@ -17804,6 +17817,8 @@ MonoBehaviour:
   healthBarObject: {fileID: 1922979628}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 0
+  preventFall: 0
+  maxChaseVerticalDrop: 1.25
 --- !u!70 &1865988834
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18535,7 +18550,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1904121979
@@ -18667,7 +18682,7 @@ SpriteRenderer:
   m_Size: {x: 0.2, y: 0.17}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1909414308
