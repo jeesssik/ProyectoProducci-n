@@ -2344,11 +2344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &388149966 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4384733767464614749, guid: 2d3dd7e6545ab594492a54d0ad55372e, type: 3}
-  m_PrefabInstance: {fileID: 1773675412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &405324650
 GameObject:
   m_ObjectHideFlags: 0
@@ -10400,7 +10395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &533125451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15353,7 +15348,7 @@ Transform:
   m_GameObject: {fileID: 1379749346}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.93, y: -3.63, z: 0}
+  m_LocalPosition: {x: -6.93, y: -3.67, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19378,17 +19373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2027521048 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6387266991045958115, guid: 2d3dd7e6545ab594492a54d0ad55372e, type: 3}
-  m_PrefabInstance: {fileID: 1773675412}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2043889745
 GameObject:
   m_ObjectHideFlags: 0
@@ -19509,8 +19493,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2056855834}
   animator: {fileID: 2056855836}
   maxHealth: 4
-  healthBarFill: {fileID: 2027521048}
-  healthBarObject: {fileID: 388149966}
+  healthBarFill: {fileID: 746128004}
+  healthBarObject: {fileID: 533125450}
   lootPrefabFallback: {fileID: 0}
   triggersWinOnDeath: 0
   preventFall: 1

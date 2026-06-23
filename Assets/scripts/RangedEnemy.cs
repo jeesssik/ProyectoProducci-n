@@ -103,14 +103,15 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
             if (!playerTooFarBelow)
             {
                 isChasing = true;
-                SetHealthBarVisible(true);
                 LookAtPlayer();
 
                 float distanceToPlayerX = Mathf.Abs(player.position.x - transform.position.x);
 
-                // 🔥 CAMBIO CLAVE: Si está en rango de ataque (distancia de tiro), frena y dispara
+                // 🔥 MODIFICADO: Si está en rango de ataque, frena, dispara y RECIÉN ACÁ muestra la barra de vida
                 if (distanceToPlayerX <= attackRange)
                 {
+                    SetHealthBarVisible(true); // <-- Se hace visible en rango de tiro
+
                     desiredVelocityX = 0f; // Se planta firme
                     if (rb != null) rb.velocity = new Vector2(0f, rb.velocity.y);
                     
@@ -118,25 +119,25 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
                 }
                 else
                 {
-                    // Si lo ve pero está lejos, avanza hacia él vigilando no caerse por un borde
+                    // Si lo ve pero está lejos, avanza hacia él ocultando la barra de vida
+                    SetHealthBarVisible(false); // <-- Se oculta si sale del rango de tiro
+
                     float directionX = Mathf.Sign(player.position.x - transform.position.x);
                     if (directionX == 0f) directionX = patrolDirection;
 
                     if (HasGroundAhead(directionX))
                         desiredVelocityX = directionX * moveSpeed;
                     else
-                        desiredVelocityX = 0f; // Se frena en el borde si el player está del otro lado
+                        desiredVelocityX = 0f; 
                 }
 
                 return;
             }
         }
 
-        // Si no detecta al jugador, vuelve al estado normal de patrulla
+        // Si no detecta al jugador, vuelve al estado normal de patrulla y apaga la barra
         isChasing = false;
-
-        if (currentHealth >= maxHealth)
-            SetHealthBarVisible(false);
+        SetHealthBarVisible(false); // <-- Se oculta patrullando normalmente
 
         desiredVelocityX = patrolDirection * moveSpeed;
     }
@@ -420,7 +421,8 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (healthBarObject != null) healthBarObject.SetActive(visible);
     }
 
-    private void TryWireHealthBarReferences()
+    
+private void TryWireHealthBarReferences()
     {
         if (healthBarObject == null)
         {
@@ -439,16 +441,35 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (healthBarFill == null)
         {
             Image[] images = searchRoot.GetComponentsInChildren<Image>(true);
+            
+            // Intento 1: Buscar por nombre exacto
             foreach (Image img in images)
             {
-                if (img.gameObject.name.Equals("barra", System.StringComparison.OrdinalIgnoreCase))
+                if (img.gameObject.name.Equals("barra", System.StringComparison.OrdinalIgnoreCase) || 
+                    img.gameObject.name.Equals("fill", System.StringComparison.OrdinalIgnoreCase))
                 {
                     healthBarFill = img;
                     break;
                 }
             }
+
+            // Intento 2: Si sigue vacía, agarra la primera que esté configurada como Filled
+            if (healthBarFill == null)
+            {
+                foreach (Image img in images)
+                {
+                    if (img.type == Image.Type.Filled)
+                    {
+                        healthBarFill = img;
+                        break;
+                    }
+                }
+            }
         }
     }
+
+
+
 
     private void OnDrawGizmosSelected()
     {

@@ -415,7 +415,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ApplyAttackDamage()
+    /*public void ApplyAttackDamage()
     {
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, 0.35f, enemyLayer);
         foreach (Collider2D enemy in enemiesHit)
@@ -426,7 +426,22 @@ public class PlayerController : MonoBehaviour
                 enemyController.TakeDamage(attackDamage);
             }
         }
+    }*/
+
+
+public void ApplyAttackDamage()
+{
+    Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, 0.35f, enemyLayer);
+    foreach (Collider2D enemy in enemiesHit)
+    {
+        // Buscamos cualquier componente que implemente la interfaz IDamageable (en el objeto o sus padres)
+        IDamageable damageable = enemy.GetComponentInParent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(attackDamage);
+        }
     }
+}
 
     public bool IsDead() => isDead;
 
