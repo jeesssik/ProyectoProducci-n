@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Condition
   - PlayerAttack
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX

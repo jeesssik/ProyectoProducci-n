@@ -5,9 +5,10 @@ public class DardoProyectil : MonoBehaviour
     [Header("Configuración")]
     [SerializeField] private float speed = 8f;
     [SerializeField] private int damage = 1;
-    [SerializeField] private float lifeTime = 4f; // Para que no viaje infinitamente si erra
+    [SerializeField] private float lifeTime = 4f; 
 
     private Rigidbody2D rb;
+    private GameObject emisor; // Guardamos quién lo disparó para ignorarlo
 
     private void Awake()
     {
@@ -16,43 +17,49 @@ public class DardoProyectil : MonoBehaviour
 
     private void Start()
     {
-        // Destruir automáticamente tras unos segundos para optimizar memoria
+        // Destrucción por tiempo si no impacta nada
         Destroy(gameObject, lifeTime);
+    }
 
-        // 🚀 Movimiento: Viaja hacia adelante relativo a su propia rotación
+    // 🚀 Función clave: El enemigo llamará aquí al instanciarlo para darle velocidad y dueño
+    public void InicializarProyectil(float direccionX, GameObject creador)
+    {
+        rb = GetComponent<Rigidbody2D>();
+        emisor = creador;
+
         if (rb != null)
         {
-            // Como el enemigo cambia el localScale en X (-4.5 o 4.5), el FirePoint hereda esa dirección.
-            // Con transform.right * -1 o transform.right controlamos el avance. 
-            // Evaluamos el signo de la escala para saber hacia dónde mirar
-            float direction = Mathf.Sign(transform.lossyScale.x);
-            
-            // Si tu sprite por defecto apunta a la izquierda, usamos direction. Si apunta a la derecha, -direction.
-            // Probemos con el estándar:
-            rb.velocity = new Vector2(-direction * speed, 0f);
+            // Aplicamos la velocidad usando la dirección exacta recibida del Chaman
+            rb.velocity = new Vector2(direccionX * speed, 0f);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Evitamos golpear al propio enemigo o a otros proyectiles
-        if (other.CompareTag("Enemy") || other.CompareTag("PlayerAttack")) return;
+        // ❌ REGLA DE ORO: Si colisiona con el Chaman que lo disparó, se ignora por completo
+        if (emisor != null && (other.gameObject == emisor || other.transform.IsChildOf(emisor.transform))) 
+            return;
 
-        // Si golpea al Player
+        // Ignorar también si choca con otros ataques del jugador o enemigos genéricos
+        if (other.CompareTag("Enemy") || other.CompareTag("PlayerAttack") || other.CompareTag("Projectile")) 
+            return;
+
+        // 🎯 Si golpea al Player
         if (other.CompareTag("Player"))
         {
-            // Aquí llamarías al sistema de daño de tu Player, por ejemplo:
+            // Aquí podés descomentar tu sistema de daño cuando lo vincules
             // PlayerController player = other.GetComponent<PlayerController>();
             // if (player != null) player.TakeDamage(damage);
             
-            Debug.Log("El dardo golpeó al jugador.");
+            Debug.Log("🎯 ¡El dardo impactó al Player!");
             Destroy(gameObject);
             return;
         }
 
-        // Si golpea el suelo/paredes (Cualquier objeto sólido que no sea trigger)
+        // 🧱 Si golpea el suelo, plataformas o paredes sólidas
         if (!other.isTrigger)
         {
+            Debug.Log($"🧱 El dardo impactó contra estructura: {other.name}");
             Destroy(gameObject);
         }
     }

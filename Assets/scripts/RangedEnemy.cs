@@ -193,6 +193,7 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
     // =========================================================================
     // 🏹 LLAMAR A ESTA FUNCIÓN MEDIANTE UN ANIMATION EVENT EN TU CLIP "ATTACK"
     // =========================================================================
+    
     public void ApplyEnemyAttackDamage()
     {
         if (currentHealth <= 0) return;
@@ -200,8 +201,18 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (dardoPrefab != null && firePoint != null)
         {
             Debug.Log($"{name} dispara un dardo.");
-            // Instancia el dardo en la posición del firePoint y hereda su rotación
-            Instantiate(dardoPrefab, firePoint.position, firePoint.transform.rotation);
+            
+            // Instanciamos el dardo
+            GameObject nuevoDardo = Instantiate(dardoPrefab, firePoint.position, Quaternion.identity);
+            
+            float direccionDisparo = transform.localScale.x < 0 ? 1f : -1f;
+
+            // Buscamos el componente del dardo y lo inicializamos de forma segura
+            DardoProyectil proyectilScript = nuevoDardo.GetComponent<DardoProyectil>();
+            if (proyectilScript != null)
+            {
+                proyectilScript.InicializarProyectil(direccionDisparo, gameObject);
+            }
         }
     }
 
