@@ -10571,7 +10571,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 188982759991569042, guid: be6f369a85133184693ecd71ad671e76, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.59
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 188982759991569042, guid: be6f369a85133184693ecd71ad671e76, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10613,6 +10613,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1379749349}
+    - target: {fileID: 1553750906208650846, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: damageRange
+      value: 1.15
+      objectReference: {fileID: 0}
     - target: {fileID: 5502023716240217495, guid: be6f369a85133184693ecd71ad671e76, type: 3}
       propertyPath: m_Name
       value: Flower
