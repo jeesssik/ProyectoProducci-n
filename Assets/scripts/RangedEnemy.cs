@@ -22,8 +22,10 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
     [Header("Ataque a Distancia")]
     [SerializeField] private float attackCooldown = 1.5f;
-    [SerializeField] private GameObject dardoPrefab; // El proyectil a instanciar
-    [SerializeField] private Transform firePoint;     // De dónde nace el dardo
+    [SerializeField] private WizardProjectile projectilePrefab;
+    [SerializeField] private GameObject dardoPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float projectileSpawnDelay = 0.35f;
 
     [Header("Visual")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -45,6 +47,7 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
     [Header("Comportamiento especial")]
     [SerializeField] private bool preventFall = true;
     [SerializeField] private float maxChaseVerticalDrop = 1.25f;
+    [SerializeField] private bool blockPlayerPhysics = true;
 
     public bool TriggersWinOnDeath => triggersWinOnDeath;
 
@@ -62,6 +65,8 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
     private int currentHealth;
     private float desiredVelocityX;
     private float lastGroundedY;
+    private bool projectileFiredThisAttack;
+    private bool isDead;
 
     private void Awake()
     {
@@ -72,8 +77,21 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
+        if (firePoint == null)
+        {
+            Transform existing = transform.Find("FirePoint");
+            if (existing != null)
+                firePoint = existing;
+        }
+
         if (groundLayers.value == 0)
             groundLayers = LayerMask.GetMask("Ground");
+
+        if (blockPlayerPhysics && rb != null)
+            rb.bodyType = RigidbodyType2D.Kinematic;
 
         TryWireHealthBarReferences();
         UpdateHealthBar();
@@ -86,6 +104,7 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         FindPlayerIfNeeded();
         CachePatrolLimits();
         InitPatrolDirection();
+        ConfigurePlayerCollisionIgnore();
     }
 
     private void Update()
@@ -93,9 +112,11 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         FindPlayerIfNeeded();
         UpdateAnimator();
 
-        if (currentHealth <= 0) return;
+        if (isDead || currentHealth <= 0) return;
 
-        if (player != null && Vector2.Distance(transform.position, player.position) <= detectionRange)
+        if (player != null
+            && IsPlayerInHostileZone()
+            && Vector2.Distance(transform.position, player.position) <= detectionRange)
         {
             float verticalDelta = player.position.y - transform.position.y;
             bool playerTooFarBelow = preventFall && verticalDelta < -maxChaseVerticalDrop;
@@ -153,7 +174,7 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
-        if (currentHealth <= 0) return;
+        if (isDead || currentHealth <= 0) return;
 
         bool grounded = IsGrounded();
         if (grounded)
@@ -179,40 +200,75 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
     private void TryAttack()
     {
-        if (!canAttack || animator == null) return;
+        if (!canAttack || animator == null || !IsPlayerInHostileZone()) return;
 
         canAttack = false;
-        
-        // Disparar animación
+        projectileFiredThisAttack = false;
+
+        animator.ResetTrigger("Attack");
         animator.SetTrigger("Attack");
-        
-        // Tiempo de espera basado en tu cooldown
+
+        CancelInvoke(nameof(ApplyEnemyAttackDamage));
+        Invoke(nameof(ApplyEnemyAttackDamage), projectileSpawnDelay);
         Invoke(nameof(ResetAttack), attackCooldown);
     }
 
-    // =========================================================================
-    // 🏹 LLAMAR A ESTA FUNCIÓN MEDIANTE UN ANIMATION EVENT EN TU CLIP "ATTACK"
-    // =========================================================================
-    
+
     public void ApplyEnemyAttackDamage()
     {
-        if (currentHealth <= 0) return;
+        if (isDead || currentHealth <= 0 || projectileFiredThisAttack) return;
+        if (!IsPlayerInHostileZone()) return;
 
-        if (dardoPrefab != null && firePoint != null)
+        projectileFiredThisAttack = true;
+        FireProjectile();
+    }
+
+    private void FireProjectile()
+    {
+        if (firePoint == null) return;
+
+        WizardProjectile prefab = projectilePrefab;
+        if (prefab == null && dardoPrefab != null)
+            prefab = dardoPrefab.GetComponent<WizardProjectile>();
+
+        if (prefab == null) return;
+
+        WizardProjectile projectile = Instantiate(prefab, firePoint.position, Quaternion.identity);
+        projectile.Launch(GetFireDirection());
+    }
+
+    private Vector2 GetFireDirection()
+    {
+        if (player != null)
         {
-            Debug.Log($"{name} dispara un dardo.");
-            
-            // Instanciamos el dardo
-            GameObject nuevoDardo = Instantiate(dardoPrefab, firePoint.position, Quaternion.identity);
-            
-            float direccionDisparo = transform.localScale.x < 0 ? 1f : -1f;
+            Vector2 toPlayer = (Vector2)player.position - (Vector2)firePoint.position;
+            if (toPlayer.sqrMagnitude > 0.0001f)
+                return toPlayer.normalized;
+        }
 
-            // Buscamos el componente del dardo y lo inicializamos de forma segura
-            DardoProyectil proyectilScript = nuevoDardo.GetComponent<DardoProyectil>();
-            if (proyectilScript != null)
-            {
-                proyectilScript.InicializarProyectil(direccionDisparo, gameObject);
-            }
+        float dirX = transform.localScale.x > 0f ? -1f : 1f;
+        return new Vector2(dirX, 0f);
+    }
+
+    private void ConfigurePlayerCollisionIgnore()
+    {
+        if (!blockPlayerPhysics) return;
+
+        int enemyLayer = LayerMask.NameToLayer("Enemy");
+        if (enemyLayer >= 0)
+            gameObject.layer = enemyLayer;
+
+        int playerLayer = LayerMask.NameToLayer("Player");
+        if (playerLayer >= 0 && enemyLayer >= 0)
+            Physics2D.IgnoreLayerCollision(playerLayer, enemyLayer, true);
+
+        if (player == null || bodyCollider == null) return;
+
+        Collider2D[] playerColliders = player.GetComponentsInChildren<Collider2D>();
+        foreach (Collider2D playerCollider in playerColliders)
+        {
+            if (playerCollider != null)
+                Physics2D.IgnoreCollision(bodyCollider, playerCollider, true);
         }
     }
 
@@ -270,6 +326,17 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
             leftLimit = mid - 1f;
             rightLimit = mid + 1f;
         }
+    }
+
+    private bool IsPlayerInHostileZone()
+    {
+        if (player == null) return false;
+
+        if (pointA == null || pointB == null)
+            return true;
+
+        float playerX = player.position.x;
+        return playerX >= leftLimit && playerX <= rightLimit;
     }
 
     private void InitPatrolDirection()
@@ -348,9 +415,21 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (animator == null) return;
 
         float speed = rb != null ? Mathf.Abs(rb.velocity.x) : Mathf.Abs(desiredVelocityX);
-        animator.SetFloat("Speed", speed);
-        animator.SetBool("IsGrounded", IsGrounded());
-        animator.SetBool("IsFalling", rb != null && rb.velocity.y < -0.15f && !IsGrounded());
+        if (HasAnimatorParameter("Speed"))
+            animator.SetFloat("Speed", speed);
+    }
+
+    private bool HasAnimatorParameter(string paramName)
+    {
+        if (animator == null) return false;
+
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+                return true;
+        }
+
+        return false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -363,10 +442,10 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damage)
     {
-        if (!canTakeDamage || currentHealth <= 0) return;
+        if (isDead || !canTakeDamage || currentHealth <= 0) return;
 
         canTakeDamage = false;
-        currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth - damage);
 
         UpdateHealthBar();
         SetHealthBarVisible(true);
@@ -374,17 +453,16 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             Die();
+            return;
         }
-        else if (animator != null)
+
+        if (animator != null && HasAnimatorParameter("Hurt"))
         {
-            animator.ResetTrigger("Hit");
-            animator.SetTrigger("Hit");
-            Invoke(nameof(ResetDamage), 0.3f);
+            animator.ResetTrigger("Hurt");
+            animator.SetTrigger("Hurt");
         }
-        else
-        {
-            Invoke(nameof(ResetDamage), 0.3f);
-        }
+
+        Invoke(nameof(ResetDamage), 0.3f);
     }
 
     private void ResetDamage()
@@ -394,7 +472,25 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        if (isDead) return;
+
+        isDead = true;
+        desiredVelocityX = 0f;
+        CancelInvoke();
+
+        if (rb != null)
+            rb.velocity = Vector2.zero;
+
+        DisableBodyColliders();
         SetHealthBarVisible(false);
+
+        if (animator != null)
+        {
+            animator.ResetTrigger("Attack");
+            animator.ResetTrigger("Hurt");
+            animator.ResetTrigger("Death");
+            animator.Play("death", 0, 0f);
+        }
 
         bool dropped = false;
         EnemyLootDrop loot = GetComponent<EnemyLootDrop>();
@@ -419,7 +515,17 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
                 winManager.ShowWin();
         }
 
-        Destroy(gameObject);
+        Destroy(gameObject, 1.2f);
+    }
+
+    private void DisableBodyColliders()
+    {
+        Collider2D[] colliders = GetComponentsInChildren<Collider2D>(true);
+        foreach (Collider2D col in colliders)
+        {
+            if (col != null)
+                col.enabled = false;
+        }
     }
 
     private void UpdateHealthBar()
@@ -495,6 +601,22 @@ private void TryWireHealthBarReferences()
     {
         if (pointA != null) { Gizmos.color = Color.blue; Gizmos.DrawSphere(pointA.position, 0.12f); }
         if (pointB != null) { Gizmos.color = Color.red; Gizmos.DrawSphere(pointB.position, 0.12f); }
+
+        if (pointA != null && pointB != null)
+        {
+            float minX = Mathf.Min(pointA.position.x, pointB.position.x);
+            float maxX = Mathf.Max(pointA.position.x, pointB.position.x);
+            float y = (pointA.position.y + pointB.position.y) * 0.5f;
+            Vector3 a = new Vector3(minX, y - 1.5f, 0f);
+            Vector3 b = new Vector3(maxX, y - 1.5f, 0f);
+            Vector3 c = new Vector3(maxX, y + 1.5f, 0f);
+            Vector3 d = new Vector3(minX, y + 1.5f, 0f);
+            Gizmos.color = new Color(1f, 0.2f, 0.2f, 0.35f);
+            Gizmos.DrawLine(a, b);
+            Gizmos.DrawLine(b, c);
+            Gizmos.DrawLine(c, d);
+            Gizmos.DrawLine(d, a);
+        }
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
