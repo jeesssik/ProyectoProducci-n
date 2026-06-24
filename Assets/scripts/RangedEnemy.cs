@@ -124,50 +124,40 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
             if (!playerTooFarBelow)
             {
                 isChasing = true;
+                SetHealthBarVisible(true);
                 LookAtPlayer();
 
                 float distanceToPlayerX = Mathf.Abs(player.position.x - transform.position.x);
 
+                // 🔥 CAMBIO CLAVE: Si está en rango de ataque (distancia de tiro), frena y dispara
                 if (distanceToPlayerX <= attackRange)
                 {
-                    SetHealthBarVisible(true); 
-
-                    desiredVelocityX = 0f; 
+                    desiredVelocityX = 0f; // Se planta firme
                     if (rb != null) rb.velocity = new Vector2(0f, rb.velocity.y);
                     
                     TryAttack();
                 }
                 else
                 {
-                    SetHealthBarVisible(false); 
-
-                    // 🔥 CAMBIO AQUÍ: Si el jugador se escapó del rango de ataque, cancelamos el trigger
-                    if (animator != null)
-                    {
-                        animator.ResetTrigger("Attack");
-                    }
-
+                    // Si lo ve pero está lejos, avanza hacia él vigilando no caerse por un borde
                     float directionX = Mathf.Sign(player.position.x - transform.position.x);
                     if (directionX == 0f) directionX = patrolDirection;
 
                     if (HasGroundAhead(directionX))
                         desiredVelocityX = directionX * moveSpeed;
                     else
-                        desiredVelocityX = 0f; 
+                        desiredVelocityX = 0f; // Se frena en el borde si el player está del otro lado
                 }
 
                 return;
             }
         }
 
+        // Si no detecta al jugador, vuelve al estado normal de patrulla
         isChasing = false;
-        SetHealthBarVisible(false); 
 
-        // 🔥 TAMBIÉN AQUÍ: Si se pierde la detección completa, nos aseguramos de limpiar el trigger
-        if (animator != null)
-        {
-            animator.ResetTrigger("Attack");
-        }
+        if (currentHealth >= maxHealth)
+            SetHealthBarVisible(false);
 
         desiredVelocityX = patrolDirection * moveSpeed;
     }
@@ -212,7 +202,6 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         Invoke(nameof(ApplyEnemyAttackDamage), projectileSpawnDelay);
         Invoke(nameof(ResetAttack), attackCooldown);
     }
-
 
     public void ApplyEnemyAttackDamage()
     {
@@ -547,8 +536,7 @@ public class RangedPatrolEnemy : MonoBehaviour, IDamageable
         if (healthBarObject != null) healthBarObject.SetActive(visible);
     }
 
-    
-private void TryWireHealthBarReferences()
+    private void TryWireHealthBarReferences()
     {
         if (healthBarObject == null)
         {
@@ -567,35 +555,16 @@ private void TryWireHealthBarReferences()
         if (healthBarFill == null)
         {
             Image[] images = searchRoot.GetComponentsInChildren<Image>(true);
-            
-            // Intento 1: Buscar por nombre exacto
             foreach (Image img in images)
             {
-                if (img.gameObject.name.Equals("barra", System.StringComparison.OrdinalIgnoreCase) || 
-                    img.gameObject.name.Equals("fill", System.StringComparison.OrdinalIgnoreCase))
+                if (img.gameObject.name.Equals("barra", System.StringComparison.OrdinalIgnoreCase))
                 {
                     healthBarFill = img;
                     break;
                 }
             }
-
-            // Intento 2: Si sigue vacía, agarra la primera que esté configurada como Filled
-            if (healthBarFill == null)
-            {
-                foreach (Image img in images)
-                {
-                    if (img.type == Image.Type.Filled)
-                    {
-                        healthBarFill = img;
-                        break;
-                    }
-                }
-            }
         }
     }
-
-
-
 
     private void OnDrawGizmosSelected()
     {
