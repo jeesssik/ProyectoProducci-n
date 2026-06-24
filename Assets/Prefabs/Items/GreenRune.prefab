@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runeType: 1
-  triggersLevelWin: 0
+  triggersLevelWin: 1
   pickupKey: 101
   playerTag: Player
   pickupRadius: 1.2

@@ -10,8 +10,11 @@ public class PauseMenuManager : MonoBehaviour
     [Tooltip("El panel de opciones generales (CanvasOpt).")]
     [SerializeField] private GameObject optionsCanvas;
 
-    [Tooltip("El nuevo panel o canvas para el control de volúmenes de audio.")]
-    [SerializeField] private GameObject audioVolumeCanvas; // <-- NUEVO
+    [Tooltip("Panel o canvas para el control de volúmenes de audio.")]
+    [SerializeField] private GameObject audioVolumeCanvas;
+
+    [Tooltip("Panel o canvas con la referencia de controles.")]
+    [SerializeField] private GameObject controlsCanvas;
 
     [Header("Scenes")]
     [SerializeField] private string mainMenuSceneName = "Menu";
@@ -23,7 +26,8 @@ public class PauseMenuManager : MonoBehaviour
         // Al empezar, nos aseguramos de que todo esté apagado
         pauseCanvas.SetActive(false);
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
-        if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false); // <-- NUEVO
+        if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
         Time.timeScale = 1f;
     }
 
@@ -44,8 +48,13 @@ public class PauseMenuManager : MonoBehaviour
             return;
         }
 
-        // Capa 3: Si está abierto el volumen de audio, vuelve a Opciones
-        if (audioVolumeCanvas != null && audioVolumeCanvas.activeSelf)
+        // Capa 3: Si está abierto controles, vuelve a Opciones
+        if (controlsCanvas != null && controlsCanvas.activeSelf)
+        {
+            CloseControlsToOptions();
+        }
+        // Capa 4: Si está abierto el volumen de audio, vuelve a Opciones
+        else if (audioVolumeCanvas != null && audioVolumeCanvas.activeSelf)
         {
             CloseAudioToOptions();
         }
@@ -74,6 +83,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseCanvas.SetActive(true);
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
         AbilityHUD.SetAllHidden(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -84,6 +94,7 @@ public class PauseMenuManager : MonoBehaviour
         pauseCanvas.SetActive(false);
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
         AbilityHUD.SetAllHidden(false);
         Time.timeScale = 1f;
         isPaused = false;
@@ -104,7 +115,16 @@ public class PauseMenuManager : MonoBehaviour
     public void OpenAudioFromOptions()
     {
         if (optionsCanvas != null) optionsCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(true);
+    }
+
+    /// <summary>Se asigna al botón 'CONTROLES' del menú de configuración (CanvasOpt).</summary>
+    public void OpenControlsFromOptions()
+    {
+        if (optionsCanvas != null) optionsCanvas.SetActive(false);
+        if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(true);
     }
 
     // ========================================================
@@ -115,6 +135,13 @@ public class PauseMenuManager : MonoBehaviour
     public void CloseAudioToOptions()
     {
         if (audioVolumeCanvas != null) audioVolumeCanvas.SetActive(false);
+        if (optionsCanvas != null) optionsCanvas.SetActive(true);
+    }
+
+    /// <summary>Se asigna al botón 'ATRÁS' del panel de controles.</summary>
+    public void CloseControlsToOptions()
+    {
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
         if (optionsCanvas != null) optionsCanvas.SetActive(true);
     }
 

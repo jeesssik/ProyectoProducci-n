@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public GameObject optionsCanvas;
     public GameObject creditsCanvas;
     public GameObject soundOptionsCanvas;
+    public GameObject controlsCanvas;
 
     private GameObject currentCanvas;
     private GameObject previousCanvas;
@@ -46,6 +47,11 @@ public class MenuManager : MonoBehaviour
     public void OnSoundButton()
     {
         OpenCanvas(soundOptionsCanvas);
+    }
+
+    public void OnControlsButton()
+    {
+        OpenCanvas(controlsCanvas);
     }
 
     public void OnExitButton()
@@ -91,6 +97,7 @@ public class MenuManager : MonoBehaviour
         optionsCanvas.SetActive(false);
         creditsCanvas.SetActive(false);
         soundOptionsCanvas.SetActive(false);
+        if (controlsCanvas != null) controlsCanvas.SetActive(false);
 
         currentCanvas = mainMenuCanvas;
         previousCanvas = null;
