@@ -11,7 +11,7 @@ public class WizardProjectile : MonoBehaviour
     private Rigidbody2D rb;
     private bool hasHit;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         Collider2D col = GetComponent<Collider2D>();
@@ -21,7 +21,7 @@ public class WizardProjectile : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    public void Launch(Vector2 direction)
+    public virtual void Launch(Vector2 direction)
     {
         if (direction.sqrMagnitude < 0.0001f)
             direction = Vector2.right;
@@ -31,7 +31,13 @@ public class WizardProjectile : MonoBehaviour
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        OnLaunched(direction);
     }
+
+    protected virtual void OnLaunched(Vector2 direction) { }
+
+    protected bool HasHit => hasHit;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
