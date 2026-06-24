@@ -62,11 +62,10 @@ public class PotionPickup : MonoBehaviour
         {
             if (Input.GetKeyDown(pickupKey))
             {
-                targetPlayer.RestoreFullHealth();
-                
-                // Opcional: Podés meter un sonido de curación acá si tenés AudioManager
-                // if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.playerHeal);
+                //targetPlayer.RestoreFullHealth();
+                targetPlayer.IniciarAnimacionCuracion();
 
+                if (interactionPrompt != null) interactionPrompt.SetActive(false);
                 Destroy(gameObject);
             }
         }
