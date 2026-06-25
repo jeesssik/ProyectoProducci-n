@@ -18277,7 +18277,7 @@ MonoBehaviour:
     m_Bits: 0
   ledgeLookAhead: 0.55
   groundCheckDistance: 0.75
-  attackCooldown: 1.2
+  attackCooldown: 0.6
   spriteRenderer: {fileID: 1759953605}
   animator: {fileID: 1759953601}
   maxHealth: 12
