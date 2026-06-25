@@ -211,7 +211,7 @@ private IEnumerator BackDodgeRoutine(float direction)
     _isBackDodging = true;
     _player.SetRuneDodgeInvulnerable(true);
 
-    // (Eliminamos cualquier SetTrigger de acá adentro para que no se duplique)
+  
 
     if (AudioManager.Instance != null)
         AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash, 0.85f);
