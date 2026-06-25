@@ -535,6 +535,28 @@ public class CameraFollow2D : MonoBehaviour
 
         Transform borders = bordersGo.transform;
 
+        if (leftBound == null)
+        {
+            Transform left = borders.Find("Left");
+            if (left != null)
+            {
+                leftBound = left;
+                if (leftBoundBox == null)
+                    leftBoundBox = left.GetComponent<BoxCollider2D>();
+            }
+        }
+
+        if (rightBound == null)
+        {
+            Transform right = borders.Find("Right");
+            if (right != null)
+            {
+                rightBound = right;
+                if (rightBoundBox == null)
+                    rightBoundBox = right.GetComponent<BoxCollider2D>();
+            }
+        }
+
         if (bottomBound == null)
         {
             Transform bottom = borders.Find("Bottom");

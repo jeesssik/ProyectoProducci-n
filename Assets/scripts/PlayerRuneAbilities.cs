@@ -74,7 +74,7 @@ public class PlayerRuneAbilities : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
 
         if (abilityHud == null)
-            abilityHud = GetComponent<AbilityHUD>();
+            abilityHud = FindFirstObjectByType<AbilityHUD>(FindObjectsInactive.Include);
 
         if (dashObstacleLayers.value == 0)
             dashObstacleLayers = LayerMask.GetMask("Ground", "Default");
