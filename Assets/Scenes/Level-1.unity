@@ -6658,7 +6658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlayer: {fileID: 1289267859}
-  gameplayObjects: {fileID: 0}
+  canvasVideo: {fileID: 1509288776}
 --- !u!328 &1289267859
 VideoPlayer:
   m_ObjectHideFlags: 0

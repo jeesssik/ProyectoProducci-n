@@ -4,18 +4,20 @@ using UnityEngine.Video;
 public class IntroVideoController : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
-    public GameObject gameplayObjects;
+    public GameObject canvasVideo;
 
-    void Start()
+    private void Start()
     {
-        gameplayObjects.SetActive(false);
-
-        videoPlayer.loopPointReached += EndReached;
+        videoPlayer.loopPointReached += VideoFinished;
     }
 
-    void EndReached(VideoPlayer vp)
+    private void VideoFinished(VideoPlayer vp)
     {
-        gameplayObjects.SetActive(true);
-        gameObject.SetActive(false);
+        Debug.Log("VIDEO TERMINADO");
+
+        canvasVideo.SetActive(false);
+
+        // Opcional
+        videoPlayer.Stop();
     }
 }
