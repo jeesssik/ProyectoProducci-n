@@ -15675,7 +15675,7 @@ MonoBehaviour:
   groundDashSpeed: 14
   groundDashDuration: 0.16
   groundDashCooldown: 0.85
-  backDodgeSpeed: 12
+  backDodgeSpeed: 2
   backDodgeDuration: 0.14
   backDodgeCooldown: 1.1
   reprisalWindowDuration: 2.5

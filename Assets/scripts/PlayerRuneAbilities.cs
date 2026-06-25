@@ -197,8 +197,6 @@ public class PlayerRuneAbilities : MonoBehaviour
     if (!_player.IsGrounded || !RuneProgress.IsUnlocked(RuneType.Celeste) || _backDodgeCooldownTimer > 0f)
         return;
 
-    // 🔥 LA SOLUCIÓN DEFINITIVA: Forzamos la animación en el instante exacto del input
-    // Reemplazá "BackDodge" por el NOMBRE EXACTO DEL CLIP de animación (el archivo .anim)
     if (_animator != null)
     {
         _animator.Play("backDodge", 0, 0f); 
