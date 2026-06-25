@@ -1920,7 +1920,8 @@ MonoBehaviour:
   playerAttack: {fileID: 8300000, guid: dcda26858c000d44faa363ab225356df, type: 3}
   playerHurt: {fileID: 8300000, guid: 976e389d3e9c164479eb6d5a0504fc4d, type: 3}
   playerDeath: {fileID: 8300000, guid: 51537fa4c7b57374ab66ecb5288d9b91, type: 3}
-  playerDash: {fileID: 0}
+  playerDash: {fileID: 8300000, guid: d736ca9c51a065a43ba6780b8ef60705, type: 3}
+  backDodge: {fileID: 8300000, guid: d012e86a45c33144392f431fe285edb8, type: 3}
 --- !u!1 &1307686228
 GameObject:
   m_ObjectHideFlags: 0

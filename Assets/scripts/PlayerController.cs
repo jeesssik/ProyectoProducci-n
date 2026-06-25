@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject attackHitbox;
     [SerializeField] private PlayerHealthUI playerHealthUI;
-    
+
     private bool isFacingRight = true;
     private static readonly ContactPoint2D[] ContactScratch = new ContactPoint2D[24];
     private bool isKnockbacked = false;
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private bool isGrounded;
-    private bool wasGroundedLastFrame; 
+    private bool wasGroundedLastFrame;
     private bool canAttack = true;
     private bool isDead = false;
     private bool isInvulnerable = false;
@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
         currentHealth = maxHealth;
         _baseGravityScale = rb.gravityScale;
-        
+
         if (attackHitbox != null)
         {
             attackHitbox.SetActive(false);
@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
         Move();
         ApplyBetterJumpPhysics();
-        CheckGround(); 
+        CheckGround();
     }
 
     public void ApplyKnockback(Vector2 enemyPosition)
@@ -227,7 +227,7 @@ public class PlayerController : MonoBehaviour
         {
             bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
             bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
-            
+
             if (left && !right) horizontalInput = -1f;
             else if (right && !left) horizontalInput = 1f;
         }
@@ -381,7 +381,7 @@ public class PlayerController : MonoBehaviour
         {
             // NOTA: Vinculá este llamado con tu script encargado de la lógica de ítems/vida extra.
             Debug.Log("Poción activada vía código con la tecla: " + potionKey);
-            
+
             // Ejemplo de conexión directa si usás otra clase en el Player:
             // GetComponent<PlayerInventory>()?.ConsumePotion();
         }
@@ -415,7 +415,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ApplyAttackDamage()
+    /*public void ApplyAttackDamage()
     {
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, 0.35f, enemyLayer);
         foreach (Collider2D enemy in enemiesHit)
@@ -426,13 +426,60 @@ public class PlayerController : MonoBehaviour
                 enemyController.TakeDamage(attackDamage);
             }
         }
+    }*/
+
+
+    public void ApplyAttackDamage()
+    {
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, 0.35f, enemyLayer);
+        foreach (Collider2D enemy in enemiesHit)
+        {
+            // Buscamos cualquier componente que implemente la interfaz IDamageable (en el objeto o sus padres)
+            IDamageable damageable = enemy.GetComponentInParent<IDamageable>();
+            if (damageable != null)
+            {
+                damageable.TakeDamage(attackDamage);
+            }
+        }
     }
 
     public bool IsDead() => isDead;
 
+    /*
+        public void RestoreFullHealth()
+        {
+            if (isDead) return;
+            currentHealth = maxHealth;
+
+            if (playerHealthUI != null)
+            {
+                playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
+            }
+
+            animator.SetTrigger("Heal");
+        }*/
+
+    public void IniciarAnimacionCuracion()
+    {
+        if (isDead) return;
+
+        if (animator != null)
+        {
+            animator.SetTrigger("Heal"); // Dispara 'healing_Clip'
+        }
+        else
+        {
+            // Failsafe: Si por algún motivo no hay animator, lo cura directo
+            RestoreFullHealth();
+        }
+    }
+
+    // 2. ESTA es tu función original modificada. 
+    // La va a llamar el Animation Event en el frame exacto que elijas.
     public void RestoreFullHealth()
     {
         if (isDead) return;
+
         currentHealth = maxHealth;
 
         if (playerHealthUI != null)
@@ -440,7 +487,8 @@ public class PlayerController : MonoBehaviour
             playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
         }
 
-        animator.SetTrigger("Heal");
+        // 🔥 Quitamos el animator.SetTrigger("Heal") de acá porque la animación YA se está reproduciendo.
+        Debug.Log("✨ ¡Curado con éxito en el frame del Animation Event!");
     }
 
     private void CheckGround()
