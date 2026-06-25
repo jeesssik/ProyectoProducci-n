@@ -10740,9 +10740,33 @@ PrefabInstance:
       propertyPath: damageRange
       value: 1.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1553750906208650846, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723836137226074593, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796739291517871279, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5502023716240217495, guid: be6f369a85133184693ecd71ad671e76, type: 3}
       propertyPath: m_Name
       value: Flower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502023716240217495, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502023716240217495, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872588423269187662, guid: be6f369a85133184693ecd71ad671e76, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
