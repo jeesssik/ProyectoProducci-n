@@ -1,0 +1,777 @@
+fileFormatVersion: 2
+guid: 1a649deaea984f44d91ae39f924b54e1
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: hurt_Frame_0
+    originalName: 
+    pivot: {x: 0.5642857, y: -0.0754717}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 66
+      width: 70
+      height: 53
+    spriteID: c13ac21b885c715469f49bfac0af6e99
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 66}
+  - name: hurt_Frame_1
+    originalName: 
+    pivot: {x: 0.5642857, y: -0.07407408}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 70
+      height: 54
+    spriteID: f82b4461e5ad62e4fbed75131fe7b825
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: hurt_Frame_2
+    originalName: 
+    pivot: {x: 0.54761904, y: -0.071428575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 127
+      width: 63
+      height: 56
+    spriteID: 381e88ecacb2e0f40ae160b17274e253
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 127}
+  - name: hurt_Frame_3
+    originalName: 
+    pivot: {x: 0.60909086, y: -0.0925926}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 191
+      width: 55
+      height: 54
+    spriteID: 1f4c9f806ca18e84fbfc7f182bb2c93b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 191}
+  - name: hurt_Frame_4
+    originalName: 
+    pivot: {x: 0.61764705, y: -0.15217392}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 368
+      width: 51
+      height: 46
+    spriteID: 1b3d37f17eab40e4997ceb3eb54e69cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 368}
+  - name: hurt_Frame_5
+    originalName: 
+    pivot: {x: 0.6020408, y: -0.15217392}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 422
+      width: 49
+      height: 46
+    spriteID: 5eeccab1a827ca54eaf6511dc51ae913
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 422}
+  - name: hurt_Frame_6
+    originalName: 
+    pivot: {x: 0.5568182, y: -0.15217392}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 230
+      width: 44
+      height: 46
+    spriteID: e783db25038f62a488374530ba78b102
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 230}
+  - name: hurt_Frame_7
+    originalName: 
+    pivot: {x: 0.54444444, y: -0.083333336}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 59
+      width: 45
+      height: 48
+    spriteID: 7a643c02e9098734fac7ffd5d53c8736
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 59}
+  - name: hurt_Frame_8
+    originalName: 
+    pivot: {x: 0.52127665, y: -0.03846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 308
+      width: 47
+      height: 52
+    spriteID: 7f48d0076eb08be4fbdcfdab76871d04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 308}
+  - name: hurt_Frame_9
+    originalName: 
+    pivot: {x: 0.52127665, y: -0.06382979}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 4
+      width: 47
+      height: 47
+    spriteID: 45b94a0be8c4f5647bd7576a1f1fbb4c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 4}
+  - name: hurt_Frame_10
+    originalName: 
+    pivot: {x: 0.5277778, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 253
+      width: 54
+      height: 47
+    spriteID: 0d6151f9401bb354f86202f4487abd20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 253}
+  - name: hurt_Frame_11
+    originalName: 
+    pivot: {x: 0.44565213, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 284
+      width: 46
+      height: 44
+    spriteID: 31ce23e63b85473489f2b983fa6d7402
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 284}
+  - name: hurt_Frame_12
+    originalName: 
+    pivot: {x: 0.393617, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 187
+      width: 47
+      height: 36
+    spriteID: d3a521f663a2537448a2646dc3a7b8bd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 187}
+  - name: hurt_Frame_13
+    originalName: 
+    pivot: {x: 0.38043478, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 142
+      width: 46
+      height: 37
+    spriteID: f551fd6416318fd49839f17daf7b8826
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 142}
+  - name: hurt_Frame_14
+    originalName: 
+    pivot: {x: 0.37234044, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 385
+      width: 47
+      height: 38
+    spriteID: ab8b224bc68e92b47b92a19d5d52bd6e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 385}
+  - name: hurt_Frame_15
+    originalName: 
+    pivot: {x: 0.36458334, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 4
+      width: 48
+      height: 38
+    spriteID: 588a36ac415ab4d41bd4f853497152eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 4}
+  - name: hurt_Frame_16
+    originalName: 
+    pivot: {x: 0.35106382, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 431
+      width: 47
+      height: 38
+    spriteID: 49b3bf973911c2c4291177a87f255d20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 431}
+  - name: hurt_Frame_17
+    originalName: 
+    pivot: {x: 0.35106382, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 50
+      width: 47
+      height: 38
+    spriteID: f0a330aeefef7984f9b088edd0ab6088
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 50}
+  - name: hurt_Frame_18
+    originalName: 
+    pivot: {x: 0.35106382, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 96
+      width: 47
+      height: 38
+    spriteID: 13701c91cefb4734bb6199871d450ac6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 137, y: 96}
+  - name: hurt_Frame_19
+    originalName: 
+    pivot: {x: 0.35106382, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 336
+      width: 47
+      height: 41
+    spriteID: 4bbe02d5385834440bf845274f727d22
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 336}
+  - name: hurt_Frame_20
+    originalName: 
+    pivot: {x: 0.38372093, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 173
+      width: 43
+      height: 49
+    spriteID: 6405d5ae54f1f4e42a56ada59a866b3d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 173}
+  - name: hurt_Frame_21
+    originalName: 
+    pivot: {x: 0.38372093, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 82
+      y: 115
+      width: 43
+      height: 50
+    spriteID: e833eaf5983304848bb2d017685739db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 82, y: 115}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -202304201
+    name: hurt
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: hurt_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 4
+        width: 70
+        height: 53
+      spriteId: c13ac21b885c715469f49bfac0af6e99
+    - name: hurt_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 4
+        width: 70
+        height: 54
+      spriteId: f82b4461e5ad62e4fbed75131fe7b825
+    - name: hurt_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 5
+        y: 4
+        width: 63
+        height: 56
+      spriteId: 381e88ecacb2e0f40ae160b17274e253
+    - name: hurt_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 6
+        y: 5
+        width: 55
+        height: 54
+      spriteId: 1f4c9f806ca18e84fbfc7f182bb2c93b
+    - name: hurt_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 7
+        width: 51
+        height: 46
+      spriteId: 1b3d37f17eab40e4997ceb3eb54e69cb
+    - name: hurt_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 10
+        y: 7
+        width: 49
+        height: 46
+      spriteId: 5eeccab1a827ca54eaf6511dc51ae913
+    - name: hurt_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 15
+        y: 7
+        width: 44
+        height: 46
+      spriteId: e783db25038f62a488374530ba78b102
+    - name: hurt_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 15
+        y: 4
+        width: 45
+        height: 48
+      spriteId: 7a643c02e9098734fac7ffd5d53c8736
+    - name: hurt_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 15
+        y: 2
+        width: 47
+        height: 52
+      spriteId: 7f48d0076eb08be4fbdcfdab76871d04
+    - name: hurt_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 15
+        y: 3
+        width: 47
+        height: 47
+      spriteId: 45b94a0be8c4f5647bd7576a1f1fbb4c
+    - name: hurt_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 11
+        y: 0
+        width: 54
+        height: 47
+      spriteId: 0d6151f9401bb354f86202f4487abd20
+    - name: hurt_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 19
+        y: 0
+        width: 46
+        height: 44
+      spriteId: 31ce23e63b85473489f2b983fa6d7402
+    - name: hurt_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 21
+        y: 0
+        width: 47
+        height: 36
+      spriteId: d3a521f663a2537448a2646dc3a7b8bd
+    - name: hurt_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 22
+        y: 0
+        width: 46
+        height: 37
+      spriteId: f551fd6416318fd49839f17daf7b8826
+    - name: hurt_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 22
+        y: 0
+        width: 47
+        height: 38
+      spriteId: ab8b224bc68e92b47b92a19d5d52bd6e
+    - name: hurt_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 22
+        y: 0
+        width: 48
+        height: 38
+      spriteId: 588a36ac415ab4d41bd4f853497152eb
+    - name: hurt_Frame_16
+      frameIndex: 16
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 47
+        height: 38
+      spriteId: 49b3bf973911c2c4291177a87f255d20
+    - name: hurt_Frame_17
+      frameIndex: 17
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 47
+        height: 38
+      spriteId: f0a330aeefef7984f9b088edd0ab6088
+    - name: hurt_Frame_18
+      frameIndex: 18
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 47
+        height: 38
+      spriteId: 13701c91cefb4734bb6199871d450ac6
+    - name: hurt_Frame_19
+      frameIndex: 19
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 47
+        height: 41
+      spriteId: 4bbe02d5385834440bf845274f727d22
+    - name: hurt_Frame_20
+      frameIndex: 20
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 43
+        height: 49
+      spriteId: 6405d5ae54f1f4e42a56ada59a866b3d
+    - name: hurt_Frame_21
+      frameIndex: 21
+      additiveSortOrder: 0
+      cellRect:
+        x: 23
+        y: 0
+        width: 43
+        height: 50
+      spriteId: e833eaf5983304848bb2d017685739db
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 79, y: 60}

@@ -129,7 +129,7 @@ public class PlayerRuneAbilities : MonoBehaviour
 
         StartCoroutine(DashRoutine(direction, groundDashSpeed, groundDashDuration, groundDashCooldown));
     }
-/*
+
     private void TryStartBackDodge()
     {
         if (!Input.GetKeyDown(backDodgeKey))
@@ -140,7 +140,7 @@ public class PlayerRuneAbilities : MonoBehaviour
 
         float direction = -_player.FacingDirection;
         StartCoroutine(BackDodgeRoutine(direction));
-    }*/
+    }
 
     private static bool TryGetDashDirection(out float direction)
     {
@@ -198,115 +198,47 @@ public class PlayerRuneAbilities : MonoBehaviour
         if (abilityHud != null)
             abilityHud.StartCooldown(RuneType.Yellow, cooldown);
     }
-    
-   private void TryStartBackDodge()
-{
-    if (!Input.GetKeyDown(backDodgeKey))
-        return;
 
-    if (!_player.IsGrounded || !RuneProgress.IsUnlocked(RuneType.Celeste) || _backDodgeCooldownTimer > 0f)
-        return;
-
-    // 🔥 LA SOLUCIÓN DEFINITIVA: Forzamos la animación en el instante exacto del input
-    // Reemplazá "BackDodge" por el NOMBRE EXACTO DEL CLIP de animación (el archivo .anim)
-    if (_animator != null)
+    private IEnumerator BackDodgeRoutine(float direction)
     {
-        _animator.Play("backDodge", 0, 0f); 
-    }
+        _isBackDodging = true;
+        _player.SetRuneDodgeInvulnerable(true);
 
-    float direction = -_player.FacingDirection;
-    StartCoroutine(BackDodgeRoutine(direction));
-}
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash, 0.85f);
 
-private IEnumerator BackDodgeRoutine(float direction)
-{
-    _isBackDodging = true;
-    _player.SetRuneDodgeInvulnerable(true);
-
-    // (Eliminamos cualquier SetTrigger de acá adentro para que no se duplique)
-
-    if (AudioManager.Instance != null)
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash, 0.85f);
-
-    float timer = backDodgeDuration;
-    while (timer > 0f)
-    {
-        float step = backDodgeSpeed * Time.fixedDeltaTime;
-        float moveDistance = step;
-
-        if (TryGetBlockedDistance(direction, step, out float blockedDistance))
+        float timer = backDodgeDuration;
+        while (timer > 0f)
         {
-            moveDistance = blockedDistance;
-            if (moveDistance > 0f)
-                ApplyDashStep(direction, moveDistance);
+            float step = backDodgeSpeed * Time.fixedDeltaTime;
+            float moveDistance = step;
 
-            break;
+            if (TryGetBlockedDistance(direction, step, out float blockedDistance))
+            {
+                moveDistance = blockedDistance;
+                if (moveDistance > 0f)
+                    ApplyDashStep(direction, moveDistance);
+
+                break;
+            }
+
+            ApplyDashStep(direction, moveDistance);
+
+            timer -= Time.fixedDeltaTime;
+            yield return new WaitForFixedUpdate();
         }
 
-        ApplyDashStep(direction, moveDistance);
+        EndHorizontalRuneMovement();
+        _isBackDodging = false;
+        _player.SetRuneDodgeInvulnerable(false);
+        _backDodgeCooldownTimer = backDodgeCooldown;
 
-        timer -= Time.fixedDeltaTime;
-        yield return new WaitForFixedUpdate();
+        if (abilityHud != null)
+            abilityHud.StartCooldown(RuneType.Celeste, backDodgeCooldown);
+
+        if (RuneProgress.IsUnlocked(RuneType.Red))
+            _reprisalTimer = reprisalWindowDuration;
     }
-
-    EndHorizontalRuneMovement();
-    _isBackDodging = false;
-    _player.SetRuneDodgeInvulnerable(false);
-    _backDodgeCooldownTimer = backDodgeCooldown;
-
-    if (abilityHud != null)
-        abilityHud.StartCooldown(RuneType.Celeste, backDodgeCooldown);
-
-    if (RuneProgress.IsUnlocked(RuneType.Red))
-        _reprisalTimer = reprisalWindowDuration;
-}
-/*
-            private IEnumerator BackDodgeRoutine(float direction)
-        {
-            _isBackDodging = true;
-            _player.SetRuneDodgeInvulnerable(true);
-
-            // 🔥 LA SOLUCIÓN: Le avisamos al Animator que ejecute la animación de esquive
-            if (_animator != null)
-            {
-                _animator.SetTrigger("BackDodge"); 
-            }
-
-            if (AudioManager.Instance != null)
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.playerDash, 0.85f);
-
-            float timer = backDodgeDuration;
-            while (timer > 0f)
-            {
-                float step = backDodgeSpeed * Time.fixedDeltaTime;
-                float moveDistance = step;
-
-                if (TryGetBlockedDistance(direction, step, out float blockedDistance))
-                {
-                    moveDistance = blockedDistance;
-                    if (moveDistance > 0f)
-                        ApplyDashStep(direction, moveDistance);
-
-                    break;
-                }
-
-                ApplyDashStep(direction, moveDistance);
-
-                timer -= Time.fixedDeltaTime;
-                yield return new WaitForFixedUpdate();
-            }
-
-            EndHorizontalRuneMovement();
-            _isBackDodging = false;
-            _player.SetRuneDodgeInvulnerable(false);
-            _backDodgeCooldownTimer = backDodgeCooldown;
-
-            if (abilityHud != null)
-                abilityHud.StartCooldown(RuneType.Celeste, backDodgeCooldown);
-
-            if (RuneProgress.IsUnlocked(RuneType.Red))
-                _reprisalTimer = reprisalWindowDuration;
-        }*/
 
     private void EndHorizontalRuneMovement()
     {

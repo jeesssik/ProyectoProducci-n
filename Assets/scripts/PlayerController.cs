@@ -445,7 +445,20 @@ public class PlayerController : MonoBehaviour
 
     public bool IsDead() => isDead;
 
-  
+    /*
+        public void RestoreFullHealth()
+        {
+            if (isDead) return;
+            currentHealth = maxHealth;
+
+            if (playerHealthUI != null)
+            {
+                playerHealthUI.UpdateLifeBar(currentHealth, maxHealth);
+            }
+
+            animator.SetTrigger("Heal");
+        }*/
+
     public void IniciarAnimacionCuracion()
     {
         if (isDead) return;

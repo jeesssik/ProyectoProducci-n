@@ -13897,7 +13897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic: {fileID: 8300000, guid: 10fad77679ab6084ebda7881629a76cc, type: 3}
-  levelAmbient: {fileID: 8300000, guid: 226e50cab84a9e246ad50a859a64bec7, type: 3}
+  levelAmbient: {fileID: 0}
 --- !u!4 &1127360308
 Transform:
   m_ObjectHideFlags: 0
