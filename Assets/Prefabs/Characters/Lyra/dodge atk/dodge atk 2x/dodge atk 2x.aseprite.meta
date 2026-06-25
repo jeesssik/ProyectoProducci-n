@@ -1,0 +1,603 @@
+fileFormatVersion: 2
+guid: de7eaa89688dcb546b662f7ed920c401
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: dodge atk 2x_Frame_0
+    originalName: 
+    pivot: {x: 0.22222224, y: -0.5283019}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 103
+      width: 54
+      height: 53
+    spriteID: fbd0fe8819f2ade43aaa265bfb61fcdd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 107, y: 103}
+  - name: dodge atk 2x_Frame_1
+    originalName: 
+    pivot: {x: 0.20370373, y: -0.5283019}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 164
+      width: 54
+      height: 53
+    spriteID: 8dbd6f28d88516546a5d2155233006ba
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 107, y: 164}
+  - name: dodge atk 2x_Frame_2
+    originalName: 
+    pivot: {x: 0.14545454, y: -0.49122807}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 276
+      width: 55
+      height: 57
+    spriteID: c8e325d8fdb3e3d48a55b9c3c0a0d053
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 276}
+  - name: dodge atk 2x_Frame_3
+    originalName: 
+    pivot: {x: 0.16071427, y: -0.5185185}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 404
+      width: 56
+      height: 54
+    spriteID: 387ecfbe82b05b1489616e6172d1ecd1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 404}
+  - name: dodge atk 2x_Frame_4
+    originalName: 
+    pivot: {x: 0.16363634, y: -0.5090909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 341
+      width: 55
+      height: 55
+    spriteID: 17f119b9c9124c04e8d4bb9074a656ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 341}
+  - name: dodge atk 2x_Frame_5
+    originalName: 
+    pivot: {x: 0.1785714, y: -0.54901963}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 225
+      width: 56
+      height: 51
+    spriteID: 761aaf2ad9ec8d04cb5125be5eb35909
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 107, y: 225}
+  - name: dodge atk 2x_Frame_6
+    originalName: 
+    pivot: {x: 0.27272725, y: -0.5833334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 284
+      width: 55
+      height: 48
+    spriteID: 489f42958b6674e40bdbab3e21dd50a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 107, y: 284}
+  - name: dodge atk 2x_Frame_7
+    originalName: 
+    pivot: {x: 0.45744678, y: -0.025974026}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 430
+      width: 94
+      height: 77
+    spriteID: fa3df6c6aeaca6645b6a60e4870aa0d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -9, y: 428}
+  - name: dodge atk 2x_Frame_8
+    originalName: 
+    pivot: {x: 0.51086956, y: -0.1632653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 324
+      width: 92
+      height: 98
+    spriteID: e5a34355ccc4d5643974d6c75bf43108
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -5, y: 308}
+  - name: dodge atk 2x_Frame_9
+    originalName: 
+    pivot: {x: 0.5161291, y: -0.15151516}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 217
+      width: 93
+      height: 99
+    spriteID: ecbb81ae3e4b9d348a14977b47f98d20
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 217}
+  - name: dodge atk 2x_Frame_10
+    originalName: 
+    pivot: {x: 0.5212766, y: -0.15151516}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 110
+      width: 94
+      height: 99
+    spriteID: 9f3b772226556a443bdd8fd3cf61a71c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: -3, y: 95}
+  - name: dodge atk 2x_Frame_11
+    originalName: 
+    pivot: {x: 0.51578945, y: -0.1632653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 95
+      height: 98
+    spriteID: 62b8065fc13aee74c8fa5e4a07ee2b67
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: dodge atk 2x_Frame_12
+    originalName: 
+    pivot: {x: 0.55056185, y: -0.25274727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 107
+      y: 4
+      width: 89
+      height: 91
+    spriteID: 6ae3d44a05e3a144286d7b35db5b39f3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 100, y: -19}
+  - name: dodge atk 2x_Frame_13
+    originalName: 
+    pivot: {x: 0.55056185, y: -0.37349397}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 185
+      width: 89
+      height: 83
+    spriteID: 1225fc4f9a4888341ab4af23fc87535c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 185}
+  - name: dodge atk 2x_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: -0.37349397}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 4
+      width: 96
+      height: 83
+    spriteID: e9953dfa72cc2a04eaef6e60cdfc4a08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: -27}
+  - name: dodge atk 2x_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: -0.3902439}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 204
+      y: 95
+      width: 96
+      height: 82
+    spriteID: ed1a65261d9f5ec4f841d3ab5821c53f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 204, y: 95}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 527494265
+    name: dodge atk 2x
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: dodge atk 2x_Frame_0
+      frameIndex: 0
+      additiveSortOrder: 0
+      cellRect:
+        x: 44
+        y: 28
+        width: 54
+        height: 53
+      spriteId: fbd0fe8819f2ade43aaa265bfb61fcdd
+    - name: dodge atk 2x_Frame_1
+      frameIndex: 1
+      additiveSortOrder: 0
+      cellRect:
+        x: 45
+        y: 28
+        width: 54
+        height: 53
+      spriteId: 8dbd6f28d88516546a5d2155233006ba
+    - name: dodge atk 2x_Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 48
+        y: 28
+        width: 55
+        height: 57
+      spriteId: c8e325d8fdb3e3d48a55b9c3c0a0d053
+    - name: dodge atk 2x_Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 47
+        y: 28
+        width: 56
+        height: 54
+      spriteId: 387ecfbe82b05b1489616e6172d1ecd1
+    - name: dodge atk 2x_Frame_4
+      frameIndex: 4
+      additiveSortOrder: 0
+      cellRect:
+        x: 47
+        y: 28
+        width: 55
+        height: 55
+      spriteId: 17f119b9c9124c04e8d4bb9074a656ce
+    - name: dodge atk 2x_Frame_5
+      frameIndex: 5
+      additiveSortOrder: 0
+      cellRect:
+        x: 46
+        y: 28
+        width: 56
+        height: 51
+      spriteId: 761aaf2ad9ec8d04cb5125be5eb35909
+    - name: dodge atk 2x_Frame_6
+      frameIndex: 6
+      additiveSortOrder: 0
+      cellRect:
+        x: 41
+        y: 28
+        width: 55
+        height: 48
+      spriteId: 489f42958b6674e40bdbab3e21dd50a8
+    - name: dodge atk 2x_Frame_7
+      frameIndex: 7
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 112
+        height: 128
+      spriteId: fa3df6c6aeaca6645b6a60e4870aa0d5
+    - name: dodge atk 2x_Frame_8
+      frameIndex: 8
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 112
+        height: 128
+      spriteId: e5a34355ccc4d5643974d6c75bf43108
+    - name: dodge atk 2x_Frame_9
+      frameIndex: 9
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 15
+        width: 93
+        height: 99
+      spriteId: ecbb81ae3e4b9d348a14977b47f98d20
+    - name: dodge atk 2x_Frame_10
+      frameIndex: 10
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 112
+        height: 128
+      spriteId: 9f3b772226556a443bdd8fd3cf61a71c
+    - name: dodge atk 2x_Frame_11
+      frameIndex: 11
+      additiveSortOrder: 0
+      cellRect:
+        x: 7
+        y: 16
+        width: 95
+        height: 98
+      spriteId: 62b8065fc13aee74c8fa5e4a07ee2b67
+    - name: dodge atk 2x_Frame_12
+      frameIndex: 12
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 112
+        height: 128
+      spriteId: 6ae3d44a05e3a144286d7b35db5b39f3
+    - name: dodge atk 2x_Frame_13
+      frameIndex: 13
+      additiveSortOrder: 0
+      cellRect:
+        x: 7
+        y: 31
+        width: 89
+        height: 83
+      spriteId: 1225fc4f9a4888341ab4af23fc87535c
+    - name: dodge atk 2x_Frame_14
+      frameIndex: 14
+      additiveSortOrder: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 112
+        height: 128
+      spriteId: e9953dfa72cc2a04eaef6e60cdfc4a08
+    - name: dodge atk 2x_Frame_15
+      frameIndex: 15
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 32
+        width: 96
+        height: 82
+      spriteId: ed1a65261d9f5ec4f841d3ab5821c53f
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 112, y: 128}
